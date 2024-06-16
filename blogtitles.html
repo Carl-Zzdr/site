@@ -16,21 +16,27 @@
         h1 {
             margin-bottom: 20px;
         }
-        a {
+        button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 5px;
             text-decoration: none;
-            color: blue;
-            font-size: 1.2em;
-            margin: 5px 0;
+            color: black;
         }
-        a:hover {
-            text-decoration: underline;
+        button:hover {
+            background-color: lightgray;
         }
     </style>
 </head>
 <body>
     <h1>博客文章标题</h1>
-    <a href="content1.html">文章1</a>
-    <a href="article2.html">文章标题2</a>
-    <a href="article3.html">文章标题3</a>
+    <a href="content1.html"><button>文章标题1</button></a>
+    <a href="article2.html"><button>文章标题2</button></a>
+    <a href="article3.html"><button>文章标题3</button></a>
 </body>
 </html>
