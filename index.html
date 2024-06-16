@@ -1,34 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>主页</title>
     <style>
         body {
+            background-image: url('bk.jpg');
+            background-size: cover;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: white;
+            color: black;
             font-family: Arial, sans-serif;
         }
-        .container {
-            text-align: center;
+        h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+        p {
+            margin: 10px 0;
+            font-size: 1.2em;
         }
         button {
             margin-top: 20px;
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 1em;
             cursor: pointer;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: lightgray;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>我是Carl</h1>
-        <button onclick="location.href='newpage.html'">进入新页面</button>
-    </div>
+    <h1>我是Carl</h1>
+    <p>一个来自湖南的大学生，正在学习计算机科学</p>
+    <button onclick="location.href='blogtitles.html'">进入我的博客</button>
 </body>
 </html>
