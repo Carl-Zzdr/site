@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>博客文章</title>
+    <title>文章标题</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
             color: black;
         }
-        h1, h2, h3, h4, h5, h6 {
-            color: black;
+        h1 {
+            text-align: center;
         }
-        pre {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        code {
-            background-color: #f4f4f4;
-            padding: 2px 5px;
-            border-radius: 3px;
+        p {
+            text-align: justify;
+            margin-top: 20px;
         }
         a {
+            display: block;
+            margin-top: 20px;
+            font-size: 1em;
+            text-align: center;
             color: blue;
             text-decoration: none;
         }
@@ -33,23 +31,8 @@
     </style>
 </head>
 <body>
-    <div id="content">
-        <!-- Markdown content will be rendered here -->
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.10/marked.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const contentDiv = document.getElementById('content');
-            const markdownContent = `# 我的博客文章
-
-这是我的第一篇博客文章。
-
-## 小标题
-
-一些详细内容...`;
-
-            contentDiv.innerHTML = marked.parse(markdownContent);
-        });
-    </script>
+    <h1>Carl的网站于2024年6月16日成功上线</h1>
+    <p>！！！！</p>
+    <a href="blogtitles.html">返回文章列表</a>
 </body>
 </html>
