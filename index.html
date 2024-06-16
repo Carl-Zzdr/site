@@ -9,28 +9,24 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
-        .container {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-        .top {
+        .top-section {
             background-image: url('bk.jpg');
             background-size: cover;
+            background-position: center;
+            height: 33vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 25%;
-            color: white;
+            color: black;
         }
-        .bottom {
+        .bottom-section {
+            height: 67vh;
             background-color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 75%;
-            color: black;
         }
         h1 {
             margin: 0;
@@ -55,16 +51,14 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="top">
-            <h1>我是Carl</h1>
-        </div>
-        <div class="bottom">
-            <p>来自湖南</p>
-            <p>正在重庆上大学</p>
-            <button onclick="location.href='blogtitles.html'">进入我的博客</button>
-            <button onclick="location.href='lab.html'">进入试验场</button>
-        </div>
+    <div class="top-section">
+        <h1>我是Carl</h1>
+        <p>来自湖南</p>
+        <p>正在重庆上大学</p>
+    </div>
+    <div class="bottom-section">
+        <button onclick="location.href='blogtitles.html'">进入我的博客</button>
+        <button onclick="location.href='lab.html'">进入试验场</button>
     </div>
 </body>
 </html>
