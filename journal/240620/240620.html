@@ -34,9 +34,12 @@
         a:hover {
             text-decoration: underline;
         }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
         button {
-            display: block;
-            margin: 10px 0;
+            display: inline-block;
             padding: 10px 20px;
             font-size: 1em;
             cursor: pointer;
@@ -62,7 +65,9 @@
     <h1>貌似有三个班在同一个教室里（视频展示测试）</h1>
     <p>视频失败了，看来github page不适合放视频</p>
     <p>下次自己租了服务器再试</p>
-    <a href="/journal.html"><button>返回文章列表</button></a>
+    <div class="button-container">
+        <a href="/journal.html"><button>返回文章列表</button></a>
+    </div>
     <div class="footer">CarlZzdr-2024年6月20日</div>
 </body>
 </html>

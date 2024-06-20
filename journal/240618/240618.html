@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>260618</title>
+    <title>240620</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,8 +20,8 @@
         img {
             display: block;
             margin: 20px auto;
-            max-width: 80%;
-            max-width: 60%;
+            max-width: 100%;
+            height: auto;
         }
         a {
             display: block;
@@ -34,9 +34,12 @@
         a:hover {
             text-decoration: underline;
         }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
         button {
-            display: block;
-            margin: 10px 0;
+            display: inline-block;
             padding: 10px 20px;
             font-size: 1em;
             cursor: pointer;
@@ -45,7 +48,6 @@
             border-radius: 5px;
             text-decoration: none;
             color: black;
-            align-items: center;
         }
         button:hover {
             background-color: lightgray;
@@ -64,7 +66,9 @@
     <p>今天从早上八点半开始就在进行愚蠢的机械设计的课程设计</p>
     <img src="/journal/240618/240618-1.jpg" alt="愚蠢的绘图教室">
     <p>可怜还需要继续画</p>
-    <a href="/journal.html"><button>返回文章列表</button></a>
+    <div class="button-container">
+        <a href="/journal.html"><button>返回文章列表</button></a>
+    </div>
     <div class="footer">CarlZzdr-2024年6月18日</div>
 </body>
 </html>
