@@ -1,0 +1,2478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://carlzzdr.fun</id>
+    <title>CarlZzdr的博客</title>
+    <updated>2025-04-09T12:54:02.317Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://carlzzdr.fun"/>
+    <link rel="self" href="https://carlzzdr.fun/atom.xml"/>
+    <subtitle>无限风光在险峰</subtitle>
+    <logo>https://carlzzdr.fun/images/avatar.png</logo>
+    <icon>https://carlzzdr.fun/favicon.ico</icon>
+    <rights>All rights reserved 2025, CarlZzdr的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[16届蓝桥杯B组省一准备]]></title>
+        <id>https://carlzzdr.fun/post/16-jie-lan-qiao-bei-b-zu-sheng-yi-zhun-bei/</id>
+        <link href="https://carlzzdr.fun/post/16-jie-lan-qiao-bei-b-zu-sheng-yi-zhun-bei/">
+        </link>
+        <updated>2025-04-06T12:30:38.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="知识点速过提纲">知识点速过提纲</h1>
+<h2 id="做出暴力题的基本语法">做出暴力题的基本语法</h2>
+<p>for，while，cin，cout，if<br>
+略(●'◡'●)</p>
+<h2 id="常用algorithm库函数">常用algorithm库函数</h2>
+<pre><code class="language-c++">#include&lt;algorithm&gt;
+
+max(x,y);//返回最大值
+
+max(x,max(y,z));//技巧
+
+min(x,y);//返回最小值
+
+abs(x);//x绝对值
+
+swap(x,y);//交换
+
+reverse(it,it2);//迭代器或数组，在[it,it2）范围内元素反转
+
+</code></pre>
+<h3 id="sort-函数">sort( )函数</h3>
+<pre><code class="language-cpp">sort(首元素地址，尾元素下一个地址，比较函数);
+//不加比较函数默认从小到大
+
+bool cmp(int a, int b){
+    return a&gt;b;//当a&gt;b时候把a放在b的前面
+}
+
+</code></pre>
+<h2 id="常见的对string的应用">常见的对string的应用</h2>
+<h2 id="高精度的基本思想">高精度的基本思想</h2>
+<h2 id="公约数与公因数-排列组合">公约数与公因数、排列组合</h2>
+<h2 id="深度优先搜索">深度优先搜索</h2>
+<p>深度优先算法的通用模板</p>
+<pre><code class="language-cpp">返回值类型 dfs(参数) {
+    if (终止条件) {
+        存储结果/返回;
+    }
+    
+    for (选择 : 选择列表) {
+        if (剪枝条件) continue;
+        
+        做选择;
+        if (dfs(新参数)) 
+            return true;  // 如果只需要一个解
+        撤销选择;
+    }
+    
+    return false;  // 或其他适当返回值
+}
+
+</code></pre>
+<h1 id="小技巧">小技巧</h1>
+<h2 id="提高输入输出效率">提高输入输出效率</h2>
+<pre><code>ios::sync_with_stdio(false);
+cin.tie(nullptr);
+cout.tie(nullptr);
+</code></pre>
+<p>是 C++ 中用于优化输入输出性能的一种方法。它的作用是关闭 C++ 标准流（如 cin 和 cout）与 C 标准流（如 scanf 和 printf）之间的同步。<br>
+是一种优化输入输出性能的技巧，适用于需要频繁使用 cin 和 cout 的场景。<br>
+一旦关闭同步，就不要混用 C 和 C++ 的输入输出函数</p>
+<h1 id="十五届题型统计">十五届题型统计</h1>
+<h2 id="填空">填空</h2>
+<h3 id="一-握手问题">一 握手问题</h3>
+<p>简单数学，排列组合计算</p>
+<h3 id="二-小球反弹">二 小球反弹</h3>
+<p>数学，暴力搜索答案可解</p>
+<h3 id="三-好数">三 好数</h3>
+<p>暴力，字符数字转换，</p>
+<h3 id="四-r格式">四 R格式</h3>
+<p>高精度，string</p>
+<h3 id="五-宝石组合">五 宝石组合</h3>
+<p>最大公约数/公倍数，</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[数据结构所需的c语言的基础知识速查]]></title>
+        <id>https://carlzzdr.fun/post/shu-ju-jie-gou-suo-xu-de-c-yu-yan-de-ji-chu-zhi-shi-su-cha/</id>
+        <link href="https://carlzzdr.fun/post/shu-ju-jie-gou-suo-xu-de-c-yu-yan-de-ji-chu-zhi-shi-su-cha/">
+        </link>
+        <updated>2025-03-05T06:43:34.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-变量与数据类型"><strong>一、变量与数据类型</strong></h2>
+<h4 id="1-基本数据类型内存占用与取值范围与编译环境相关">1. <strong>基本数据类型</strong>（内存占用与取值范围与编译环境相关）</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+<th>示例</th>
+<th>常见用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code></td>
+<td>整数类型</td>
+<td><code>int a = 10;</code></td>
+<td>计数器、索引</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>单精度浮点数</td>
+<td><code>float b = 3.14f;</code></td>
+<td>小数存储（精度较低）</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>双精度浮点数</td>
+<td><code>double c = 3.1415;</code></td>
+<td>精度高的小数计算</td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td>字符或小整数</td>
+<td><code>char d = 'A';</code></td>
+<td>ASCII字符、标志位</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-类型修饰符">2. <strong>类型修饰符</strong></h4>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>作用</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>short</code></td>
+<td>缩短整型长度（如 <code>short int</code>，占用 2 字节）</td>
+<td><code>short s = 100;</code></td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>扩展整型长度（如 <code>long int</code>，通常 4/8 字节）</td>
+<td><code>long l = 1000000L;</code></td>
+</tr>
+<tr>
+<td><code>signed</code></td>
+<td>声明有符号数（默认行为）</td>
+<td><code>signed int x = -5;</code></td>
+</tr>
+<tr>
+<td><code>unsigned</code></td>
+<td>声明无符号数（仅非负值，范围扩大）</td>
+<td><code>unsigned int y = 255;</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意</strong>：</p>
+<ul>
+<li><code>char</code> 类型默认为 <code>signed</code> 或 <code>unsigned</code>，由编译器决定。需显式声明避免歧义：<pre><code class="language-c">signed char c = -10;   // 范围: -128 ~ 127
+unsigned char c = 200; // 范围: 0 ~ 255
+</code></pre>
+</li>
+</ul>
+<h4 id="3-常量定义">3. <strong>常量定义</strong></h4>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>特点</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>const</code></td>
+<td>只读变量，编译时检查，占用内存</td>
+<td><code>const int MAX = 100;</code></td>
+</tr>
+<tr>
+<td><code>#define</code></td>
+<td>预处理宏替换，不占内存，无类型检查</td>
+<td><code>#define MAX 100</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键区别</strong>：</p>
+<ul>
+<li><code>const</code> 常量有作用域（如函数内局部常量），而 <code>#define</code> 全局生效。</li>
+<li><strong>陷阱</strong>：宏替换可能导致意外错误（如 <code>#define SQUARE(x) x*x</code>，调用 <code>SQUARE(a+1)</code> 会展开为 <code>a+1*a+1</code>）。</li>
+</ul>
+<h4 id="4-输入输出函数">4. <strong>输入输出函数</strong></h4>
+<ul>
+<li><strong><code>printf()</code></strong>：格式化输出<pre><code class="language-c">int age = 25;
+printf(&quot;Age: %d, Pi: %.2f\n&quot;, age, 3.14159); // 输出: Age: 25, Pi: 3.14
+</code></pre>
+</li>
+<li><strong><code>scanf()</code></strong>：格式化输入<pre><code class="language-c">int num;
+printf(&quot;Enter a number: &quot;);
+scanf(&quot;%d&quot;, &amp;num); // &amp; 取地址运算符
+</code></pre>
+</li>
+</ul>
+<p><strong>格式符速查</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>格式符</th>
+<th>类型</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%d</code></td>
+<td>int</td>
+<td><code>scanf(&quot;%d&quot;, &amp;a);</code></td>
+</tr>
+<tr>
+<td><code>%f</code></td>
+<td>float</td>
+<td><code>printf(&quot;%f&quot;, b);</code></td>
+</tr>
+<tr>
+<td><code>%lf</code></td>
+<td>double</td>
+<td><code>scanf(&quot;%lf&quot;, &amp;c);</code></td>
+</tr>
+<tr>
+<td><code>%c</code></td>
+<td>char</td>
+<td><code>printf(&quot;%c&quot;, d);</code></td>
+</tr>
+<tr>
+<td><code>%s</code></td>
+<td>字符串</td>
+<td><code>scanf(&quot;%s&quot;, str);</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>易错点</strong>：</p>
+<ul>
+<li><code>scanf</code> 读取字符串时，数组越界风险（建议用 <code>fgets</code> 或限制宽度：<code>scanf(&quot;%19s&quot;, str)</code>）。</li>
+</ul>
+<hr>
+<h3 id="二-运算符与表达式"><strong>二、运算符与表达式</strong></h3>
+<h4 id="1-算术运算符">1. <strong>算术运算符</strong></h4>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+ - * /</code></td>
+<td>加减乘除</td>
+<td><code>int val = (10 + 3) * 2;</code></td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>取模（余数）</td>
+<td><code>5 % 2 = 1</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>整数除法会截断小数部分（如 <code>5 / 2 = 2</code>）。</li>
+<li>浮点数不能取模（需用 <code>fmod()</code> 函数）。</li>
+</ul>
+<h4 id="2-关系与逻辑运算符">2. <strong>关系与逻辑运算符</strong></h4>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>运算符</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>关系运算</td>
+<td><code>&gt; &lt; &gt;= &lt;=</code></td>
+<td><code>if (a &gt;= 60) {...}</code></td>
+</tr>
+<tr>
+<td>相等判断</td>
+<td><code>== !=</code></td>
+<td><code>while (x != 0) {...}</code></td>
+</tr>
+<tr>
+<td>逻辑运算</td>
+<td><code>&amp;&amp;</code>(与)  `</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>短路求值</strong>：</p>
+<ul>
+<li><code>expr1 &amp;&amp; expr2</code>：若 <code>expr1</code> 为假，不再执行 <code>expr2</code>。</li>
+<li><code>expr1 || expr2</code>：若 <code>expr1</code> 为真，不再执行 <code>expr2</code>。</li>
+</ul>
+<h4 id="3-位运算符">3. <strong>位运算符</strong></h4>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>示例（二进制操作）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;</code></td>
+<td>按位与</td>
+<td><code>0b1010 &amp; 0b1100 = 0b1000</code></td>
+</tr>
+<tr>
+<td>`</td>
+<td>`</td>
+<td>按位或</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>按位异或</td>
+<td><code>0b1010 ^ 0b1100 = 0b0110</code></td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>按位取反</td>
+<td><code>~0b1010 = 0b0101</code>（具体值取决于位数）</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;</code></td>
+<td>左移（乘2^n）</td>
+<td><code>5 &lt;&lt; 2 = 20</code>（0b101 → 0b10100）</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td>右移（除2^n）</td>
+<td><code>20 &gt;&gt; 2 = 5</code>（逻辑右移或算术右移，视类型而定）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>常见用途</strong>：</p>
+<ul>
+<li>掩码操作：<code>flags = flags &amp; (~MASK);</code>（清除特定位）</li>
+<li>快速计算：<code>x &lt;&lt; n</code> 代替 <code>x * 2^n</code>（性能优化）</li>
+</ul>
+<h4 id="4-指针运算符">4. <strong>指针运算符</strong></h4>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;</code></td>
+<td>取变量地址</td>
+<td><code>int a; int *p = &amp;a;</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>解引用指针</td>
+<td><code>*p = 10;</code>（等价于 <code>a = 10</code>）</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="三-流程控制"><strong>三、流程控制</strong></h3>
+<h4 id="1-条件语句">1. <strong>条件语句</strong></h4>
+<ul>
+<li><strong><code>if-else</code></strong>（支持嵌套）：<pre><code class="language-c">if (score &gt;= 90) {
+    printf(&quot;A&quot;);
+} else if (score &gt;= 60) {
+    printf(&quot;Pass&quot;);
+} else {
+    printf(&quot;Fail&quot;);
+}
+</code></pre>
+</li>
+<li><strong><code>switch-case</code></strong>（仅支持整型或枚举类型）：<pre><code class="language-c">switch (option) {
+    case 1: 
+        printf(&quot;Start game&quot;);
+        break;  // 必须加 break 防止贯穿
+    case 2:
+        printf(&quot;Load game&quot;);
+        break;
+    default:
+        printf(&quot;Invalid&quot;);
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="2-循环语句">2. <strong>循环语句</strong></h4>
+<ul>
+<li><strong><code>for</code> 循环</strong>（明确知道循环次数）：<pre><code class="language-c">for (int i = 0; i &lt; 10; i++) {
+    printf(&quot;%d &quot;, i);
+}
+</code></pre>
+</li>
+<li><strong><code>while</code> 循环</strong>（条件不满足时可能不执行）：<pre><code class="language-c">while (x &gt; 0) {
+    x--;
+}
+</code></pre>
+</li>
+<li><strong><code>do-while</code> 循环</strong>（至少执行一次）：<pre><code class="language-c">do {
+    scanf(&quot;%d&quot;, &amp;x);
+} while (x &lt;= 0); // 确保输入为正数
+</code></pre>
+</li>
+</ul>
+<h4 id="3-控制关键字">3. <strong>控制关键字</strong></h4>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>作用</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>break</code></td>
+<td>跳出循环或 <code>switch</code> 语句</td>
+<td><code>while(1) { break; }</code></td>
+</tr>
+<tr>
+<td><code>continue</code></td>
+<td>跳过当前循环的剩余代码，进入下一轮循环</td>
+<td><code>for(;;) { if(x&lt;0) continue; ... }</code></td>
+</tr>
+<tr>
+<td><code>return</code></td>
+<td>结束函数执行并返回值</td>
+<td><code>return sum;</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="关键学习建议"><strong>关键学习建议</strong></h3>
+<ol>
+<li>
+<p><strong>动手练习</strong></p>
+<ul>
+<li>编写程序验证数据类型的取值范围（如 <code>limits.h</code> 中的宏定义）。</li>
+<li>测试运算符优先级（如 <code>a + b * c</code> 与 <code>(a + b) * c</code>）。</li>
+</ul>
+</li>
+<li>
+<p><strong>调试技巧</strong></p>
+<ul>
+<li>在条件分支和循环体中插入 <code>printf</code> 打印变量变化过程。</li>
+<li>使用 GDB 单步调试观察控制流。</li>
+</ul>
+</li>
+<li>
+<p><strong>典型错误避免</strong></p>
+<ul>
+<li><code>if (x = 0)</code>（误用赋值 <code>=</code> 而非比较 <code>==</code>）。</li>
+<li>循环条件错误导致死循环（如 <code>while (i &lt;= 10)</code> 但忘记 <code>i++</code>）。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="二-函数与模块化编程"><strong>二、函数与模块化编程</strong></h2>
+<h3 id="1-函数定义与调用">1. <strong>函数定义与调用</strong></h3>
+<h4 id="基本语法">基本语法：</h4>
+<pre><code class="language-c">// 函数定义
+返回值类型 函数名(参数列表) {
+    // 函数体
+    return 返回值; // 若无返回值（void），可省略
+}
+
+// 示例：计算两数之和
+int add(int a, int b) {
+    return a + b;
+}
+
+// 调用函数
+int result = add(3, 5); // result = 8
+</code></pre>
+<h4 id="核心要点">核心要点：</h4>
+<ul>
+<li><strong>函数名</strong>：需唯一且描述功能，如 <code>sortList()</code>、<code>findMax()</code>。</li>
+<li><strong>参数列表</strong>：可以为空（<code>void</code>），或指定类型与数量（如 <code>int a, int *arr</code>）。</li>
+<li><strong>返回值类型</strong>：与函数定义的返回类型一致，不返回时用 <code>void</code>。</li>
+</ul>
+<hr>
+<h3 id="2-函数声明与原型">2. <strong>函数声明与原型</strong></h3>
+<h4 id="声明的作用">声明的作用：</h4>
+<ul>
+<li><strong>避免编译错误</strong>：告知编译器函数的存在（尤其在函数调用先于定义时）。</li>
+<li><strong>约定接口</strong>：明确函数输入与输出的类型。</li>
+</ul>
+<h4 id="原型示例">原型示例：</h4>
+<pre><code class="language-c">// 函数原型声明（可放在头文件.h中）
+int add(int a, int b);
+
+int main() {
+    int sum = add(2, 3); // 直接调用
+    return 0;
+}
+
+// 函数实现（定义）
+int add(int a, int b) {
+    return a + b;
+}
+</code></pre>
+<hr>
+<h3 id="3-参数传递">3. <strong>参数传递</strong></h3>
+<h4 id="1值传递pass-by-value">（1）值传递（Pass by Value）</h4>
+<ul>
+<li><strong>特点</strong>：形参是实参的拷贝，函数内修改形参不影响实参。</li>
+<li><strong>示例</strong>：<pre><code class="language-c">void swap(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp; 
+    // 仅交换了函数内的拷贝，不影响外部的 x 和 y
+}
+
+int main() {
+    int x = 5, y = 10;
+    swap(x, y);
+    printf(&quot;x=%d, y=%d&quot;, x, y); // 输出 x=5, y=10
+    return 0;
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="2指针传递pass-by-pointer">（2）指针传递（Pass by Pointer）</h4>
+<ul>
+<li><strong>特点</strong>：通过传递地址，函数内可修改实参的值。</li>
+<li><strong>应用场景</strong>：需修改外部变量或传递大型数据结构（如数组）。</li>
+<li><strong>示例</strong>：<pre><code class="language-c">void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    swap(&amp;x, &amp;y);
+    printf(&quot;x=%d, y=%d&quot;, x, y); // 输出 x=10, y=5
+    return 0;
+}
+</code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="4-递归函数">4. <strong>递归函数</strong></h3>
+<h4 id="1递归基本原理">（1）递归基本原理</h4>
+<ul>
+<li><strong>定义</strong>：函数直接或间接调用自身。</li>
+<li><strong>核心组成</strong>：
+<ul>
+<li><strong>基线条件（Base Case）</strong>：递归终止的条件，防止无限递归。</li>
+<li><strong>递归条件（Recursive Case）</strong>：调用自身的逻辑。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2经典示例阶乘">（2）经典示例：阶乘</h4>
+<pre><code class="language-c">int factorial(int n) {
+    if (n &lt;= 1) {       // 基线条件
+        return 1;
+    } else {            // 递归条件
+        return n * factorial(n - 1);
+    }
+}
+</code></pre>
+<h4 id="3经典示例斐波那契数列">（3）经典示例：斐波那契数列</h4>
+<pre><code class="language-c">int fibonacci(int n) {
+    if (n &lt;= 1) {       // 基线条件
+        return n;
+    } else {            // 递归条件
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+}
+</code></pre>
+<h4 id="4栈机制与递归调用">（4）栈机制与递归调用</h4>
+<ul>
+<li><strong>调用栈（Call Stack）</strong>：
+<ol>
+<li>每次递归调用会将当前函数状态（变量、返回地址）压入栈。</li>
+<li>到达基线条件后，栈帧逐层弹出，返回值反向传递。</li>
+</ol>
+</li>
+<li><strong>栈溢出风险</strong>：<pre><code class="language-c">// 错误示例：缺少基线条件导致栈溢出
+void infiniteRecursion() {
+    infiniteRecursion(); // 无限递归，最终栈溢出（Stack Overflow）
+}
+</code></pre>
+</li>
+</ul>
+<h4 id="5递归设计要点">（5）递归设计要点</h4>
+<ul>
+<li><strong>清晰的基线条件</strong>：必须覆盖所有可能的终止场景。</li>
+<li><strong>规模递减</strong>：每次递归应向基线条件靠近（如 <code>n-1</code>）。</li>
+<li><strong>避免重复计算</strong>：斐波那契数列的递归实现因重复计算效率极低，可通过缓存（Memoization）优化。</li>
+</ul>
+<hr>
+<h3 id="5-模块化编程实践">5. <strong>模块化编程实践</strong></h3>
+<ul>
+<li><strong>拆分功能</strong>：将程序划分为独立的函数模块（如 <code>sort()</code>、<code>search()</code>）。</li>
+<li><strong>提高复用性</strong>：常用功能封装为函数（如 <code>printArray()</code>）。</li>
+<li><strong>示例</strong>：<pre><code class="language-c">// 模块：打印数组
+void printArray(int *arr, int size) {
+    for (int i = 0; i &lt; size; i++) {
+        printf(&quot;%d &quot;, arr[i]);
+    }
+    printf(&quot;\n&quot;);
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4};
+    printArray(arr, 4); // 调用模块
+    return 0;
+}
+</code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="核心要点总结"><strong>核心要点总结</strong></h2>
+<ul>
+<li><strong>值传递 vs 指针传递</strong>：指针传递用于需要修改实参或传递大型数据时。</li>
+<li><strong>递归设计关键</strong>：基线条件不可少，确保递归最终终止。</li>
+<li><strong>模块化核心思想</strong>：函数是逻辑单元，需职责单一且接口清晰。</li>
+</ul>
+<hr>
+<h3 id="三-核心重点指针"><strong>三、核心重点：指针</strong></h3>
+<p><strong>指针是C语言的灵魂</strong>，其灵活性与底层内存操作能力是数据结构（链表、树、图等）实现的核心工具。</p>
+<hr>
+<h4 id="1-指针基础"><strong>1. 指针基础</strong></h4>
+<p><strong>定义与初始化</strong></p>
+<pre><code class="language-c">int a = 10;        // 定义一个整型变量
+int *p = &amp;a;       // 定义指针p，指向a的地址
+printf(&quot;%p&quot;, p);   // 输出a的地址（如0x7ffc...）
+printf(&quot;%d&quot;, *p);  // 通过指针访问a的值（输出10）
+</code></pre>
+<ul>
+<li><strong>核心理解</strong>：
+<ul>
+<li><code>*p</code> 中的 <code>*</code> 是解引用操作符，通过地址访问数据。</li>
+<li><code>&amp;a</code> 获取变量 <code>a</code> 的地址。</li>
+</ul>
+</li>
+</ul>
+<p><strong>指针的算术运算</strong></p>
+<pre><code class="language-c">int arr[5] = {1, 2, 3, 4, 5};
+int *p = arr;       // p指向数组首元素
+p++;                // p指向arr[1]（地址移动sizeof(int)字节）
+printf(&quot;%d&quot;, *p);   // 输出2
+</code></pre>
+<ul>
+<li><strong>核心规则</strong>：
+<ul>
+<li><code>p + n</code> 的实际地址为 <code>p + n * sizeof(type)</code>。</li>
+<li>常用于遍历数组：<code>for(int *p=arr; p&lt;arr+5; p++){ ... }</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>多级指针</strong></p>
+<pre><code class="language-c">int a = 10;
+int *p = &amp;a;
+int **pp = &amp;p;       // 二级指针，指向指针p的地址
+printf(&quot;%d&quot;, **pp);  // 解引用两次，输出a的值10
+</code></pre>
+<ul>
+<li><strong>应用场景</strong>：
+<ul>
+<li>动态二维数组（如<code>int **matrix</code>）的实现</li>
+<li>函数中需要修改指针指向时（如链表头指针的修改）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-指针与数组"><strong>2. 指针与数组</strong></h4>
+<p><strong>数组名与指针的关系</strong></p>
+<pre><code class="language-c">int arr[3] = {10, 20, 30};
+int *p = arr;        // arr等价于&amp;arr[0]
+printf(&quot;%d&quot;, p[1]);  // 输出20（等价于*(p+1)）
+</code></pre>
+<ul>
+<li><strong>核心区别</strong>：
+<ul>
+<li>数组名是常量指针（不可修改 <code>arr++</code> ❌）</li>
+<li>指针是变量（可修改 <code>p++</code> ✅）</li>
+</ul>
+</li>
+</ul>
+<p><strong>指针遍历多维数组</strong></p>
+<pre><code class="language-c">int matrix[2][3] = {{1,2,3}, {4,5,6}};
+int *p = &amp;matrix[0][0];  // 按一维方式访问二维数组
+for(int i=0; i&lt;6; i++) {
+    printf(&quot;%d &quot;, *(p + i));  // 输出1 2 3 4 5 6
+}
+</code></pre>
+<ul>
+<li><strong>高级用法</strong>：将多维数组强制转换为一维指针：<pre><code class="language-c">int (*ptr)[3] = matrix;  // 指向含3个元素的一维数组的指针
+printf(&quot;%d&quot;, ptr[1][2]); // 输出6（等价于matrix[1][2]）
+</code></pre>
+</li>
+</ul>
+<hr>
+<h4 id="3-函数指针"><strong>3. 函数指针</strong></h4>
+<p><strong>定义与使用</strong></p>
+<pre><code class="language-c">int add(int a, int b) { return a + b; }
+int sub(int a, int b) { return a - b; }
+
+int main() {
+    int (*func_ptr)(int, int);  // 定义函数指针
+    func_ptr = add;             // 指向add函数
+    printf(&quot;%d&quot;, func_ptr(3, 2)); // 输出5
+    func_ptr = sub;             // 切换指向sub函数
+    printf(&quot;%d&quot;, func_ptr(3, 2)); // 输出1
+}
+</code></pre>
+<ul>
+<li><strong>应用场景</strong>：
+<ul>
+<li>回调函数（如排序算法中自定义比较函数）</li>
+<li>实现类似面向对象的“多态”行为</li>
+</ul>
+</li>
+</ul>
+<p><strong>典型用途：qsort函数的自定义比较</strong></p>
+<pre><code class="language-c">#include &lt;stdlib.h&gt;
+int compare(const void *a, const void *b) {
+    return (*(int*)a - *(int*)b);  // 升序排序
+}
+int main() {
+    int arr[] = {5, 2, 8, 1};
+    qsort(arr, 4, sizeof(int), compare);
+    // 输出排序后的数组：1 2 5 8
+}
+</code></pre>
+<hr>
+<h3 id="关键实验与理解"><strong>关键实验与理解</strong></h3>
+<ol>
+<li><strong>指针反转字符串</strong></li>
+</ol>
+<pre><code class="language-c">void reverse(char *str) {
+    char *start = str;
+    char *end = str + strlen(str) - 1;
+    while (start &lt; end) {
+        char temp = *start;
+        *start = *end;
+        *end = temp;
+        start++;
+        end--;
+    }
+}
+</code></pre>
+<ol start="2">
+<li><strong>动态二维数组的创建与释放</strong></li>
+</ol>
+<pre><code class="language-c">int **create_matrix(int rows, int cols) {
+    int **matrix = (int**)malloc(rows * sizeof(int*));
+    for (int i=0; i&lt;rows; i++) {
+        matrix[i] = (int*)malloc(cols * sizeof(int));
+    }
+    return matrix;
+}
+
+void free_matrix(int **matrix, int rows) {
+    for (int i=0; i&lt;rows; i++) free(matrix[i]);
+    free(matrix);
+}
+</code></pre>
+<hr>
+<h3 id="注意事项"><strong>注意事项</strong></h3>
+<ul>
+<li><strong>野指针</strong>：指针未初始化或释放后未置空（应养成 <code>free(p); p = NULL;</code> 的习惯）</li>
+<li><strong>指针类型匹配</strong>：不同类型指针间的赋值可能导致未定义行为</li>
+<li><strong>数组越界</strong>：指针运算超出数组范围是常见错误（需确保 <code>p</code> 的有效性）</li>
+</ul>
+<hr>
+<p>掌握指针的灵魂在于 <strong>理解内存地址的直接操作</strong>，这是实现链表、树、图等动态结构的基石。建议通过实际代码调试观察指针和内存的变化，例如GDB的 <code>x/x p</code> 命令查看指针指向的内存内容。</p>
+<hr>
+<h2 id="四-复合数据类型结构体struct与联合体union"><strong>四、复合数据类型：结构体（<code>struct</code>）与联合体（<code>union</code>）</strong></h2>
+<h4 id="1-结构体struct"><strong>1. 结构体（<code>struct</code>）</strong></h4>
+<p><strong>定义与初始化</strong><br>
+结构体用于将不同类型的数据组合成一个逻辑单元，适用于抽象复杂对象（如链表节点、学生信息等）。</p>
+<p><strong>定义结构体模板</strong>：</p>
+<pre><code class="language-c">// 定义一个学生结构体（相当于创建新的数据类型）
+struct Student {
+    int id;
+    char name[20];
+    float gpa;
+};
+</code></pre>
+<p><strong>声明结构体变量并初始化</strong>：</p>
+<pre><code class="language-c">// 方法1：直接定义时初始化
+struct Student s1 = {101, &quot;Alice&quot;, 3.8}; 
+
+// 方法2：逐个赋值
+struct Student s2;
+s2.id = 102;
+strcpy(s2.name, &quot;Bob&quot;);  // 字符串需使用 strcpy
+s2.gpa = 3.5;
+</code></pre>
+<hr>
+<p><strong>结构体指针与成员访问</strong><br>
+结构体指针用于动态内存分配或函数参数传递，成员访问通过 <code>-&gt;</code> 运算符。</p>
+<pre><code class="language-c">// 动态创建结构体实例
+struct Student *s3 = (struct Student*)malloc(sizeof(struct Student));
+if (s3 == NULL) {
+    // 处理内存分配失败
+}
+
+// 使用指针访问成员
+s3-&gt;id = 103;            // 等价于 (*s3).id = 103
+strcpy(s3-&gt;name, &quot;Charlie&quot;);
+s3-&gt;gpa = 3.9;
+
+// 释放内存
+free(s3);
+</code></pre>
+<hr>
+<p><strong>在数据结构中的核心作用</strong><br>
+结构体是构建链表、树等数据结构的基础，每个节点都通过结构体表示，并通过指针链接。</p>
+<p><strong>链表节点示例</strong>：</p>
+<pre><code class="language-c">struct ListNode {
+    int val;                // 节点存储的数据
+    struct ListNode *next;  // 指向下一个节点
+};
+
+// 创建链表节点
+struct ListNode* createNode(int val) {
+    struct ListNode* node = (struct ListNode*)malloc(sizeof(struct ListNode));
+    node-&gt;val = val;
+    node-&gt;next = NULL;
+    return node;
+}
+</code></pre>
+<p><strong>二叉树节点示例</strong>：</p>
+<pre><code class="language-c">struct TreeNode {
+    int data;
+    struct TreeNode *left;   // 左子树
+    struct TreeNode *right;  // 右子树
+};
+</code></pre>
+<hr>
+<h4 id="2-联合体union"><strong>2. 联合体（<code>union</code>）</strong></h4>
+<p><strong>共享内存的特性</strong><br>
+联合体的所有成员共享同一块内存空间，存储空间大小由最大成员决定，适合需要<strong>节省内存</strong>的场景。</p>
+<p><strong>定义与使用</strong>：</p>
+<pre><code class="language-c">union Data {
+    int i;      // 4字节（假设int为4字节）
+    float f;    // 4字节
+    char str[5];// 5字节
+};
+
+int main() {
+    union Data data;
+    data.i = 10;        // 此时i有效
+    printf(&quot;data.i = %d\n&quot;, data.i);  // 输出: 10
+
+    data.f = 3.14;      // 覆盖i的值，此时f有效
+    printf(&quot;data.f = %f\n&quot;, data.f);  // 输出: 3.140000
+
+    strcpy(data.str, &quot;test&quot;);  // 覆盖f的前4字节
+    printf(&quot;data.str = %s\n&quot;, data.str); // 输出: &quot;test&quot;
+  
+    return 0;
+}
+</code></pre>
+<p><strong>重要规则</strong>：</p>
+<ul>
+<li>联合体同一时间只能有一个成员有效。</li>
+<li>分配的内存大小 = 最大成员的大小（如上述 <code>union Data</code> 大小为5字节）。</li>
+<li>常用于网络协议解析、硬件寄存器访问等场景。</li>
+</ul>
+<hr>
+<h3 id="关键区别与场景对比"><strong>关键区别与场景对比</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><strong>结构体（struct）</strong></th>
+<th><strong>联合体（union）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>内存分配</strong></td>
+<td>各成员独立占用内存</td>
+<td>共享同一内存空间</td>
+</tr>
+<tr>
+<td><strong>总内存大小</strong></td>
+<td>成员内存大小之和（考虑对齐）</td>
+<td>最大成员的内存大小</td>
+</tr>
+<tr>
+<td><strong>应用场景</strong></td>
+<td>数据需同时有效（如链表节点、学生信息）</td>
+<td>数据只需存其一（如类型转换器）</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="实践注意事项"><strong>实践注意事项</strong></h3>
+<ol>
+<li>
+<p><strong>结构体对齐问题</strong>：</p>
+<pre><code class="language-c">struct Example {
+    char c;    // 1字节
+    int i;     // 4字节（可能要求对齐到4字节地址）
+};
+// 总大小可能为 8 字节（受编译器对齐规则影响）
+</code></pre>
+<p>可使用 <code>#pragma pack(1)</code> 取消对齐优化（牺牲性能节省空间）。</p>
+</li>
+<li>
+<p><strong>联合体的数据覆盖风险</strong>：<br>
+修改一个成员可能导致其他成员的值被覆盖，需确保当前访问的是有效成员。</p>
+</li>
+<li>
+<p><strong>动态分配结构体的释放</strong>：<br>
+如果结构体内部有指针成员指向堆内存，需先释放内部指针再释放结构体。</p>
+</li>
+</ol>
+<hr>
+<p>掌握结构体与联合体的灵活使用，是构建复杂数据结构（如哈希表、图等）的必要基础。核心思维是<strong>数据抽象</strong>与<strong>内存管理</strong>的结合。</p>
+<hr>
+<h3 id="五-动态内存管理详解"><strong>五、动态内存管理详解</strong></h3>
+<p>动态内存管理是C语言中实现灵活数据结构（如链表、树、动态数组）的核心技术。以下内容将深入解析堆内存的操作与关键细节。</p>
+<hr>
+<h4 id="1-堆内存操作函数"><strong>1. 堆内存操作函数</strong></h4>
+<h5 id="1-malloc"><strong>(1) <code>malloc</code></strong></h5>
+<ul>
+<li><strong>作用</strong>：在堆中动态分配指定字节数的内存块，<strong>不初始化内存内容</strong>（内容随机）。</li>
+<li><strong>语法</strong>：<pre><code class="language-c">int* arr = (int*)malloc(n * sizeof(int));  // 分配n个int大小的连续内存
+</code></pre>
+</li>
+<li><strong>特性</strong>：
+<ul>
+<li>分配的内存是连续的，适用于数组或结构体的动态创建。</li>
+<li><strong>必须手动释放</strong>（<code>free</code>），否则内存泄漏。</li>
+</ul>
+</li>
+<li><strong>示例</strong>：<pre><code class="language-c">int* p = (int*)malloc(5 * sizeof(int));  // 分配5个int的空间
+if (p == NULL) {
+    // 分配失败处理（如内存不足）
+    exit(EXIT_FAILURE);
+}
+// 使用p指向的内存...
+</code></pre>
+</li>
+</ul>
+<h5 id="2-calloc"><strong>(2) <code>calloc</code></strong></h5>
+<ul>
+<li><strong>作用</strong>：分配指定数量和大小的内存块，并<strong>初始化为0</strong>。</li>
+<li><strong>语法</strong>：<pre><code class="language-c">int* arr = (int*)calloc(n, sizeof(int)); // 分配n个int，内容全0
+</code></pre>
+</li>
+<li><strong>与<code>malloc</code>的区别</strong>：
+<ul>
+<li><code>calloc</code>会清空内存，适合需要初始化零值的场景（如稀疏矩阵）。</li>
+<li>参数顺序不同：<code>calloc(n, size)</code> vs <code>malloc(n * size)</code>。</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-realloc"><strong>(3) <code>realloc</code></strong></h5>
+<ul>
+<li><strong>作用</strong>：调整已分配内存块的大小（扩展或缩小）。</li>
+<li><strong>语法</strong>：<pre><code class="language-c">int* new_ptr = (int*)realloc(old_ptr, new_size);
+</code></pre>
+</li>
+<li><strong>注意事项</strong>：
+<ul>
+<li>若原内存块后有足够空间，直接扩展；否则<strong>重新分配新内存块并复制旧内容</strong>。</li>
+<li><strong>必须用返回的新指针代替旧指针</strong>（可能地址已变更）。</li>
+</ul>
+<pre><code class="language-c">int* arr = (int*)malloc(5 * sizeof(int));
+// 扩展为10个int
+int* new_arr = (int*)realloc(arr, 10 * sizeof(int));
+if (new_arr != NULL) {
+    arr = new_arr;  // 更新指针
+} else {
+    // 处理分配失败（旧指针arr仍可用，但内存未扩展）
+}
+</code></pre>
+</li>
+</ul>
+<h5 id="4-free"><strong>(4) <code>free</code></strong></h5>
+<ul>
+<li><strong>作用</strong>：释放之前分配的堆内存，<strong>防止内存泄漏</strong>。</li>
+<li><strong>语法</strong>：<pre><code class="language-c">free(ptr);  // ptr必须是malloc/calloc/realloc返回的指针
+ptr = NULL; // 推荐释放后立即置空，避免野指针
+</code></pre>
+</li>
+<li><strong>关键规则</strong>：
+<ul>
+<li>每个<code>malloc</code>/<code>calloc</code>必须对应一个<code>free</code>，且只释放一次。</li>
+<li>不可释放栈内存（如局部变量地址）或已释放的指针。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-内存分配失败检测"><strong>2. 内存分配失败检测</strong></h4>
+<ul>
+<li><strong>原因</strong>：堆内存耗尽（如申请过大空间）、系统资源不足。</li>
+<li><strong>检查方法</strong>：<pre><code class="language-c">int* ptr = (int*)malloc(100 * sizeof(int));
+if (ptr == NULL) {
+    // 分配失败处理（输出日志、释放其他资源、优雅退出）
+    fprintf(stderr, &quot;Memory allocation failed!\n&quot;);
+    exit(EXIT_FAILURE); // 或尝试其他方案（如缩小请求大小）
+}
+</code></pre>
+</li>
+<li><strong>未检测的后果</strong>：解引用NULL指针会导致程序崩溃（Segmentation Fault）。</li>
+</ul>
+<hr>
+<h4 id="3-常见问题与解决方案"><strong>3. 常见问题与解决方案</strong></h4>
+<h5 id="1-内存泄漏memory-leak"><strong>(1) 内存泄漏（Memory Leak）</strong></h5>
+<ul>
+<li><strong>定义</strong>：已分配的堆内存未释放，程序失去对该内存的控制权。</li>
+<li><strong>场景举例</strong>：<pre><code class="language-c">void func() {
+    int* p = (int*)malloc(100 * sizeof(int));
+    // 忘记写free(p);
+}
+</code></pre>
+</li>
+<li><strong>危害</strong>：长期运行的程序内存占用持续增长，最终崩溃。</li>
+<li><strong>避免方法</strong>：
+<ul>
+<li>配对使用<code>malloc</code>和<code>free</code>，确保每条分支（如条件、循环）正确释放内存。</li>
+<li>使用静态分析工具（如Valgrind、Cppcheck）检测泄漏。</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-野指针dangling-pointer"><strong>(2) 野指针（Dangling Pointer）</strong></h5>
+<ul>
+<li><strong>定义</strong>：指针指向已释放或无效的内存。</li>
+<li><strong>场景举例</strong>：<pre><code class="language-c">int* p = (int*)malloc(sizeof(int));
+free(p);
+*p = 10; // p成为野指针，解引用行为未定义
+</code></pre>
+</li>
+<li><strong>防御措施</strong>：
+<ul>
+<li><strong>释放后置空</strong>：<pre><code class="language-c">free(p);
+p = NULL; // 后续访问p会触发NULL解引用错误（易调试）
+</code></pre>
+</li>
+<li><strong>避免返回局部变量指针</strong>：<pre><code class="language-c">int* bad_function() {
+    int x = 5;
+    return &amp;x; // x的地址在函数返回后失效！
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-重复释放double-free"><strong>(3) 重复释放（Double Free）</strong></h5>
+<ul>
+<li><strong>场景</strong>：<pre><code class="language-c">int* p = (int*)malloc(sizeof(int));
+free(p);
+free(p); // 重复释放同一块内存（崩溃风险）
+</code></pre>
+</li>
+<li><strong>解决方案</strong>：释放后立刻置空指针。<pre><code class="language-c">free(p);
+p = NULL;  // 第二次free(NULL)是无害的（C标准允许）
+</code></pre>
+</li>
+</ul>
+<hr>
+<h4 id="4-动态内存使用场景示例"><strong>4. 动态内存使用场景示例</strong></h4>
+<p><strong>示例1：动态数组</strong></p>
+<pre><code class="language-c">int size = 10;
+int* arr = (int*)malloc(size * sizeof(int));
+if (arr == NULL) { /* 处理失败 */ }
+
+// 扩容到20个元素
+int* new_arr = (int*)realloc(arr, 20 * sizeof(int));
+if (new_arr != NULL) {
+    arr = new_arr;
+    size = 20;
+} else {
+    // 原数组arr仍可用，但无法扩容
+}
+
+free(arr); // 使用完毕后释放
+arr = NULL;
+</code></pre>
+<p><strong>示例2：链表节点创建</strong></p>
+<pre><code class="language-c">typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+Node* create_node(int value) {
+    Node* node = (Node*)malloc(sizeof(Node));
+    if (node == NULL) { /* 处理错误 */ }
+    node-&gt;data = value;
+    node-&gt;next = NULL;
+    return node;
+}
+
+// 使用后需手动释放链表所有节点
+void free_list(Node* head) {
+    while (head != NULL) {
+        Node* temp = head;
+        head = head-&gt;next;
+        free(temp);
+        temp = NULL;
+    }
+}
+</code></pre>
+<hr>
+<h4 id="5-调试建议"><strong>5. 调试建议</strong></h4>
+<ul>
+<li><strong>Valgrind工具</strong>：用于检测内存泄漏、野指针等问题。<pre><code class="language-bash">valgrind --leak-check=full ./your_program
+</code></pre>
+</li>
+<li><strong>打印内存地址</strong>：在调试时输出指针地址和值，观察分配/释放过程：<pre><code class="language-c">printf(&quot;Allocated memory at: %p\n&quot;, (void*)ptr);
+</code></pre>
+</li>
+</ul>
+<hr>
+<p>掌握动态内存管理是C语言高效实现数据结构的基石，务必通过实际代码加深理解并养成安全编程习惯。</p>
+<hr>
+<h3 id="六-预处理器与常用库函数"><strong>六、预处理器与常用库函数</strong></h3>
+<h4 id="1-预处理器指令"><strong>1. 预处理器指令</strong></h4>
+<p>预处理器的操作发生在编译之前，用于代码替换、条件编译等，直接影响最终生成的代码结构。</p>
+<h5 id="1-宏定义define"><strong>(1) 宏定义（<code>#define</code>）</strong></h5>
+<ul>
+<li><strong>作用</strong>：用标识符替换代码片段，常用于常量、函数式宏。</li>
+<li><strong>示例</strong>：<pre><code class="language-c">// 定义常量
+#define PI 3.14159
+// 函数式宏（注意括号避免优先级问题）
+#define MAX(a, b) ((a) &gt; (b) ? (a) : (b))
+</code></pre>
+</li>
+<li><strong>优势与风险</strong>：
+<ul>
+<li>无函数调用开销，但可能引发副作用（如 <code>MAX(a++, b)</code> 会导致 <code>a++</code> 多次执行）。</li>
+<li>仅做文本替换，无类型检查。</li>
+</ul>
+</li>
+<li><strong>适用场景</strong>：简单逻辑替换（如取最大值、数组长度计算）。</li>
+</ul>
+<h5 id="2-条件编译"><strong>(2) 条件编译</strong></h5>
+<ul>
+<li><strong>作用</strong>：根据条件选择性编译代码块，常用于跨平台兼容或调试。</li>
+<li><strong>常用指令</strong>：<pre><code class="language-c">#ifdef DEBUG           // 如果定义了 DEBUG
+    printf(&quot;Debug mode\n&quot;);
+#endif
+
+#if SIZE == 64         // 条件判断
+    // 64位系统专用代码
+#elif SIZE == 32
+    // 32位系统专用代码
+#endif
+</code></pre>
+</li>
+<li><strong>实际应用</strong>：
+<ul>
+<li>调试模式：使用 <code>-DDEBUG</code> 编译参数启用调试日志。</li>
+<li>头文件保护：防止重复包含头文件。<pre><code class="language-c">#ifndef MY_HEADER_H
+#define MY_HEADER_H
+// 头文件内容
+#endif
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-常用标准库"><strong>2. 常用标准库</strong></h4>
+<p>掌握这些标准库是实现算法和操作数据结构的必备工具。</p>
+<h5 id="1-stdioh输入输出"><strong>(1) <code>&lt;stdio.h&gt;</code>：输入输出</strong></h5>
+<ul>
+<li><strong>核心函数</strong>：
+<ul>
+<li><code>printf()</code>/<code>scanf()</code>：格式化输出/输入。</li>
+<li><code>fgets()</code>/<code>fputs()</code>：安全读取/写入字符串（避免缓冲区溢出）。</li>
+</ul>
+</li>
+<li><strong>应用场景</strong>：
+<ul>
+<li>调试输出算法中间结果。</li>
+<li>读取文件数据（如排序前的原始数据）。</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-stdlibh动态内存与系统工具"><strong>(2) <code>&lt;stdlib.h&gt;</code>：动态内存与系统工具</strong></h5>
+<ul>
+<li><strong>核心函数</strong>：
+<ul>
+<li><strong>动态内存管理</strong>：<pre><code class="language-c">int *arr = (int*)malloc(sizeof(int) * 10);  // 分配内存
+free(arr);                                   // 释放内存（避免泄漏）
+</code></pre>
+</li>
+<li><strong>随机数生成</strong>：<pre><code class="language-c">srand(time(NULL));                   // 初始化种子
+int rand_num = rand() % 100;         // 生成0-99的随机数（用于生成测试数据）
+</code></pre>
+</li>
+<li><strong>快速排序函数</strong>：<pre><code class="language-c">int compare(const void* a, const void* b) {
+    return (*(int*)a - *(int*)b);    // 函数指针给qsort用
+}
+qsort(arr, size, sizeof(int), compare);
+</code></pre>
+</li>
+</ul>
+</li>
+<li><strong>应用场景</strong>：
+<ul>
+<li>动态创建链表、树、图的节点。</li>
+<li>排序算法验证（对比手写算法与<code>qsort</code>的性能）。</li>
+</ul>
+</li>
+</ul>
+<h5 id="3-stringh字符串与内存操作"><strong>(3) <code>&lt;string.h&gt;</code>：字符串与内存操作</strong></h5>
+<ul>
+<li><strong>核心函数</strong>：
+<ul>
+<li><code>strcpy(dest, src)</code>：复制字符串（需保证 <code>dest</code> 空间足够）。</li>
+<li><code>strcmp(s1, s2)</code>：比较字符串（返回0表示相等）。</li>
+<li><code>memcpy(dest, src, n)</code>：复制任意内存块（如结构体、数组）。</li>
+<li><code>memset(ptr, value, n)</code>：初始化内存（常用于清零）。</li>
+</ul>
+</li>
+<li><strong>注意事项</strong>：
+<ul>
+<li><code>strcpy</code> 可能引发缓冲区溢出，推荐用 <code>strncpy</code> 或自行检查长度。</li>
+<li><code>memcpy</code> 效率优于手动逐字节拷贝（底层可能用SIMD优化）。</li>
+</ul>
+</li>
+</ul>
+<h5 id="4-mathh数学计算"><strong>(4) <code>&lt;math.h&gt;</code>：数学计算</strong></h5>
+<ul>
+<li><strong>核心函数</strong>：
+<ul>
+<li><code>pow(x, y)</code>：计算 <code>x^y</code>。</li>
+<li><code>sqrt(x)</code>：平方根。</li>
+<li><code>ceil(x)</code>/<code>floor(x)</code>：向上/向下取整。</li>
+</ul>
+</li>
+<li><strong>应用场景</strong>：
+<ul>
+<li>算法复杂度计算（如二分查找的步骤数）。</li>
+<li>浮点数比较时处理误差（如 <code>fabs(a - b) &lt; 1e-6</code>）。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="3-综合示例"><strong>3. 综合示例</strong></h4>
+<p>结合预处理器和标准库的典型场景：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+// 宏定义：计算数组长度
+#define ARRAY_LEN(arr) (sizeof(arr) / sizeof(arr[0]))
+
+// 条件编译：打开调试模式
+#ifdef DEBUG
+    #define LOG(msg) printf(&quot;[DEBUG] %s\n&quot;, msg)
+#else
+    #define LOG(msg)
+#endif
+
+int main() {
+    int arr[] = {5, 2, 8, 1};
+    int len = ARRAY_LEN(arr);
+  
+    LOG(&quot;Before sorting&quot;);
+    qsort(arr, len, sizeof(int), compare);
+    LOG(&quot;After sorting&quot;);
+  
+    return 0;
+}
+</code></pre>
+<ul>
+<li><strong>运行</strong>：<code>gcc -DDEBUG example.c -o example</code> 启用调试日志。</li>
+</ul>
+<hr>
+<h3 id="核心要点总结-2"><strong>核心要点总结</strong></h3>
+<ol>
+<li><strong>预处理器</strong>：
+<ul>
+<li>宏定义节省代码量，但需警惕副作用。</li>
+<li>条件编译提升代码可移植性和调试效率。</li>
+</ul>
+</li>
+<li><strong>常用库函数</strong>：
+<ul>
+<li>动态内存操作是数据结构实现的基础。</li>
+<li><code>string.h</code> 处理数据复制和比较，<code>math.h</code> 完成算法中的数学逻辑。</li>
+</ul>
+</li>
+<li><strong>安全实践</strong>：
+<ul>
+<li>检查 <code>malloc</code> 返回的指针是否为 <code>NULL</code>。</li>
+<li>使用 <code>memcpy</code> 替代逐字节拷贝以提高效率。</li>
+</ul>
+</li>
+</ol>
+<p>掌握这些内容后，可以更高效地实现如哈希表、动态数组等数据结构，并在算法中灵活操作内存与数学计算。</p>
+<hr>
+<h3 id="七-调试与工具"><strong>七、调试与工具</strong></h3>
+<h4 id="1-使用-printf-调试关键变量"><strong>1. 使用 <code>printf</code> 调试关键变量</strong></h4>
+<ul>
+<li>
+<p><strong>核心思想</strong><br>
+在代码中通过添加 <code>printf</code> 语句打印关键变量、指针地址或函数调用路径，快速定位问题点。<br>
+<strong>示例</strong>：</p>
+<pre><code class="language-c">int sum = 0;
+for (int i=0; i&lt;10; i++) {
+    sum += i;
+    printf(&quot;[Debug] i=%d, current sum=%d\n&quot;, i, sum);  // 实时跟踪循环逻辑
+}
+</code></pre>
+</li>
+<li>
+<p><strong>适用场景</strong></p>
+<ul>
+<li>验证循环条件或变量的变化是否符合预期</li>
+<li>检查指针是否指向正确地址（如 <code>printf(&quot;ptr address: %p\n&quot;, ptr);</code>）</li>
+<li>追踪函数调用顺序（如进入函数时打印提示）</li>
+</ul>
+</li>
+<li>
+<p><strong>优缺点</strong></p>
+<ul>
+<li><strong>优点</strong>：简单直接，无需复杂工具</li>
+<li><strong>缺点</strong>：代码侵入性强（调试完成后记得删除）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-gdb-调试器基础命令"><strong>2. GDB 调试器基础命令</strong></h4>
+<ul>
+<li>
+<p><strong>准备调试程序</strong><br>
+编译时添加 <code>-g</code> 选项生成调试信息：</p>
+<pre><code class="language-bash">gcc -g main.c -o program  # 生成可调试的可执行文件
+gdb ./program             # 启动 GDB
+</code></pre>
+</li>
+<li>
+<p><strong>常用命令</strong>（在 GDB 命令行中执行）</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>break [位置]</code></td>
+<td>设置断点</td>
+<td><code>break main.c:10</code></td>
+</tr>
+<tr>
+<td><code>run</code></td>
+<td>启动程序</td>
+<td></td>
+</tr>
+<tr>
+<td><code>next</code> (或 <code>n</code>)</td>
+<td>执行下一行（不进入函数）</td>
+<td></td>
+</tr>
+<tr>
+<td><code>step</code> (或 <code>s</code>)</td>
+<td>执行下一行（进入函数内部）</td>
+<td></td>
+</tr>
+<tr>
+<td><code>print [变量]</code></td>
+<td>打印变量或表达式值</td>
+<td><code>print *ptr</code></td>
+</tr>
+<tr>
+<td><code>backtrace</code> (或 <code>bt</code>)</td>
+<td>显示函数调用栈（定位崩溃点）</td>
+<td></td>
+</tr>
+<tr>
+<td><code>continue</code> (或 <code>c</code>)</td>
+<td>继续执行到下一个断点或程序结束</td>
+<td></td>
+</tr>
+<tr>
+<td><code>quit</code></td>
+<td>退出 GDB</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>典型调试场景</strong></p>
+<ul>
+<li><strong>段错误（Segmentation Fault）</strong><br>
+用 <code>bt</code> 查看崩溃时的调用栈，结合 <code>print</code> 检查指针是否非法访问。</li>
+<li><strong>死循环</strong><br>
+使用 <code>break</code> 在循环体内设置断点，通过 <code>step/next</code> 逐行观察变量变化。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="代码规范"><strong>代码规范</strong></h3>
+<h4 id="1-合理的变量命名与注释"><strong>1. 合理的变量命名与注释</strong></h4>
+<ul>
+<li>
+<p><strong>变量/函数命名</strong></p>
+<ul>
+<li><strong>原则</strong>：见名知意，避免缩写歧义（如 <code>cnt</code> vs. <code>count</code>）</li>
+<li><strong>命名风格</strong>：
+<ul>
+<li>小写+下划线：<code>student_count</code></li>
+<li>驼峰命名：<code>studentCount</code></li>
+</ul>
+</li>
+<li><strong>避免无用命名</strong>：<code>temp</code>, <code>data</code>, <code>value</code>（除非作用明确）。</li>
+</ul>
+</li>
+<li>
+<p><strong>注释</strong></p>
+<ul>
+<li><strong>函数注释</strong>：说明功能、参数、返回值和关键逻辑。<pre><code class="language-c">/**
+ * 计算链表的长度
+ * @param head 链表头节点指针
+ * @return 链表的节点数量
+ */
+int list_length(Node *head) { ... }
+</code></pre>
+</li>
+<li><strong>复杂逻辑注释</strong>：解释算法或边界条件。<pre><code class="language-c">// 快慢指针查找链表中间节点（需处理奇偶情况）
+Node *slow = head, *fast = head;
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-模块化设计拆分头文件-h-和源文件-c"><strong>2. 模块化设计（拆分头文件 <code>.h</code> 和源文件 <code>.c</code>）</strong></h4>
+<ul>
+<li>
+<p><strong>头文件（<code>.h</code>）的作用</strong></p>
+<ul>
+<li>声明函数、结构体和宏定义（提供接口文档的功能）。</li>
+<li>使用 <code>#ifndef</code> 防止重复包含：<pre><code class="language-c">#ifndef MY_HEADER_H
+#define MY_HEADER_H
+
+// 函数声明、结构体定义等
+
+#endif
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>源文件（<code>.c</code>）的作用</strong></p>
+<ul>
+<li>实现头文件中声明的函数和变量。</li>
+</ul>
+</li>
+<li>
+<p><strong>示例项目结构</strong></p>
+<pre><code>project/
+├── include/
+│   └── linked_list.h   // 声明链表操作函数（如 create_node、insert_head）
+├── src/
+│   └── linked_list.c   // 实现具体函数
+└── main.c             // 主程序调用接口
+</code></pre>
+</li>
+<li>
+<p><strong>编译多文件</strong></p>
+<pre><code class="language-bash">gcc -g main.c src/linked_list.c -Iinclude -o program  # -I 指定头文件路径
+</code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="调试与规范的实用建议"><strong>调试与规范的实用建议</strong></h3>
+<ol>
+<li><strong>先小规模验证，再逐步扩展</strong>
+<ul>
+<li>在实现复杂数据结构（如二叉树）时，先测试基础的增删函数，再逐步组合场景。</li>
+</ul>
+</li>
+<li><strong>善用断言 <code>assert</code></strong>
+<ul>
+<li>在关键位置插入 <code>assert(ptr != NULL);</code> 防御性编程，快速捕捉非法状态。</li>
+</ul>
+</li>
+<li><strong>工具辅助</strong>
+<ul>
+<li>使用 Valgrind 检测内存泄漏：<pre><code class="language-bash">valgrind --leak-check=full ./program
+</code></pre>
+</li>
+<li>使用静态代码分析工具（如 <code>cppcheck</code>）检查潜在问题。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>掌握这些调试技巧和规范，不仅能提高代码质量，还能更高效地定位数据结构与算法实现中的逻辑或内存错误。实际开发中，调试时间可能占编程的 50% 以上，因此良好的习惯至关重要。</p>
+<h3 id="八-实践建议"><strong>八、实践建议</strong></h3>
+<ul>
+<li>
+<p><strong>必做练习</strong></p>
+<ol>
+<li>用指针实现字符串操作（反转、拼接）</li>
+<li>使用结构体和动态内存模拟链表</li>
+<li>手写排序算法（如冒泡、快速排序）</li>
+<li>理解内存布局（栈、堆、全局变量区）</li>
+</ol>
+</li>
+<li>
+<p><strong>常见错误预防</strong></p>
+<ol>
+<li>初始化指针前避免解引用</li>
+<li><code>malloc</code> 后检查是否分配成功</li>
+<li>数组越界问题（如循环条件 <code>i &lt; n</code> 而非 <code>i &lt;= n</code>）</li>
+</ol>
+</li>
+</ul>
+<hr>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[嵌入式课程汇编内容总结]]></title>
+        <id>https://carlzzdr.fun/post/qian-ru-shi-ke-cheng-hui-bian-nei-rong-zong-jie/</id>
+        <link href="https://carlzzdr.fun/post/qian-ru-shi-ke-cheng-hui-bian-nei-rong-zong-jie/">
+        </link>
+        <updated>2025-01-03T11:39:16.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="基本指令">基本指令</h2>
+<h3 id="数据传输指令">数据传输指令</h3>
+<ul>
+<li>
+<p><strong><code>MOV</code></strong>: 将立即数或寄存器值移动到寄存器中。</p>
+<ul>
+<li>示例: <code>MOV R6, #0x80</code>
+<ul>
+<li><strong>解释</strong>: 将立即数 <code>0x80</code> 加载到寄存器 <code>R6</code> 中。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>MRS</code></strong>: 从特殊寄存器读取值到通用寄存器。</p>
+<ul>
+<li>示例: <code>MRS R5, APSR</code>
+<ul>
+<li><strong>解释</strong>: 读取特殊寄存器 <code>APSR</code> 的值，并存入寄存器 <code>R5</code> 中。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>LDR</code></strong>: 从内存加载值到寄存器。</p>
+<ul>
+<li>示例: <code>LDR R2, =0x12345678</code>
+<ul>
+<li><strong>解释</strong>: 将立即数 <code>0x12345678</code> 加载到寄存器 <code>R2</code> 中，通常是通过伪指令实现。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>STR</code></strong>: 将寄存器值存储到内存地址。</p>
+<ul>
+<li>示例: <code>STR R0, [R1, R2, LSL #2]</code>
+<ul>
+<li><strong>解释</strong>: 将寄存器 <code>R0</code> 的值存储到内存地址 <code>[R1 + (R2 &lt;&lt; 2)]</code> 中。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="浮点操作指令">浮点操作指令</h3>
+<ul>
+<li>
+<p><strong><code>VMOV.F32</code></strong>: 移动浮点数值到浮点寄存器。</p>
+<ul>
+<li>示例: <code>VMOV.F32 S2, #0.5</code>
+<ul>
+<li><strong>解释</strong>: 将浮点数值 <code>0.5</code> 移动到浮点寄存器 <code>S2</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>VMRS</code></strong>: 将浮点状态寄存器的标志位更新到APSR。</p>
+<ul>
+<li>示例: <code>VMRS APSR_nzcv, FPSCR</code>
+<ul>
+<li><strong>解释</strong>: 将浮点状态寄存器 <code>FPSCR</code> 的标志位更新到 <code>APSR_nzcv</code> 中。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="存储器访问指令">存储器访问指令</h3>
+<ul>
+<li>
+<p><strong><code>LDRSH</code></strong>: 加载内存中的有符号半字到寄存器。</p>
+<ul>
+<li>示例: <code>LDRSH R2, [R2, #16]</code>
+<ul>
+<li><strong>解释</strong>: 从内存地址 <code>[R2 + 16]</code> 读取一个有符号的半字数据，存入寄存器 <code>R2</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>LDRB</code></strong>: 从内存加载1字节到寄存器。</p>
+<ul>
+<li>示例: <code>LDRB R5, [R6]</code>
+<ul>
+<li><strong>解释</strong>: 从内存地址 <code>[R6]</code> 读取1字节数据，并存入寄存器 <code>R5</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>ADD</code></strong>: 将两个操作数相加，结果存入寄存器。</p>
+<ul>
+<li>示例: <code>ADD R2, R2, #16</code>
+<ul>
+<li><strong>解释</strong>: 将寄存器 <code>R2</code> 的值与立即数 <code>16</code> 相加，并将结果存入寄存器 <code>R2</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="栈操作">栈操作</h2>
+<h3 id="进栈操作">进栈操作</h3>
+<ul>
+<li>
+<p><strong><code>STMFD</code></strong>: 多寄存器存储到栈中，递减栈指针。</p>
+<ul>
+<li>示例: <code>STMFD SP!, {R2, R4, R5, R6, R8}</code>
+<ul>
+<li><strong>解释</strong>: 将寄存器 <code>R2</code>, <code>R4</code>, <code>R5</code>, <code>R6</code>, 和 <code>R8</code> 的值存入栈中，并递减栈指针 <code>SP</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>PUSH</code></strong>: 将指定寄存器的值进栈。</p>
+<ul>
+<li>示例: <code>PUSH {R2, R4, R5, R6, R8}</code>
+<ul>
+<li><strong>解释</strong>: 将寄存器 <code>R2</code>, <code>R4</code>, <code>R5</code>, <code>R6</code>, 和 <code>R8</code> 的值存入栈中。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="条件指令">条件指令</h2>
+<h3 id="条件跳转">条件跳转</h3>
+<ul>
+<li>根据比较结果进行跳转。</li>
+</ul>
+<h3 id="it块">IT块</h3>
+<ul>
+<li>用于条件执行多条指令。</li>
+</ul>
+<hr>
+<h2 id="特殊操作">特殊操作</h2>
+<h3 id="pc相关地址访问">PC相关地址访问</h3>
+<ul>
+<li>从程序计数器（<code>PC</code>）相关的地址加载值。
+<ul>
+<li>示例: <code>LDR R1, [PC, #6]</code>
+<ul>
+<li><strong>解释</strong>: 从当前程序计数器地址加上偏移量 <code>6</code> 的内存位置读取一个字数据，并存入寄存器 <code>R1</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="非乘法实现乘法">非乘法实现乘法</h3>
+<ul>
+<li>使用移位和加法实现乘法运算。</li>
+<li>示例: 将 <code>R6 * 9</code> 实现:<pre><code class="language-assembly">MOV R7, R6      ; R7 = R6
+ADD R7, R7, R6  ; R7 = R6 * 2
+ADD R7, R7, R6  ; R7 = R6 * 3
+ADD R7, R7, R6  ; R7 = R6 * 9
+</code></pre>
+</li>
+<li><strong>解释</strong><br>
+第一步: 将 R6 的值复制到 R7。<br>
+第二步: 将 R7 的值加上 R6，得到 R6 * 2。<br>
+第三步: 再次加上 R6，得到 R6 * 3。<br>
+第四步: 最后再加上 R6，得到 R6 * 9。</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[嵌入式期末 第三章]]></title>
+        <id>https://carlzzdr.fun/post/qian-ru-shi-qi-mo-di-san-zhang/</id>
+        <link href="https://carlzzdr.fun/post/qian-ru-shi-qi-mo-di-san-zhang/">
+        </link>
+        <updated>2025-01-01T10:46:46.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="arm处理器指令集">ARM处理器指令集</h1>
+<h1 id="31指令简介">3.1指令简介</h1>
+<ul>
+<li>
+<p>指令<br>
+定义：能够指示处理器执行某种运算的命令(如加、减、乘、.......)</p>
+</li>
+<li>
+<p>程序是指令的有序集合。</p>
+</li>
+<li>
+<p>指令集<br>
+定义：处理器能识别指令的集合，称为指令集</p>
+</li>
+<li>
+<p>ARM指令在汇编程序中用助记符表示，格式为：<br>
+<code>&lt;opcode&gt;{&lt;cond&gt;} {S} &lt;Rd&gt;,&lt;Rn&gt; {,&lt;operand2&gt; }</code></p>
+<p>说明：</p>
+<ol>
+<li><opcode>指令操作码，如ADD表示算术加操作指令；</li>
+<li>{<cond>}决定指令执行的条件码；</li>
+<li>{S}是否更新CPSR中的标志位值，写时更新 ，否则不更新；</li>
+<li><Rd>目的寄存器编码；</li>
+<li><Rn>包含第一个操作数的寄存器编码；</li>
+<li><operand2>第二个操作数，有2种形式： #immed_8r；</li>
+</ol>
+</li>
+<li>
+<p>指令格式举例：<br>
+<code>LDR R0，[R1]</code><br>
+将存储器地址为R1的字数据读入寄存器 R0，执行条件AL （总是，可以省略）<br>
+<code>ADDS R1, R1, #1</code><br>
+加法指令， R1= R1+1, 带S，执行完指令，同时更新CPSR寄存器条件标志位<br>
+<code>SUBNES R1, R1, #0xF</code><br>
+条件执行减法运算（NE）， R1=R1-0XF, 带S则影响CPSR 寄存器</p>
+</li>
+</ul>
+<h1 id="32arm寻址方式">3.2ARM寻址方式</h1>
+<ul>
+<li>
+<p>立即寻址、寄存器寻址、寄存器间接寻址、基址加偏址寻址、堆栈寻址、块拷贝寻址、相对寻址</p>
+</li>
+<li>
+<p><strong>立即寻址</strong><br>
+立即寻址也叫 <strong>立即数寻址</strong>，操作数本身就在指令中给出，只要取出指令也就取到了操作数，这个操作数被称为 <strong>立即数</strong><br>
+例如以下指令：<br>
+<code>ADD R0，R0，＃1</code> /<em>R0←R0＋1</em>/<br>
+<code>ADD R0，R0，＃0x3f</code>/<em>R0←R0＋0x3f</em>/</p>
+<ol>
+<li>立即数写法：第二个源操作数即为立即数，要求以“＃”为前缀，对于以十六进制表示的立即数，还要求在“＃”后加上“0x”或“&amp;”；“0b”或“%”表示二进制；“0d”或缺省不写表示十进制。立即数一般为 <strong>8位</strong>。</li>
+</ol>
+</li>
+<li>
+<p><strong>寄存器寻址</strong></p>
+<p>利用寄存器中的数值作为操作数，这种寻址方式是各类微处理器经常采用的一种方式，也是一种执行效率较高的寻址方式。以下指令：</p>
+<p><code>ADD   R0，R1，R2</code> /<em>R0←R1＋R2</em>/</p>
+<p>该指令的执行效果是将寄存器R1和R2的内容相加，其结果存放在寄存器R0中。</p>
+</li>
+<li>
+<p><strong>寄存器间接寻址</strong></p>
+<p>寄存器间接寻址：以寄存器中的值作为操作数的地址，而操作数本身存放在存储器中。例如以下指令：</p>
+<p><code>LDR R0，[R1]</code> /<em>R0←[R1]</em>/<br>
+<code>STR R0，[R1]</code> /<em>[R1]←R0</em>/</p>
+<p>LDR（Load Register）：将以R1的值为地址的存储器中的数据加载到R0中；<br>
+STR(Store Register)：将R0的值传送到以R1的值为地址的存储器中。</p>
+</li>
+<li>
+<p><strong>基址加偏址寻址</strong><br>
+基址寄存器的地址偏移可以是一个立即数，也可以是另一个寄存器，并且在加到基址寄存器前还可以经过移位操作.如下所示：</p>
+<p><code>LDR r0，[r1，r2]；</code>r0&lt;—mem32[r1+r2]<br>
+<code>LDR  r0，[r1，r2，LSL #2]；</code>r0&lt;—[r1+r2*4]</p>
+<p>但常用的是立即数偏移的形式，地址偏移为寄存器形式的指令很少使用</p>
+</li>
+<li>
+<p><strong>堆栈寻址</strong></p>
+<p>堆栈：一个按操作顺序进行存取的存储区（一种数据结构）；<br>
+操作顺序：先进后出（First In Last Out，FILO）；<br>
+使用一个称作堆栈指针的专用寄存器（SP）指示当前的操作位置，堆栈指针总指向堆栈存储单元的栈顶。</p>
+<p><strong>四种类型的堆栈工作方式</strong></p>
+<ol>
+<li>满递增堆栈（FA）：堆栈指针指向最后压入的数据，且由低地址向高地址生成；</li>
+<li>满递减堆栈 （FD）：堆栈指针指向最后压入的数据，且由高地址向低地址生成(默认寻址方式)；</li>
+<li>空递增堆栈（EA）：堆栈指针指向下一个将要放入数据的空位置，且由低地址向高地址生成。</li>
+<li>空递减堆栈（ED）：堆栈指针指向下一个将要放入数据的空位置，且由高地址向低地址生成。</li>
+</ol>
+<p><strong>ARM无专门的堆栈操作指令</strong></p>
+</li>
+<li>
+<p><strong>快拷贝寻址</strong></p>
+</li>
+<li>
+<p><strong>相对寻址</strong></p>
+</li>
+</ul>
+<h1 id="33arm指令集详细介绍">3.3ARM指令集详细介绍</h1>
+<ul>
+<li>ARM的数据处理指令主要完成寄存器中数据的 <strong>算术和逻辑运算操作</strong>。</li>
+</ul>
+<h2 id="省略">省略</h2>
+<h1 id="习题">习题</h1>
+<ol>
+<li>
+<p>简述 ARM处理器指令集的特点。<br>
+代码灵活度高；<br>
+简化了复杂度；<br>
+执行指令集时PC每次自增4</p>
+</li>
+<li>
+<p>ARM处理器指令集的寻址方式有哪些，数据的存储方式有那些?<br>
+立即寻址、寄存器寻址、寄存器间接寻址、基址加偏址寻址、堆栈寻址、块拷贝寻址、相对寻址</p>
+</li>
+<li>
+<p>简述堆栈寻址方式的分类.<br>
+堆栈：一个按操作顺序进行存取的存储区（一种数据结构）；<br>
+操作顺序：先进后出（First In Last Out，FILO）；<br>
+使用一个称作堆栈指针的专用寄存器（SP）指示当前的操作位置，堆栈指针总指向堆栈存储单元的栈顶。</p>
+<p><strong>四种类型的堆栈工作方式</strong></p>
+<ol>
+<li>满递增堆栈（FA）：堆栈指针指向最后压入的数据，且由低地址向高地址生成；</li>
+<li>满递减堆栈 （FD）：堆栈指针指向最后压入的数据，且由高地址向低地址生成(默认寻址方式)；</li>
+<li>空递增堆栈（EA）：堆栈指针指向下一个将要放入数据的空位置，且由低地址向高地址生成。</li>
+<li>空递减堆栈（ED）：堆栈指针指向下一个将要放入数据的空位置，且由高地址向低地址生成。</li>
+</ol>
+</li>
+<li>
+<p>编写指令实现以下功能:<br>
+(1)将数值 0x80 存入R6;<br>
+<code>MOV R6, #0x80</code><br>
+(2)将寄存器 APSR 读取存入R5;<br>
+<code>MRS R5, APSR</code><br>
+(3)将数值 0.5存入R2，并更新标志位;<br>
+<code>VMOV.F32 S2, #0.5</code><br>
+<code>VMRS APSR_nzcv, FPSCR</code><br>
+(4)将数值0x12345678存入R2。<br>
+<code>LDR R2, =0x12345678</code></p>
+</li>
+<li>
+<p>编写存储器访问指令实现以下功能:<br>
+(1)从存储器地址[R2+16]中取有符号半字数送入R2，并将R2更新为R2+16;<br>
+<code>LDRSH R2, [R2, #16]</code><br>
+<code>ADD R2, R2, #16</code><br>
+(2)将RO中的字数据存入地址为[R1+R2x4]的存储单元中;<br>
+<code>STR R0, [R1, R2, LSL #2]</code><br>
+(3)从存储器地址[R6]中取1字节数值，送入R5中，并将R6更新为R6+0x22;<br>
+<code>LDRB R5, [R6]</code><br>
+<code>ADD R6, R6, #0x22</code><br>
+(4)将PC+6指向的存储器的字数据送入R1中。<br>
+<code>LDR R1, [PC, #6]</code></p>
+</li>
+<li>
+<p>采用两种指令编写实现将寄存器R2、R4、R5、R6、R8内容进栈保存。<br>
+使用STMFD指令将寄存器R2、R4、R5、R6、R8内容进栈保存<br>
+<code>STMFD SP!, {R2, R4, R5, R6, R8}</code><br>
+使用PUSH指令将寄存器R2、R4、R5、R6、R8内容进栈保存<br>
+<code>PUSH {R2, R4, R5, R6, R8}</code></p>
+</li>
+<li>
+<p>分别使用条件跳转指令和IT指令编写程序段实现以下功能:比较寄存器 RO与R1，相等时，RO逻辑右移2位，R1循环右移2位;不等时，R0算术右移2位，R1带进位循环右移 2位。</p>
+</li>
+<li>
+<p>编写程序段不使用乘法指令实现将寄存器R6的内容乘以9，并将其结果存入寄存器 R7内</p>
+</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[嵌入式期末 第二章]]></title>
+        <id>https://carlzzdr.fun/post/qian-ru-shi-qi-mo-di-er-zhang/</id>
+        <link href="https://carlzzdr.fun/post/qian-ru-shi-qi-mo-di-er-zhang/">
+        </link>
+        <updated>2024-12-28T10:57:26.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="第二章-arm-cortex体系架构">第二章 ARM Cortex体系架构</h1>
+<h1 id="21arm-cortex体系概述">2.1ARM Cortex体系概述</h1>
+<ul>
+<li>
+<p>ARM（Advanced RISC Machine）公司在经典处理器ARM11以后的产品都改用Cortex命名，主要分成A、R和M三类，旨在为各种不同的市场提供服务，A 系列处理器面向尖端的基于虚拟内存的操作系统和用户应用；R系列处理器针对实时系统；M系列处理器针对微控制器。</p>
+</li>
+<li>
+<p>CISC和RISC：<br>
+指令集可分为复杂指令集(Complex Instruction Set Computing，CISC)和精简指令集（Reduced Instruction Set Computing ,RISC）两部分。</p>
+<h1 id="22-cortex-m4内核基础">2.2 Cortex-M4内核基础</h1>
+</li>
+<li>
+<p>基本技术:</p>
+</li>
+</ul>
+<ol>
+<li>32-bit微控制器： <strong>32</strong>-bit 寄存器组、存储器接口。</li>
+<li><strong>哈佛架构</strong>：独立的指令总线和数据总线。</li>
+<li>存储空间：4GB。</li>
+<li>寄存器：寄存器 (R0 到 R15) 和 特殊功能寄存器。</li>
+<li>运行模式：线程模式和处理模式;特权级和用户级。</li>
+<li><strong>中断和异常</strong>：内置嵌套向量中断控制器；支持11 种系统异常外加240种外部 IRQ。</li>
+<li>总线接口：若干总线接口允许 Cortex-M4  。</li>
+<li>MPU：一个可选的存储器保护单元允许对特权访问和用户程序访问制定访问规则。</li>
+<li>指令集：<strong>Thumb-2指令集</strong>；允许 32位指令和16位指令被同时使用。</li>
+<li>内部调试组件：提供在线调试功能，例如：断点、单步、变量查看</li>
+</ol>
+<ul>
+<li>
+<p>处理器工作模式：用户、系统、快中断、中断、管理、中止、未定义模式，共七种处理器模式<br>
+其中，除用户模式外，其它模式均为 <strong>特权模式</strong><br>
+其中，快中断、中断、管理、中止、未定义五种为<strong>异常模式</strong></p>
+</li>
+<li>
+<p><strong>寄存器</strong> 的功能是CPU内部用来存放 <strong>二进制代码的一些小型存储区域</strong>，用来 <strong>暂时存放</strong> 参与运算的数据和运算结果。它是由具有存储功能的 <strong>触发器</strong> 组合起来构成的。一个触发器可以存储1位二进制代码，故存放n位二进制代码的寄存器，需用n个触发器来构成。</p>
+</li>
+<li>
+<p>寄存器也不尽相同。寄存器最起码具备以下几种功能。<br>
+<strong>清除数码</strong>：将寄存器里的原有数码清除。<br>
+<strong>接收数码</strong>：在接收脉冲作用下，将外输入数码存入寄存器中。<br>
+<strong>存储数码</strong>：在没有新的写入脉冲来之前，寄存器能保存原有数码不变。<br>
+<strong>输出数码</strong>：在输出脉冲作用下，才通过电路输出数码。<br>
+仅具有以上功能的寄存器称为数码寄存器；有的寄存器还具有 <strong>移位功能</strong>，称为移位寄存器。</p>
+</li>
+<li>
+<p>寄存器组：r0～r12 ,为13个通用目的寄存器<br>
+<strong>低组寄存器</strong> , r0-r7可以被指定通用寄存器的所有指令访问<br>
+<strong>高组寄存器</strong> , r8-r12可以被指定通用寄存器的所有32位指令访问 ，16位Thumb指令不能访问它们，32位的Thumb－2指令则不受限制。</p>
+</li>
+<li>
+<p>R13，两个堆栈指针 <strong>主堆栈和进程堆栈</strong> ：<br>
+Cortex-M4内核有两个堆栈指针：<strong>MSP和PSP</strong><br>
+<strong>结束复位后，所有代码都使用主堆栈</strong></p>
+</li>
+<li>
+<p><strong>程序计数器R15（PC）</strong> 存储当前执行的指令地址。</p>
+</li>
+<li>
+<p>不同工作模式和处理器状态下，程序员访问的寄存器也不尽相同。</p>
+</li>
+<li>
+<p>CPSR（Current Program Status Register）是当前程序状态寄存器，用于存储处理器的当前状态信息。在处理异常时，处理器会切换到异常模式，并且每种异常模式都有一个专用的SPSR（Saved Program Status Register），即程序状态保存寄存器<br>
+每种异常都有自己的SPSR，在进入异常时它保存CPSR的当前值，异常退出时可通过它恢复CPSR。</p>
+</li>
+<li>
+<p>控制寄存器：用来定义<strong>特权级和堆栈指针</strong>的选择。<br>
+这个寄存器有两位。</p>
+</li>
+<li>
+<p>操作模式：<strong>两种模式和两种特权等级</strong>。操作模式决定控制器运行正常程序或运行异常处理程序。<br>
+软件在<strong>特权访问级别</strong>可以使程序转换到用户访问级别。<br>
+<strong>用户程序不能够通过写控制寄存器直接变回特权状态</strong>。</p>
+</li>
+<li>
+<p>工作模式和特权级别：<br>
+<strong>工作模式</strong> 用于区别普通 <strong>应用程序的代码和异常服务</strong> 例程的代码(包括中断服务例程的代码)<br>
+<strong>特权级别</strong> 可以提供一种存储器访问的 <strong>保护机制</strong>，使得普通的用户程序代码不能意外地，甚至是恶意地执行涉及到要害的操作。<br>
+特权访问和用户访问(<strong>非特权访问</strong>)的区别</p>
+</li>
+<li>
+<p><strong>线程模式和处理器模式</strong>：<br>
+线程模式：<br>
+在复位时控制器进入线程模式<br>
+异常返回时控制器进入线程模式<br>
+特权和用户（非特权）代码能够在线程模式下运行<br>
+处理器模式：<br>
+出现异常时控制器进入处理器模式<br>
+在处理器模式中，所有代码都是特权访问的</p>
+</li>
+</ul>
+<h1 id="23存储器系统">2.3存储器系统</h1>
+<ul>
+<li>
+<p>存储器(Memory)是系统中的记忆设备，用来 <strong>存放程序和数据</strong>。</p>
+</li>
+<li>
+<p><strong>存储器的分类</strong><br>
+按作用分：主存储器、辅助存储器、缓冲存储器;</p>
+<p>按存取方式分：随机存储器（RAM）、只读存储器（ROM）、顺序存储器（SAM）和直接存取存储（DAM）器四类;</p>
+<p>按存储介质分: 半导体存储器、磁表面存储器和光盘存储器;</p>
+<p>按存取原理分：单体单字存储器、单体多字存储器 、多体单字交叉存取存储器、多体多字交叉存取存储器</p>
+</li>
+<li>
+<p><strong>TM（存储周期）</strong>：连续启动一个存储体所需要的时间间隔。</p>
+</li>
+<li>
+<p><strong>存储器频宽</strong>：是指存储器可以提供的数据传送率，一般用每秒钟所传送的信息位数来衡量</p>
+</li>
+<li>
+<p><strong>单体</strong> 指只有一套地址寄存器和地址译码器，CPU每次访问可同时读出多个存储字。</p>
+</li>
+<li>
+<p>Cortex-M4内核的存储器系统的主要特性:<br>
+可寻址 <strong>4GB</strong>（2^32）线性地址物理空间。<br>
+支持 <strong>小端和大端的存储器系统</strong>。Cortex-M4处理器可以选择使用小端或者大端的存储器系统。</p>
+</li>
+<li>
+<p>存储器介质：<br>
+RAM:  SRAM和DRAM<br>
+ROM:  ROM、PROM、EPROM、EEPROM<br>
+FLASH:  NOR FLASH、NAND FLASH</p>
+</li>
+<li>
+<p><strong>大端存储</strong>：字数据的高字节存储在低地址中，而字数据的低字节则存放在高地址中。</p>
+</li>
+<li>
+<p><strong>小端存储</strong>：与大端存储格式相反，即低地址中存放字数据的低字节，高地址存放字数据的高字节。</p>
+</li>
+<li>
+<p>小端格式存储是Cortex-M4内核 <strong>默认的存储器格式</strong></p>
+</li>
+<li>
+<p>高速缓冲存储器（Cache）：<br>
+<strong>作用</strong>：存放当前使用得最多的程序代码和数据（即主存中部分内容的副本）；<br>
+嵌入式系统中Cache全部都集成在嵌入式微处理器内；<br>
+<strong>种类</strong>：数据Cache、指令Cache或混合Cache；<br>
+不同的处理器其Cache的大小不一样；一般32位的嵌入式微处理器都内置Cache。</p>
+</li>
+<li>
+<p><strong>Cache命中</strong>：CPU每次读取主存时，Cache控制器都要检查CPU送出的地址，判断CPU要读取的数据是否在Cache中，如果在就称为命中。</p>
+</li>
+<li>
+<p><strong>Cache未命中</strong>：读取的数据不在Cache中，则对主存储器进行操作，并将有关内容置入Cache。</p>
+</li>
+<li>
+<p>写入方法：<br>
+<strong>通写</strong>：写Cache时，Cache与对应内存内容同步更新。<br>
+<strong>回写</strong>：写Cache时，只有写入Cache内容移出时才更新对应内存内容。</p>
+</li>
+<li>
+<p><strong>高速缓存（Cache）的分类</strong>：<strong>统一Cache</strong>、<strong>独立的数据/程序Cache</strong></p>
+</li>
+<li>
+<p><strong>存储器映射</strong>：给存储器地址命名的过程，就叫存储器映射<br>
+例：各款M4微控制器的NVIC 和MPU 都在相同的位置布设寄存器，使得它们变得通用。</p>
+</li>
+<li>
+<p>存储空间4GB被 <strong>划分为多个存储区域</strong></p>
+</li>
+<li></li>
+</ul>
+<h1 id="24-异常和中断">2.4 异常和中断</h1>
+<ul>
+<li>
+<p>中断处理的 <strong>执行硬件</strong>：Cortex-M4处理器都会提供一个 **嵌套向量中断控制器（NVIC）**完成中断处理。</p>
+</li>
+<li>
+<p>Cortex-M4微处理器的 NVIC支持中断源：<br>
+多达240个 <strong>IRQ（中断请求）</strong>，由外设产生，如定时器产生、I/O端口和通信接口（例如，UARTI2C）；<br>
+<strong>非屏蔽中断（NMI）</strong>，由外设产生，如看门狗定时器；<br>
+<strong>SysTick定时器中断（System Tick）</strong>，来自处理器内核；<br>
+<strong>系统异常</strong>。来自处理器内核或软件生成</p>
+</li>
+<li>
+<p>Nested vectored interrupt controlled, 嵌入向量中断控制器，属于内核（M3/4/7）一个外设；<br>
+作用：<strong>控制着芯片的中断相关功能</strong>；</p>
+</li>
+<li>
+<p><strong>中断向量表</strong>：定义一块固定的内存，以4字节对齐，存放各个中断服务函数程序的首地址；编号1-15是系统异常，编号16以上为中断输入，大多数异常，包括所有的中断，有可编程的优先级，少部分的系统异常有固定优先级。</p>
+</li>
+<li>
+<p>中断向量表 <strong>入口</strong> 定义在 <strong>启动文件</strong>，当发生中断，CPU会自动执行对应的中断服务函数</p>
+</li>
+<li>
+<p>STM32中断优先级基本概念<br>
+<strong>抢占优先级</strong>（pre）：高抢占优先级可以打断正在执行的低抢占优先级中断；<br>
+<strong>相应优先级</strong>（sub）：当抢占优先级可相同时，相应优<br>
+先级高的先执行，但是不能相互打断；<br>
+当抢占和响应优先级相同时，自然优先级越高的，先执行；<br>
+<strong>自然优先级</strong>：中断向量表的优先级；<br>
+数值越小，表示的优先级越高；</p>
+</li>
+</ul>
+<h1 id="习题">习题</h1>
+<ol>
+<li>
+<p>列举出三家公司生产的Cortex-M3和Cortex-M4内核控制器。</p>
+<p>M3 STM32F1系列<br>
+M4 STM32F4系列</p>
+</li>
+<li>
+<p>列举Cortex-M3/M4处理器使用的寄存器组，并说明R13、R14、R15的功能<br>
+Cortex-M3/M4处理器使用的寄存器组包括以下内容：<br>
+通用寄存器（R0-R12）<br>
+特殊功能寄存器（R13-R15）<br>
+状态寄存器（xPSR）</p>
+<p>其中，R13、R14、R15的功能如下：</p>
+<p>R13（SP，堆栈指针）：用于指向当前堆栈的顶部。Cortex-M处理器有两个堆栈指针：主堆栈指针（MSP）和进程堆栈指针（PSP），R13可以指向其中一个。</p>
+<p>R14（LR，链接寄存器）：用于存储函数调用返回地址。当执行函数调用时，返回地址会被存储在R14中，以便函数执行完毕后能够返回调用点。</p>
+<p>R15（PC，程序计数器）：用于存储当前正在执行的指令地址。程序计数器会自动递增，以指向下一条要执行的指令地址。</p>
+</li>
+<li>
+<p>试说明Cortex-M3/M4处理器两种模式和两种特权的使用。</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>两种模式</p>
+</li>
+<li>
+<p>线程模式（Thread Mode）：<br>
+这是处理器在复位后默认的运行模式。<br>
+主要用于执行应用程序代码。<br>
+可以在特权级别和非特权级别下运行。<br>
+处理模式（Handler Mode）：<br>
+主要用于处理异常和中断。<br>
+总是在特权级别下运行。<br>
+两种特权级别</p>
+</li>
+<li>
+<p>特权级（Privileged）：<br>
+可以访问所有的系统资源，包括特殊功能寄存器和所有内存区域。<br>
+可以切换堆栈指针（SP）和模式。<br>
+线程模式和处理模式都可以在特权级下运行。</p>
+</li>
+<li>
+<p>非特权级（Unprivileged）：<br>
+只能访问有限的系统资源，不能访问某些特殊功能寄存器和受保护的内存区域。<br>
+不能切换堆栈指针（SP）和模式。<br>
+仅线程模式可以在非特权级下运行。</p>
+</li>
+</ul>
+<ol start="4">
+<li>
+<p>什么是大端格式和小端格式?</p>
+<p>大端格式<br>
+定义：高字节存储在低地址，低字节存储在高地址<br>
+小端格式<br>
+低字节存储在低地址，高字节存储在高地址</p>
+</li>
+<li>
+<p>试说明存储器分类及其用途。</p>
+<p>按作用分：主存储器、辅助存储器、缓冲存储器;</p>
+<p>按存取方式分：随机存储器（RAM）、只读存储器（ROM）、顺序存储器（SAM）和直接存取存（DAM）器四类;</p>
+<p>按存储介质分: 半导体存储器、磁表面存储器和光盘存储器;</p>
+<p>按存取原理分：单体单字存储器、单体多字存储器 、多体单字交叉存取存储器、多体多字交叉存取存储器</p>
+</li>
+<li>
+<p>试说明异常响应过程。</p>
+<p>异常检测、处理器判断异常优先级、按照异常向量表查找入口地址、处理器保存上下文、跳转到异常处理程序、执行异常处理程序、异常返回恢复向前保存的上下文程序、恢复正常执行</p>
+</li>
+<li>
+<p>Cortex-M3/M4处理器中断向量处存放的是对应中断的什么信息?</p>
+<p>中断向量表存放的是对应中断处理程序的入口地址。中断向量表是一个存储在固定地址的表格，每个表项对应一个中断或异常，表项中存放的是该中断或异常的处理程序的起始地址。</p>
+</li>
+<li>
+<p>Cortex-M3/M4处理器复位后执行的第一项操作是什么?第二项操作是什么?</p>
+<p>第一项操作：加载初始堆栈指针值<br>
+第二项操作：跳转到复位处理程序</p>
+</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[嵌入式期末 第一章]]></title>
+        <id>https://carlzzdr.fun/post/qian-ru-shi-qi-mo-zong-jie/</id>
+        <link href="https://carlzzdr.fun/post/qian-ru-shi-qi-mo-zong-jie/">
+        </link>
+        <updated>2024-12-26T07:52:16.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="考试题型">考试题型</h1>
+<p>四类题目：选择、十五个填空、六个简答、两个程序解答<br>
+内容主要来自：<strong>PPT</strong>、<strong>课后习题</strong></p>
+<hr>
+<h1 id="第一章嵌入式系统">第一章嵌入式系统</h1>
+<h2 id="11嵌入式系统概述">1.1嵌入式系统概述</h2>
+<ul>
+<li>
+<p>IEEE（国际电气和电子工程师协会）对嵌入式系统的定义是：<br>
+“用于<strong>控制</strong>、<strong>监视</strong>或者<strong>辅助操作机器和设备</strong>的装置”</p>
+</li>
+<li>
+<p>国内普遍认同定义：<br>
+嵌入式系统就是一个具有特定功能或用途的<strong>计算机软硬件集合体</strong>。<br>
+即以应用为中心、以计算机技术为基础、软件硬件可裁剪、适应应用系统对<strong>功能、可靠性、成本、体积、功耗</strong>严格要求的专用计算机系统 。</p>
+</li>
+<li>
+<p>嵌入式系统特点：<br>
+<strong>专用性</strong>：嵌入式系统通常是面向特定应用的<br>
+<strong>小体积、低功耗、低成本、高集成度</strong>：如指纹锁要求半年换一次电池<br>
+<strong>实时性</strong><br>
+<strong>技术密集</strong>：嵌入式系统是将先进的计算机技术、半导体技术和电子技术与各个行业的具体应用相结合后的产物。<br>
+<strong>生命周期长</strong><br>
+<strong>不可垄断性</strong>：相对与PC机intel和windows 而言，嵌入式系统是以应用为中心，应用场景多样化决定了难以垄断</p>
+</li>
+</ul>
+<hr>
+<h2 id="12嵌入式系统体系">1.2嵌入式系统体系</h2>
+<ul>
+<li>
+<p>嵌入式系统基本构成：一般可分为<strong>硬件</strong>和<strong>软件</strong>两部分。<br>
+硬件：<strong>嵌入式处理器、外围硬件设备、电源、I/O接口电路等</strong>；<br>
+软件：<strong>嵌入式操作系统（可选）、应用程序和驱动程序。</strong></p>
+</li>
+<li>
+<p>硬件架构：<br>
+嵌入式系统的硬件架构以嵌入式处理器为核心，由存储器、外围设备、通信模块、电源及复位等必要的辅助接口组成。</p>
+</li>
+<li>
+<p>软件层次：<br>
+嵌入式系统软件结构一般包含3个层面：<strong>设备驱动层、OS层、应用层</strong>（包括硬件抽象层、应用程序）。</p>
+<p>设备驱动层：<br>
+由<strong>板级支持包</strong>（Board Support Package，BSP）和<strong>驱动程序</strong>组成;<br>
+作用:为上层程序提供外围设备的操作接口，并实现设备的驱动程序。</p>
+<p>板级支持包：<br>
+作用：<br>
+系统上电的硬件初始化；<br>
+为嵌入式操作系统访问硬件驱动程序提供支持；<br>
+集成硬件相关和硬件无关的嵌入式操作系统所需的软件模块。</p>
+</li>
+</ul>
+<hr>
+<h2 id="13嵌入式硬件系统">1.3嵌入式硬件系统</h2>
+<ul>
+<li>
+<p>嵌入式系统硬件系统是以<strong>嵌入式处理器</strong>为核心，配备必要的外围设备、传感及执行等构成一个典型应用系统。</p>
+</li>
+<li>
+<p><strong>选型设计原则</strong>：在满足应用要求的前提下，一般选择<strong>集成度高</strong>的嵌入式处理器SoC/SOPC芯片，以尽可能少的硬件构件进行设计。</p>
+</li>
+<li>
+<p>嵌入式微控制器<strong>MCU</strong><br>
+嵌入式微控制器的典型代表是单片机，嵌入式微控制器目前的品种和数量最多，比较有代表性 通用系列包括8051、AVR、PIC、<strong>ARM Cortex-M</strong> 等。</p>
+</li>
+<li>
+<p>数字信号处理器<strong>DSP</strong><br>
+主要专门用于<strong>信号处理</strong>方面，其在系统结构方面进行了特殊设计，在数字滤波、FFT、频谱分析等密集数学运算领域有大规模的应用，一般用在<strong>算法快速执行</strong>，做控制比较困难。</p>
+<p>-嵌入式SoC：<br>
+用可编程逻辑技术把整个系统放到一块硅片上，称作<strong>SOPC</strong>。可编程片上系统（SOPC）是一种特殊的嵌入式系统。</p>
+</li>
+<li>
+<p>ARM处理器是英国ARM（Advanced RISC Machines）有限公司（以下简称“ARM公司”）设计的<strong>RISC</strong>处理器<br>
+ARM处理器分为<strong>经典处理器和Cortex处理器</strong>两大类。</p>
+</li>
+<li>
+<p>存储系统：<br>
+存储器主要功能:<strong>存储程序和各种数据</strong>，并能在计算机运行过程中高速、自动地完成程序或数据的存取。</p>
+<p>随机存取存储器 <strong>RAM</strong>：<br>
+随机存取是指存储单元的内容可按需<strong>随意取出或存入</strong>，读写速度很快，且速度与存储单元的位置无关。RAM在断电时将丢失其存储内容，RAM主要用于存储短时间使用的程序。是属于<strong>易失性存储器</strong></p>
+<p>只读存储器 <strong>ROM</strong>：<br>
+只读存储器中的数据可以在掉电后不丢失，ROM主要用于存储程序和一些数据（常量、系数等），存储在其中的数据只能读不能改，需要使用特定的方法擦除和烧录数据。是属于 <strong>非易失性存储器</strong>。</p>
+</li>
+<li>
+<p>嵌入式系统中的1/O接口是指用于将各种集成电路与其他外围设备交互连接的通信通路或总线，负责处理器和外围设备之间的信息交换。目前嵌入式系统中常用的通用设备接口有 <strong>GPIO</strong> 接口（通用可编程接口）、<strong>UART</strong> 接口（通用串行通信接口）、<strong>Ethernet接口</strong>（以太网接口）、<strong>USB接口</strong>（通用串行总线接口）、I2C接口（现场总线接口）、<strong>I2S接口</strong>、<strong>SPI接口</strong>（串行外围设备接口）、<strong>CAN总线接口</strong>、<strong>Bluetooth接口</strong>（蓝牙接口）、<strong>Camera Link</strong>接口、<strong>SD卡接口等</strong>。</p>
+</li>
+</ul>
+<hr>
+<h2 id="14-嵌入式操作系统">1.4 嵌入式操作系统</h2>
+<p>嵌入式操作系统通常包括与硬件相关的底层 <strong>驱动</strong> 软件、系统 <strong>内核</strong>、设备驱动接口、<strong>通信协议</strong>、<strong>图形界面</strong>、标准化 <strong>浏览器</strong>等。嵌入式操作系统负责嵌入式系统的全部软件、硬件资源的分配、任务 <strong>调度</strong>，<strong>控制</strong>、协调并发活动。</p>
+<ul>
+<li>
+<p>嵌入式操作系统的发展：<br>
+<strong>第一阶段：嵌入式系统的出现阶段</strong><br>
+<strong>第二阶段：以嵌入式CPU为基础</strong><br>
+<strong>第三阶段：通用的嵌入式实时操作系统阶段</strong>：代表就是Linux、VxWorks等。</p>
+</li>
+<li>
+<p>按照对任务响应的 <strong>实时性</strong> 来分类，嵌入式操作系统分为嵌入式非实时操作系统和嵌入式实时操作系统（RTOS）</p>
+<p>嵌入式非实时操作系统：嵌入式非实时操作系统主要 <strong>面向消费类产品</strong> 应用领域。大部分都支持多用户和多进程，负责管理众多的进程并为它们分配系统资源，属于 <strong>不可抢占式操作系统</strong>。<br>
+典型的非实时操作系统是Linux、iOS等。</p>
+<p>嵌入式实时操作系统：嵌入式实时操作系统主要 <strong>面向控制</strong>、<strong>通信等</strong> 领域。实时操作系统除了要满足应用的功能需求，还要满足应用提出的实时性要求，属于抢占式操作系统。</p>
+</li>
+<li>
+<p>嵌入式实时操作系统的功能</p>
+<p>任务管理：任务管理通常包含 <strong>优先级</strong> 设置、多任务调度机制和时间确定性等部分。<br>
+任务同步与通信机制：如<strong>消息邮箱、消息队列、管道和共享内存。</strong><br>
+内存管理<br>
+中断处理：<strong>中断处理</strong> 是整个运行系统中优先级最高的代码，它可以抢占任何任务级代码运行。</p>
+</li>
+<li>
+<p>常用的嵌入式操作系统——<strong>Linux</strong></p>
+</li>
+</ul>
+<hr>
+<h2 id="第一章课后习题">第一章课后习题</h2>
+<h3 id="1-嵌入式系统定义是什么它由哪几部分组成">1. 嵌入式系统定义是什么?它由哪几部分组成?</h3>
+<p>国内普遍认同定义：<br>
+嵌入式系统就是一个具有特定功能或用途的<strong>计算机软硬件集合体</strong>。</p>
+<p>嵌入式系统基本构成：<br>
+一般可分为<strong>硬件</strong>和<strong>软件</strong>两部分。</p>
+<p>硬件：<strong>嵌入式处理器、外围硬件设备、电源、I/O接口电路等</strong>；<br>
+软件：<strong>嵌入式操作系统（可选）、应用程序和驱动程序。</strong></p>
+<hr>
+<h3 id="2-试说明冯诺依曼计算机与现代计算机的结构组成">2. 试说明冯·诺依曼计算机与现代计算机的结构组成。</h3>
+<p>冯·诺依曼计算机结构由五大部分组成：运算器、控制器、存储器、输入设备和输出设备。现代计算机在此基础上进行了扩展和优化，增加了多级缓存、并行处理、多核处理器等技术，以提高计算效率和处理能力。此外，现代计算机还引入了图形处理单元（GPU）、专用集成电路（ASIC）等专用硬件来处理特定任务。</p>
+<hr>
+<h2 id="3-什么是地址码-操作数">3. 什么是地址码、操作数?</h2>
+<p>地址码是指在指令中用于指定操作数存储位置的部分，它告诉计算机从哪里获取或存储数据。操作数是指令中实际进行运算或操作的数据，可以是立即数、寄存器中的数据或存储器中的数据</p>
+<hr>
+<h2 id="4-什么是cisc-risc指令系统二者有什么区别">4. 什么是CISC、RISC指令系统?二者有什么区别?</h2>
+<p>CISC（复杂指令集计算机）指令系统具有复杂的指令集，每条指令可以执行多个低级操作，旨在减少程序的指令数量，提高编程效率；RISC（精简指令集计算机）指令系统具有精简的指令集，每条指令执行一个简单的操作，通常在一个时钟周期内完成，旨在简化硬件设计，提高指令执行速度。CISC和RISC的主要区别在于指令集复杂度、指令执行速度、硬件设计和编程效率。</p>
+<hr>
+<h2 id="5-嵌入式系统处理器有哪几种如何选择">5. 嵌入式系统处理器有哪几种?如何选择?</h2>
+<p>嵌入式微处理器 MPU<br>
+嵌入式微控制器 MCU<br>
+嵌入式数字信号处理器 EDSP<br>
+嵌入式片上系统 SoC</p>
+<p><strong>选型设计原则</strong>：在满足应用要求的前提下，一般选择<strong>集成度高</strong>的嵌入式处理器SoC/SOPC芯片，以尽可能少的硬件构件进行设计。</p>
+<hr>
+<h2 id="6-嵌入式系统存储器从功能上分为哪两类一般采用何种类型存储器件">6. 嵌入式系统存储器从功能上分为哪两类?一般采用何种类型存储器件?</h2>
+<p>嵌入式系统存储器从功能上分为两类：程序存储器和数据存储器。程序存储器通常采用闪存（Flash）或只读存储器（ROM），用于存储固件和程序代码；数据存储器通常采用随机存取存储器（RAM），用于存储运行时的数据和变量。</p>
+<hr>
+<h2 id="7-io与cpu信息传送控制方式是什么">7. IO与CPU信息传送控制方式是什么?</h2>
+<p>IO与CPU信息传送控制方式主要有三种：程序控制方式、中断控制方式和DMA（直接存储器访问）控制方式。程序控制方式由CPU通过执行程序指令直接控制IO设备；中断控制方式通过IO设备向CPU发送中断请求，CPU响应中断后进行数据传输；DMA控制方式由DMA控制器直接在内存和IO设备之间传输数据，减少CPU的参与，提高传输效率。</p>
+<hr>
+<h2 id="8-嵌入式实时操作系统定义是什么典型的嵌入式实时操作系统有哪几种">8. 嵌入式实时操作系统定义是什么?典型的嵌入式实时操作系统有哪几种?</h2>
+<p>嵌入式实时操作系统（RTOS）是一种专门为嵌入式系统设计的操作系统，能够在严格的时间限制内处理任务，确保系统的实时性和可靠性。典型的嵌入式实时操作系统有FreeRTOS、VxWorks、RTEMS、μC/OS-II和QNX等。</p>
+<hr>
+<h2 id="9-试说明嵌入式系统调试过程并说明嵌入式系统有哪几种调试技术">9.  试说明嵌入式系统调试过程，并说明嵌入式系统有哪几种调试技术。</h2>
+<p>嵌入式系统调试过程通常包括以下步骤：代码编写、编译、下载到目标硬件、运行和测试、发现问题、调试和修复。调试过程中需要反复进行这些步骤，直到系统稳定运行。<br>
+串口调试、仿真器调试、JTAG或SWD在线调试等</p>
+<hr>
+<h2 id="10-嵌入式系统与计算机系统有什么区别">10. 嵌入式系统与计算机系统有什么区别?</h2>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Markdown 主要格式用法]]></title>
+        <id>https://carlzzdr.fun/post/markdown-zhu-yao-ge-shi-yong-fa/</id>
+        <link href="https://carlzzdr.fun/post/markdown-zhu-yao-ge-shi-yong-fa/">
+        </link>
+        <updated>2024-12-26T06:48:42.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="标题">标题</h2>
+<p>使用 <code>#</code> 表示标题，<code>#</code> 的数量表示标题的级别。</p>
+<pre><code class="language-markdown"># 一级标题
+## 二级标题
+### 三级标题
+</code></pre>
+<h2 id="列表">列表</h2>
+<h3 id="无序列表">无序列表</h3>
+<p>使用 <code>-</code>、<code>*</code> 或 <code>+</code> 表示无序列表。</p>
+<pre><code class="language-markdown">- 项目 1
+- 项目 2
+    - 子项目 2.1
+    - 子项目 2.2
+</code></pre>
+<h3 id="有序列表">有序列表</h3>
+<p>使用数字和点表示有序列表。</p>
+<pre><code class="language-markdown">1. 项目 1
+2. 项目 2
+     1. 子项目 2.1
+     2. 子项目 2.2
+</code></pre>
+<h2 id="引用">引用</h2>
+<p>使用 <code>&gt;</code> 表示引用。</p>
+<pre><code class="language-markdown">&gt; 这是一个引用。
+</code></pre>
+<h2 id="代码块">代码块</h2>
+<p>使用反引号  <code>`</code> 表示行内代码，使用三个反引号表示代码块。</p>
+<pre><code class="language-markdown">`行内代码`
+
+</code></pre>
+<p>代码块</p>
+<pre><code></code></pre>
+<h2 id="链接">链接</h2>
+<p>使用 <code>[描述](链接)</code> 表示链接。</p>
+<pre><code class="language-markdown">[GitHub](https://github.com)
+</code></pre>
+<h2 id="图片">图片</h2>
+<p>使用 <code>![描述](图片链接)</code> 表示图片。</p>
+<pre><code class="language-markdown">![示例图片](https://example.com/image.jpg)
+</code></pre>
+<h2 id="粗体和斜体">粗体和斜体</h2>
+<p>使用 <code>**</code> 表示粗体，使用 <code>*</code> 表示斜体。</p>
+<pre><code class="language-markdown">**粗体文本**
+
+*斜体文本*
+</code></pre>
+<h2 id="表格">表格</h2>
+<p>使用 <code>|</code> 和 <code>-</code> 表示表格。</p>
+<pre><code class="language-markdown">| 头1 | 头2 |
+| --- | --- |
+| 内容1 | 内容2 |
+| 内容3 | 内容4 |
+</code></pre>
+<h2 id="分隔线">分隔线</h2>
+<p>使用三个或更多的 <code>-</code>、<code>*</code> 或 <code>_</code> 表示分隔线。</p>
+<pre><code class="language-markdown">---
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[WSL的新开始]]></title>
+        <id>https://carlzzdr.fun/post/wsl-de-xin-kai-shi/</id>
+        <link href="https://carlzzdr.fun/post/wsl-de-xin-kai-shi/">
+        </link>
+        <updated>2024-11-19T07:26:02.000Z</updated>
+        <content type="html"><![CDATA[<p>把双系统删了，现在用WSL<br>
+这个windows突然出bug卡住可以把人急死<br>
+就算是印度人写的也受不了这么蠢的bug吧</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[一些照片]]></title>
+        <id>https://carlzzdr.fun/post/yi-xie-zhao-pian/</id>
+        <link href="https://carlzzdr.fun/post/yi-xie-zhao-pian/">
+        </link>
+        <updated>2024-11-17T03:34:04.000Z</updated>
+        <content type="html"><![CDATA[<p>测试图片排版<br>
+<img src="https://carlzzdr.fun/post-images/1731814466391.jpg" alt="" loading="lazy"><br>
+这样<br>
+<img src="https://carlzzdr.fun/post-images/1731814594189.jpg" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[站在巨人的肩膀上]]></title>
+        <id>https://carlzzdr.fun/post/zhan-zai-ju-ren-de-jian-bang-shang/</id>
+        <link href="https://carlzzdr.fun/post/zhan-zai-ju-ren-de-jian-bang-shang/">
+        </link>
+        <updated>2024-11-16T11:33:44.000Z</updated>
+        <content type="html"><![CDATA[<p>在很多地方看到过这样的一句话<br>
+“计算机的所有东西都是人做出来的”<br>
+确实是这样<br>
+今天我学习的所有东西都是前人做的</p>
+<p>除了技术本身<br>
+学习技术的过程也多是公开的<br>
+计算机专业的一大优势就在于此<br>
+不论是最基础的还是最尖端的技术<br>
+都有大量的公开的代码、资源、文档、教程<br>
+就算是普通的网上讨论<br>
+计算机专业也可以说是声量最大的<br>
+因为网络就是计算机的主场<br>
+而许多本专业大学生做的第一件事<br>
+就是搞一个网站<br>
+做一个课程设计项目<br>
+建一个作业代码仓库<br>
+不仅自己连了手<br>
+也进一步为别人的学习铺路</p>
+<p>有人说计算机学得多<br>
+确实是这样的<br>
+计算机有非常多且复杂的内容<br>
+但其实任何专业需要学的都多<br>
+只是计算机的路径最清晰罢了<br>
+尤其是本科阶段<br>
+对于机械，某些课程如果缺少设备、实验室就开不了<br>
+所以名校具有显著资源优势<br>
+但计算机相关专业的本科阶段几乎没有这种问题<br>
+借助互联网、ai就可以弥补教学资源差距<br>
+轻易地得到几乎所有中外名校课程和基础指导<br>
+再借助各家云、colab、gihub就可以弥补软硬件差距<br>
+完全满足绝大部分需要的硬件和前沿的开源技术<br>
+其他专业学习普遍有缺乏资料、路径图的情况<br>
+比如学校选用了某个小众教材<br>
+就会找不到参考书也找不到网络资料<br>
+但对于计算机几乎不存在这种问题<br>
+本科阶段的内容<br>
+即使是最小的方面也会有大量的网络讨论<br>
+所以计算机专业的学习内容虽看起来多<br>
+但外部阻力很小<br>
+所以计算机是最好学的本科专业之一</p>
+<p>而不管是学的技术还是做网站<br>
+前人的也经验让我们一开始就能站得更高<br>
+因为懒得备案+云服务器有点贵<br>
+在短暂的阿里云服务器尝试以后<br>
+还是回到了github page<br>
+虽然没有什么有用得内容<br>
+但所有的网站代码都是我手写的<br>
+今后还会继续“纯手工”制作网站<br>
+不过博客就算了<br>
+因为它的目的在于记录的<br>
+所以今后用gridea来便捷的编写内容👍</p>
+]]></content>
+    </entry>
+</feed>

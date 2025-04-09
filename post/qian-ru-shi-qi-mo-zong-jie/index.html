@@ -1,0 +1,3700 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="Gridea静态个人博客">
+<meta name="description" content="无限风光在险峰">
+<meta name="theme-color" content="#f8f9fa">
+<title>嵌入式期末 第一章 | CarlZzdr的博客</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1744203235165">
+<link rel="stylesheet" href="/media/css/gemini.css">
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.loli.net/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/default.css"
+  rel="stylesheet">
+
+<link rel="stylesheet" href="/styles/main.css">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/media/js/jquery.js"></script>
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
+
+  <meta name="description" content="嵌入式期末 第一章" />
+  <meta name="keywords" content="" />
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    
+<div class="gemini">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>CarlZzdr的博客</span>
+            </a>  
+          
+        </div>
+        
+          <p class="subtitle">无限风光在险峰</p>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/" target="_self">
+                  <i class="fa fa-globe"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/archives" target="_self">
+                  <i class="fa fa-globe"></i> 归档
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/tags" target="_self">
+                  <i class="fa fa-globe"></i> 标签
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://carlzzdr.fun/post/about" target="_self">
+                  <i class="fa fa-user"></i> 关于
+                </a>
+              
+            </li>
+          
+          
+          
+            <li id="fa_search" class="nav-item">
+              <a href="javascript:void(0);">
+                <i class="fa fa-search"></i> <span class="language" data-lan="search">搜索</span>
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout gemini ">
+      <div class="section-layout-wrapper">
+        
+
+<div class="sidebar">
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    jQuery.Velocity(hideElement, 'stop');
+    jQuery.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        jQuery.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <section class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://carlzzdr.fun/post/qian-ru-shi-qi-mo-zong-jie/"> 嵌入式期末 第一章 </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span class="publish-time" data-t="2024-12-26 15:52:16">2024-12-26</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span
+        >11<span class="language" data-lan="minute"
+          >分钟</span
+        ></span
+      >
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span
+        >2917<span class="pc-show language" data-lan="words"
+          >字数</span
+        ></span
+      >
+    </span>
+    
+  </div>
+</section>
+
+            <div class="post-body next-md-body" id="post_body">
+              <h1 id="考试题型">考试题型</h1>
+<p>四类题目：选择、十五个填空、六个简答、两个程序解答<br>
+内容主要来自：<strong>PPT</strong>、<strong>课后习题</strong></p>
+<hr>
+<h1 id="第一章嵌入式系统">第一章嵌入式系统</h1>
+<h2 id="11嵌入式系统概述">1.1嵌入式系统概述</h2>
+<ul>
+<li>
+<p>IEEE（国际电气和电子工程师协会）对嵌入式系统的定义是：<br>
+“用于<strong>控制</strong>、<strong>监视</strong>或者<strong>辅助操作机器和设备</strong>的装置”</p>
+</li>
+<li>
+<p>国内普遍认同定义：<br>
+嵌入式系统就是一个具有特定功能或用途的<strong>计算机软硬件集合体</strong>。<br>
+即以应用为中心、以计算机技术为基础、软件硬件可裁剪、适应应用系统对<strong>功能、可靠性、成本、体积、功耗</strong>严格要求的专用计算机系统 。</p>
+</li>
+<li>
+<p>嵌入式系统特点：<br>
+<strong>专用性</strong>：嵌入式系统通常是面向特定应用的<br>
+<strong>小体积、低功耗、低成本、高集成度</strong>：如指纹锁要求半年换一次电池<br>
+<strong>实时性</strong><br>
+<strong>技术密集</strong>：嵌入式系统是将先进的计算机技术、半导体技术和电子技术与各个行业的具体应用相结合后的产物。<br>
+<strong>生命周期长</strong><br>
+<strong>不可垄断性</strong>：相对与PC机intel和windows 而言，嵌入式系统是以应用为中心，应用场景多样化决定了难以垄断</p>
+</li>
+</ul>
+<hr>
+<h2 id="12嵌入式系统体系">1.2嵌入式系统体系</h2>
+<ul>
+<li>
+<p>嵌入式系统基本构成：一般可分为<strong>硬件</strong>和<strong>软件</strong>两部分。<br>
+硬件：<strong>嵌入式处理器、外围硬件设备、电源、I/O接口电路等</strong>；<br>
+软件：<strong>嵌入式操作系统（可选）、应用程序和驱动程序。</strong></p>
+</li>
+<li>
+<p>硬件架构：<br>
+嵌入式系统的硬件架构以嵌入式处理器为核心，由存储器、外围设备、通信模块、电源及复位等必要的辅助接口组成。</p>
+</li>
+<li>
+<p>软件层次：<br>
+嵌入式系统软件结构一般包含3个层面：<strong>设备驱动层、OS层、应用层</strong>（包括硬件抽象层、应用程序）。</p>
+<p>设备驱动层：<br>
+由<strong>板级支持包</strong>（Board Support Package，BSP）和<strong>驱动程序</strong>组成;<br>
+作用:为上层程序提供外围设备的操作接口，并实现设备的驱动程序。</p>
+<p>板级支持包：<br>
+作用：<br>
+系统上电的硬件初始化；<br>
+为嵌入式操作系统访问硬件驱动程序提供支持；<br>
+集成硬件相关和硬件无关的嵌入式操作系统所需的软件模块。</p>
+</li>
+</ul>
+<hr>
+<h2 id="13嵌入式硬件系统">1.3嵌入式硬件系统</h2>
+<ul>
+<li>
+<p>嵌入式系统硬件系统是以<strong>嵌入式处理器</strong>为核心，配备必要的外围设备、传感及执行等构成一个典型应用系统。</p>
+</li>
+<li>
+<p><strong>选型设计原则</strong>：在满足应用要求的前提下，一般选择<strong>集成度高</strong>的嵌入式处理器SoC/SOPC芯片，以尽可能少的硬件构件进行设计。</p>
+</li>
+<li>
+<p>嵌入式微控制器<strong>MCU</strong><br>
+嵌入式微控制器的典型代表是单片机，嵌入式微控制器目前的品种和数量最多，比较有代表性 通用系列包括8051、AVR、PIC、<strong>ARM Cortex-M</strong> 等。</p>
+</li>
+<li>
+<p>数字信号处理器<strong>DSP</strong><br>
+主要专门用于<strong>信号处理</strong>方面，其在系统结构方面进行了特殊设计，在数字滤波、FFT、频谱分析等密集数学运算领域有大规模的应用，一般用在<strong>算法快速执行</strong>，做控制比较困难。</p>
+<p>-嵌入式SoC：<br>
+用可编程逻辑技术把整个系统放到一块硅片上，称作<strong>SOPC</strong>。可编程片上系统（SOPC）是一种特殊的嵌入式系统。</p>
+</li>
+<li>
+<p>ARM处理器是英国ARM（Advanced RISC Machines）有限公司（以下简称“ARM公司”）设计的<strong>RISC</strong>处理器<br>
+ARM处理器分为<strong>经典处理器和Cortex处理器</strong>两大类。</p>
+</li>
+<li>
+<p>存储系统：<br>
+存储器主要功能:<strong>存储程序和各种数据</strong>，并能在计算机运行过程中高速、自动地完成程序或数据的存取。</p>
+<p>随机存取存储器 <strong>RAM</strong>：<br>
+随机存取是指存储单元的内容可按需<strong>随意取出或存入</strong>，读写速度很快，且速度与存储单元的位置无关。RAM在断电时将丢失其存储内容，RAM主要用于存储短时间使用的程序。是属于<strong>易失性存储器</strong></p>
+<p>只读存储器 <strong>ROM</strong>：<br>
+只读存储器中的数据可以在掉电后不丢失，ROM主要用于存储程序和一些数据（常量、系数等），存储在其中的数据只能读不能改，需要使用特定的方法擦除和烧录数据。是属于 <strong>非易失性存储器</strong>。</p>
+</li>
+<li>
+<p>嵌入式系统中的1/O接口是指用于将各种集成电路与其他外围设备交互连接的通信通路或总线，负责处理器和外围设备之间的信息交换。目前嵌入式系统中常用的通用设备接口有 <strong>GPIO</strong> 接口（通用可编程接口）、<strong>UART</strong> 接口（通用串行通信接口）、<strong>Ethernet接口</strong>（以太网接口）、<strong>USB接口</strong>（通用串行总线接口）、I2C接口（现场总线接口）、<strong>I2S接口</strong>、<strong>SPI接口</strong>（串行外围设备接口）、<strong>CAN总线接口</strong>、<strong>Bluetooth接口</strong>（蓝牙接口）、<strong>Camera Link</strong>接口、<strong>SD卡接口等</strong>。</p>
+</li>
+</ul>
+<hr>
+<h2 id="14-嵌入式操作系统">1.4 嵌入式操作系统</h2>
+<p>嵌入式操作系统通常包括与硬件相关的底层 <strong>驱动</strong> 软件、系统 <strong>内核</strong>、设备驱动接口、<strong>通信协议</strong>、<strong>图形界面</strong>、标准化 <strong>浏览器</strong>等。嵌入式操作系统负责嵌入式系统的全部软件、硬件资源的分配、任务 <strong>调度</strong>，<strong>控制</strong>、协调并发活动。</p>
+<ul>
+<li>
+<p>嵌入式操作系统的发展：<br>
+<strong>第一阶段：嵌入式系统的出现阶段</strong><br>
+<strong>第二阶段：以嵌入式CPU为基础</strong><br>
+<strong>第三阶段：通用的嵌入式实时操作系统阶段</strong>：代表就是Linux、VxWorks等。</p>
+</li>
+<li>
+<p>按照对任务响应的 <strong>实时性</strong> 来分类，嵌入式操作系统分为嵌入式非实时操作系统和嵌入式实时操作系统（RTOS）</p>
+<p>嵌入式非实时操作系统：嵌入式非实时操作系统主要 <strong>面向消费类产品</strong> 应用领域。大部分都支持多用户和多进程，负责管理众多的进程并为它们分配系统资源，属于 <strong>不可抢占式操作系统</strong>。<br>
+典型的非实时操作系统是Linux、iOS等。</p>
+<p>嵌入式实时操作系统：嵌入式实时操作系统主要 <strong>面向控制</strong>、<strong>通信等</strong> 领域。实时操作系统除了要满足应用的功能需求，还要满足应用提出的实时性要求，属于抢占式操作系统。</p>
+</li>
+<li>
+<p>嵌入式实时操作系统的功能</p>
+<p>任务管理：任务管理通常包含 <strong>优先级</strong> 设置、多任务调度机制和时间确定性等部分。<br>
+任务同步与通信机制：如<strong>消息邮箱、消息队列、管道和共享内存。</strong><br>
+内存管理<br>
+中断处理：<strong>中断处理</strong> 是整个运行系统中优先级最高的代码，它可以抢占任何任务级代码运行。</p>
+</li>
+<li>
+<p>常用的嵌入式操作系统——<strong>Linux</strong></p>
+</li>
+</ul>
+<hr>
+<h2 id="第一章课后习题">第一章课后习题</h2>
+<h3 id="1-嵌入式系统定义是什么它由哪几部分组成">1. 嵌入式系统定义是什么?它由哪几部分组成?</h3>
+<p>国内普遍认同定义：<br>
+嵌入式系统就是一个具有特定功能或用途的<strong>计算机软硬件集合体</strong>。</p>
+<p>嵌入式系统基本构成：<br>
+一般可分为<strong>硬件</strong>和<strong>软件</strong>两部分。</p>
+<p>硬件：<strong>嵌入式处理器、外围硬件设备、电源、I/O接口电路等</strong>；<br>
+软件：<strong>嵌入式操作系统（可选）、应用程序和驱动程序。</strong></p>
+<hr>
+<h3 id="2-试说明冯诺依曼计算机与现代计算机的结构组成">2. 试说明冯·诺依曼计算机与现代计算机的结构组成。</h3>
+<p>冯·诺依曼计算机结构由五大部分组成：运算器、控制器、存储器、输入设备和输出设备。现代计算机在此基础上进行了扩展和优化，增加了多级缓存、并行处理、多核处理器等技术，以提高计算效率和处理能力。此外，现代计算机还引入了图形处理单元（GPU）、专用集成电路（ASIC）等专用硬件来处理特定任务。</p>
+<hr>
+<h2 id="3-什么是地址码-操作数">3. 什么是地址码、操作数?</h2>
+<p>地址码是指在指令中用于指定操作数存储位置的部分，它告诉计算机从哪里获取或存储数据。操作数是指令中实际进行运算或操作的数据，可以是立即数、寄存器中的数据或存储器中的数据</p>
+<hr>
+<h2 id="4-什么是cisc-risc指令系统二者有什么区别">4. 什么是CISC、RISC指令系统?二者有什么区别?</h2>
+<p>CISC（复杂指令集计算机）指令系统具有复杂的指令集，每条指令可以执行多个低级操作，旨在减少程序的指令数量，提高编程效率；RISC（精简指令集计算机）指令系统具有精简的指令集，每条指令执行一个简单的操作，通常在一个时钟周期内完成，旨在简化硬件设计，提高指令执行速度。CISC和RISC的主要区别在于指令集复杂度、指令执行速度、硬件设计和编程效率。</p>
+<hr>
+<h2 id="5-嵌入式系统处理器有哪几种如何选择">5. 嵌入式系统处理器有哪几种?如何选择?</h2>
+<p>嵌入式微处理器 MPU<br>
+嵌入式微控制器 MCU<br>
+嵌入式数字信号处理器 EDSP<br>
+嵌入式片上系统 SoC</p>
+<p><strong>选型设计原则</strong>：在满足应用要求的前提下，一般选择<strong>集成度高</strong>的嵌入式处理器SoC/SOPC芯片，以尽可能少的硬件构件进行设计。</p>
+<hr>
+<h2 id="6-嵌入式系统存储器从功能上分为哪两类一般采用何种类型存储器件">6. 嵌入式系统存储器从功能上分为哪两类?一般采用何种类型存储器件?</h2>
+<p>嵌入式系统存储器从功能上分为两类：程序存储器和数据存储器。程序存储器通常采用闪存（Flash）或只读存储器（ROM），用于存储固件和程序代码；数据存储器通常采用随机存取存储器（RAM），用于存储运行时的数据和变量。</p>
+<hr>
+<h2 id="7-io与cpu信息传送控制方式是什么">7. IO与CPU信息传送控制方式是什么?</h2>
+<p>IO与CPU信息传送控制方式主要有三种：程序控制方式、中断控制方式和DMA（直接存储器访问）控制方式。程序控制方式由CPU通过执行程序指令直接控制IO设备；中断控制方式通过IO设备向CPU发送中断请求，CPU响应中断后进行数据传输；DMA控制方式由DMA控制器直接在内存和IO设备之间传输数据，减少CPU的参与，提高传输效率。</p>
+<hr>
+<h2 id="8-嵌入式实时操作系统定义是什么典型的嵌入式实时操作系统有哪几种">8. 嵌入式实时操作系统定义是什么?典型的嵌入式实时操作系统有哪几种?</h2>
+<p>嵌入式实时操作系统（RTOS）是一种专门为嵌入式系统设计的操作系统，能够在严格的时间限制内处理任务，确保系统的实时性和可靠性。典型的嵌入式实时操作系统有FreeRTOS、VxWorks、RTEMS、μC/OS-II和QNX等。</p>
+<hr>
+<h2 id="9-试说明嵌入式系统调试过程并说明嵌入式系统有哪几种调试技术">9.  试说明嵌入式系统调试过程，并说明嵌入式系统有哪几种调试技术。</h2>
+<p>嵌入式系统调试过程通常包括以下步骤：代码编写、编译、下载到目标硬件、运行和测试、发现问题、调试和修复。调试过程中需要反复进行这些步骤，直到系统稳定运行。<br>
+串口调试、仿真器调试、JTAG或SWD在线调试等</p>
+<hr>
+<h2 id="10-嵌入式系统与计算机系统有什么区别">10. 嵌入式系统与计算机系统有什么区别?</h2>
+
+            </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      Carl
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://carlzzdr.fun/post/qian-ru-shi-qi-mo-zong-jie/" title="嵌入式期末 第一章">https://carlzzdr.fun/post/qian-ru-shi-qi-mo-zong-jie/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="嵌入式期末 第二章" href="https://carlzzdr.fun/post/qian-ru-shi-qi-mo-di-er-zhang/">嵌入式期末 第二章</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="嵌入式期末 第二章" href="https://carlzzdr.fun/post/qian-ru-shi-qi-mo-di-er-zhang/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="Markdown 主要格式用法" href="https://carlzzdr.fun/post/markdown-zhu-yao-ge-shi-yong-fa/">Markdown 主要格式用法</a>
+        <a class="nav-mobile-next" title="Markdown 主要格式用法" href="https://carlzzdr.fun/post/markdown-zhu-yao-ge-shi-yong-fa/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+            
+  
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-box">
+  <footer class="footer">
+    <center id="runTimeBox">
+      已运行:<span id="run_time"></span>
+    </center>
+    <span id="busuanzi_container_site_pv">浏览数:<span id="busuanzi_value_site_pv"></span> 次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">访客数:<span id="busuanzi_value_site_uv"></span> 人</span>
+
+    <script>
+      BirthDay = new Date('');
+      if (BirthDay.getTime()) {
+        function runTime() {
+          str = "";
+          today = new Date();
+          timeold = today.getTime() - BirthDay.getTime();
+          msPerDay = 24 * 60 * 60 * 1000;
+          e_daysold = timeold / msPerDay;
+          daysold = Math.floor(e_daysold);
+          str += daysold + "天";
+          return str;
+        }
+        setInterval(function () {
+          $("#run_time").html(runTime());
+        }, 1000);
+      } else {
+        document.querySelector('.footer').removeChild(document.querySelector('#runTimeBox'));
+      }
+    </script>
+    <div class="poweredby">
+      Powered by Gridea&ChatGPT
+    </div>
+  </footer>
+  
+    
+        <div class="gemini back-to-top" id="back_to_top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span class="scrollpercent"> <span id="back_to_top_text">0</span>% </span>
+            
+        </div>
+        
+                  
+                        
+</div>
+<script>
+  let sideBarOpen = "sidebar-open";
+  let body = document.body;
+  let back2Top = document.querySelector("#back_to_top"),
+    back2TopText = document.querySelector("#back_to_top_text"),
+    drawerBox = document.querySelector("#drawer_box"),
+    rightSideBar = document.querySelector(".sidebar"),
+    viewport = document.querySelector("body");
+
+  function scrollAnimation(currentY, targetY) {
+    let needScrollTop = targetY - currentY;
+    let _currentY = currentY;
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10);
+      _currentY += dist;
+      window.scrollTo(_currentY, currentY);
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY);
+      } else {
+        window.scrollTo(_currentY, targetY);
+      }
+    }, 1);
+  }
+
+  back2Top.addEventListener("click", function (e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+
+  window.addEventListener("scroll", function (e) {
+    let percent =
+      (document.scrollingElement.scrollTop /
+        (document.scrollingElement.scrollHeight -
+          document.scrollingElement.clientHeight)) *
+      100;
+    if (percent > 1 && !back2Top.classList.contains("back-top-active")) {
+      back2Top.classList.add("back-top-active");
+    }
+    if (percent == 0) {
+      back2Top.classList.remove("back-top-active");
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  let hasCacu = false;
+  window.addEventListener("resize", function (e) {
+    calcuHeight();
+  });
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (
+      (!hasCacu && back2Top.classList.contains("pisces")) ||
+      back2Top.classList.contains("gemini")
+    ) {
+      let sideBar = document.querySelector(".sidebar");
+      let navUl = document.querySelector("#site_nav");
+      sideBar.style =
+        "margin-top:" + (navUl.offsetHeight + navUl.offsetTop + 15) + "px;";
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+
+  let open = false,
+    MOTION_TIME = 300,
+    RIGHT_MOVE_DIS = "320px";
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll(".right-motion");
+    let right = drawerBox.classList.contains("right");
+
+    let transitionDir = right
+      ? "transition.slideRightIn"
+      : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingRight: "0px",
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS,
+      };
+      closeProp = {
+        paddingLeft: "0px",
+      };
+    }
+
+    drawerBox.onclick = function () {
+      open = !open;
+      jQuery.Velocity(rightSideBar, "stop");
+      jQuery.Velocity(viewport, "stop");
+      jQuery.Velocity(rightMotions, "stop");
+      if (open) {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: RIGHT_MOVE_DIS,
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, transitionDir, {});
+            },
+          }
+        );
+        jQuery.Velocity(viewport, openProp, {
+          duration: MOTION_TIME,
+        });
+      } else {
+        jQuery.Velocity(
+          rightSideBar,
+          {
+            width: "0px",
+          },
+          {
+            duration: MOTION_TIME,
+            begin: function () {
+              jQuery.Velocity(rightMotions, {
+                opacity: 0,
+              });
+            },
+          }
+        );
+        jQuery.Velocity(viewport, closeProp, {
+          duration: MOTION_TIME,
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle("muse-line");
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    };
+  }
+
+  // 链接跳转
+  let newWindow = "false";
+  if (newWindow === "true") {
+    let links = document.querySelectorAll(".post-body a");
+    links.forEach((item) => {
+      if (!item.classList.contains("btn")) {
+        item.setAttribute("target", "_blank");
+      }
+    });
+  }
+
+  let faSearch = document.querySelector("#fa_search");
+  faSearch &&
+    faSearch.addEventListener("click", function () {
+      document.querySelector("#search_mask").style = "";
+    });
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+
+  // 离开当前页title变化
+  var leaveTitle = "";
+  var normal_title = document.title;
+  if (leaveTitle) {
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState == "hidden") {
+        normal_title = document.title;
+        document.title = leaveTitle;
+      } else {
+        document.title = normal_title;
+      }
+    });
+  }
+</script>
+
+<link rel="stylesheet" href="/media/css/jquery.fancybox.css" />
+<script src="/media/js/jquery.fancybox.js"></script>
+
+<script>
+  let images = document.querySelectorAll(".section img");
+  images.forEach((image) => {
+    var parent = image.parentElement;
+    var next = image.nextElementSibling;
+    parent.removeChild(image);
+    var aelem = document.createElement("a");
+    aelem.href = image.src;
+    aelem.dataset["fancybox"] = "images";
+    aelem.dataset["rel"] = "fancybox-button";
+    aelem.classList.add("fancybox");
+    aelem.appendChild(image);
+    parent.insertBefore(aelem, next);
+  });
+</script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip"> </p>
+    </div>
+    <div class="bottom">
+      
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        jQuery.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        jQuery.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        jQuery.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        jQuery.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      jQuery.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      jQuery.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
+  </div>
+</body>
+
+  <div class="search-mask" id="search_mask" style="display: none;">
+  <div class="search-box">
+    <div class="search-title">
+      <i class="fa fa-search"></i>
+      <div class="input-box">
+        <input id="search" type="text" class="language" data-lan="search" placeholder="搜索">
+      </div>
+      <i id="close" class="fa fa-times-circle"></i>
+    </div>
+    <div class="stat-box">
+      <span id="stat_count">0</span><span class="language" data-lan="stat">条相关条目，使用了</span><span id="stat_times">0</span><span class="language" data-lan="stat-time">毫秒</span>
+      <hr>
+    </div>
+    <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://carlzzdr.fun/post/16-jie-lan-qiao-bei-b-zu-sheng-yi-zhun-bei/"" data-c="
+          &lt;h1 id=&#34;知识点速过提纲&#34;&gt;知识点速过提纲&lt;/h1&gt;
+&lt;h2 id=&#34;做出暴力题的基本语法&#34;&gt;做出暴力题的基本语法&lt;/h2&gt;
+&lt;p&gt;for，while，cin，cout，if&lt;br&gt;
+略(●&#39;◡&#39;●)&lt;/p&gt;
+&lt;h2 id=&#34;常用algorithm库函数&#34;&gt;常用algorithm库函数&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;#include&amp;lt;algorithm&amp;gt;
+
+max(x,y);//返回最大值
+
+max(x,max(y,z));//技巧
+
+min(x,y);//返回最小值
+
+abs(x);//x绝对值
+
+swap(x,y);//交换
+
+reverse(it,it2);//迭代器或数组，在[it,it2）范围内元素反转
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;sort-函数&#34;&gt;sort( )函数&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;sort(首元素地址，尾元素下一个地址，比较函数);
+//不加比较函数默认从小到大
+
+bool cmp(int a, int b){
+    return a&amp;gt;b;//当a&amp;gt;b时候把a放在b的前面
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;常见的对string的应用&#34;&gt;常见的对string的应用&lt;/h2&gt;
+&lt;h2 id=&#34;高精度的基本思想&#34;&gt;高精度的基本思想&lt;/h2&gt;
+&lt;h2 id=&#34;公约数与公因数-排列组合&#34;&gt;公约数与公因数、排列组合&lt;/h2&gt;
+&lt;h2 id=&#34;深度优先搜索&#34;&gt;深度优先搜索&lt;/h2&gt;
+&lt;p&gt;深度优先算法的通用模板&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;返回值类型 dfs(参数) {
+    if (终止条件) {
+        存储结果/返回;
+    }
+    
+    for (选择 : 选择列表) {
+        if (剪枝条件) continue;
+        
+        做选择;
+        if (dfs(新参数)) 
+            return true;  // 如果只需要一个解
+        撤销选择;
+    }
+    
+    return false;  // 或其他适当返回值
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;小技巧&#34;&gt;小技巧&lt;/h1&gt;
+&lt;h2 id=&#34;提高输入输出效率&#34;&gt;提高输入输出效率&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;ios::sync_with_stdio(false);
+cin.tie(nullptr);
+cout.tie(nullptr);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;是 C++ 中用于优化输入输出性能的一种方法。它的作用是关闭 C++ 标准流（如 cin 和 cout）与 C 标准流（如 scanf 和 printf）之间的同步。&lt;br&gt;
+是一种优化输入输出性能的技巧，适用于需要频繁使用 cin 和 cout 的场景。&lt;br&gt;
+一旦关闭同步，就不要混用 C 和 C++ 的输入输出函数&lt;/p&gt;
+&lt;h1 id=&#34;十五届题型统计&#34;&gt;十五届题型统计&lt;/h1&gt;
+&lt;h2 id=&#34;填空&#34;&gt;填空&lt;/h2&gt;
+&lt;h3 id=&#34;一-握手问题&#34;&gt;一 握手问题&lt;/h3&gt;
+&lt;p&gt;简单数学，排列组合计算&lt;/p&gt;
+&lt;h3 id=&#34;二-小球反弹&#34;&gt;二 小球反弹&lt;/h3&gt;
+&lt;p&gt;数学，暴力搜索答案可解&lt;/p&gt;
+&lt;h3 id=&#34;三-好数&#34;&gt;三 好数&lt;/h3&gt;
+&lt;p&gt;暴力，字符数字转换，&lt;/p&gt;
+&lt;h3 id=&#34;四-r格式&#34;&gt;四 R格式&lt;/h3&gt;
+&lt;p&gt;高精度，string&lt;/p&gt;
+&lt;h3 id=&#34;五-宝石组合&#34;&gt;五 宝石组合&lt;/h3&gt;
+&lt;p&gt;最大公约数/公倍数，&lt;/p&gt;
+">16届蓝桥杯B组省一准备</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://carlzzdr.fun/post/shu-ju-jie-gou-suo-xu-de-c-yu-yan-de-ji-chu-zhi-shi-su-cha/"" data-c="
+          &lt;h2 id=&#34;一-变量与数据类型&#34;&gt;&lt;strong&gt;一、变量与数据类型&lt;/strong&gt;&lt;/h2&gt;
+&lt;h4 id=&#34;1-基本数据类型内存占用与取值范围与编译环境相关&#34;&gt;1. &lt;strong&gt;基本数据类型&lt;/strong&gt;（内存占用与取值范围与编译环境相关）&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;示例&lt;/th&gt;
+&lt;th&gt;常见用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;整数类型&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int a = 10;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;计数器、索引&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;float&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;单精度浮点数&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;float b = 3.14f;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;小数存储（精度较低）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;double&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;双精度浮点数&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;double c = 3.1415;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;精度高的小数计算&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;char&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;字符或小整数&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;char d = &#39;A&#39;;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ASCII字符、标志位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;2-类型修饰符&#34;&gt;2. &lt;strong&gt;类型修饰符&lt;/strong&gt;&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;修饰符&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;th&gt;示例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;short&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;缩短整型长度（如 &lt;code&gt;short int&lt;/code&gt;，占用 2 字节）&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;short s = 100;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;long&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;扩展整型长度（如 &lt;code&gt;long int&lt;/code&gt;，通常 4/8 字节）&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;long l = 1000000L;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;signed&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;声明有符号数（默认行为）&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;signed int x = -5;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;unsigned&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;声明无符号数（仅非负值，范围扩大）&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;unsigned int y = 255;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;char&lt;/code&gt; 类型默认为 &lt;code&gt;signed&lt;/code&gt; 或 &lt;code&gt;unsigned&lt;/code&gt;，由编译器决定。需显式声明避免歧义：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;signed char c = -10;   // 范围: -128 ~ 127
+unsigned char c = 200; // 范围: 0 ~ 255
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-常量定义&#34;&gt;3. &lt;strong&gt;常量定义&lt;/strong&gt;&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方式&lt;/th&gt;
+&lt;th&gt;特点&lt;/th&gt;
+&lt;th&gt;示例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;只读变量，编译时检查，占用内存&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;const int MAX = 100;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;#define&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;预处理宏替换，不占内存，无类型检查&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;#define MAX 100&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;关键区别&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;const&lt;/code&gt; 常量有作用域（如函数内局部常量），而 &lt;code&gt;#define&lt;/code&gt; 全局生效。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;陷阱&lt;/strong&gt;：宏替换可能导致意外错误（如 &lt;code&gt;#define SQUARE(x) x*x&lt;/code&gt;，调用 &lt;code&gt;SQUARE(a+1)&lt;/code&gt; 会展开为 &lt;code&gt;a+1*a+1&lt;/code&gt;）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;4-输入输出函数&#34;&gt;4. &lt;strong&gt;输入输出函数&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/strong&gt;：格式化输出&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int age = 25;
+printf(&amp;quot;Age: %d, Pi: %.2f\n&amp;quot;, age, 3.14159); // 输出: Age: 25, Pi: 3.14
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;scanf()&lt;/code&gt;&lt;/strong&gt;：格式化输入&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int num;
+printf(&amp;quot;Enter a number: &amp;quot;);
+scanf(&amp;quot;%d&amp;quot;, &amp;amp;num); // &amp;amp; 取地址运算符
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;格式符速查&lt;/strong&gt;：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;格式符&lt;/th&gt;
+&lt;th&gt;类型&lt;/th&gt;
+&lt;th&gt;示例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%d&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;int&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;scanf(&amp;quot;%d&amp;quot;, &amp;amp;a);&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%f&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;float&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;printf(&amp;quot;%f&amp;quot;, b);&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%lf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;double&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;scanf(&amp;quot;%lf&amp;quot;, &amp;amp;c);&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%c&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;char&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;printf(&amp;quot;%c&amp;quot;, d);&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%s&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;字符串&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;scanf(&amp;quot;%s&amp;quot;, str);&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;易错点&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;scanf&lt;/code&gt; 读取字符串时，数组越界风险（建议用 &lt;code&gt;fgets&lt;/code&gt; 或限制宽度：&lt;code&gt;scanf(&amp;quot;%19s&amp;quot;, str)&lt;/code&gt;）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;二-运算符与表达式&#34;&gt;&lt;strong&gt;二、运算符与表达式&lt;/strong&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;1-算术运算符&#34;&gt;1. &lt;strong&gt;算术运算符&lt;/strong&gt;&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;运算符&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;示例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;+ - * /&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;加减乘除&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int val = (10 + 3) * 2;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;取模（余数）&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;5 % 2 = 1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;注意事项&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;整数除法会截断小数部分（如 &lt;code&gt;5 / 2 = 2&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;浮点数不能取模（需用 &lt;code&gt;fmod()&lt;/code&gt; 函数）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-关系与逻辑运算符&#34;&gt;2. &lt;strong&gt;关系与逻辑运算符&lt;/strong&gt;&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;类别&lt;/th&gt;
+&lt;th&gt;运算符&lt;/th&gt;
+&lt;th&gt;示例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;关系运算&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;gt; &amp;lt; &amp;gt;= &amp;lt;=&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;if (a &amp;gt;= 60) {...}&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;相等判断&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;== !=&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;while (x != 0) {...}&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;逻辑运算&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;(与)  `&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;短路求值&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;expr1 &amp;amp;&amp;amp; expr2&lt;/code&gt;：若 &lt;code&gt;expr1&lt;/code&gt; 为假，不再执行 &lt;code&gt;expr2&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;expr1 || expr2&lt;/code&gt;：若 &lt;code&gt;expr1&lt;/code&gt; 为真，不再执行 &lt;code&gt;expr2&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-位运算符&#34;&gt;3. &lt;strong&gt;位运算符&lt;/strong&gt;&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;运算符&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;示例（二进制操作）&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;amp;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按位与&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0b1010 &amp;amp; 0b1100 = 0b1000&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;`&lt;/td&gt;
+&lt;td&gt;`&lt;/td&gt;
+&lt;td&gt;按位或&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;^&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按位异或&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0b1010 ^ 0b1100 = 0b0110&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;~&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按位取反&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;~0b1010 = 0b0101&lt;/code&gt;（具体值取决于位数）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;左移（乘2^n）&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;5 &amp;lt;&amp;lt; 2 = 20&lt;/code&gt;（0b101 → 0b10100）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;右移（除2^n）&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;20 &amp;gt;&amp;gt; 2 = 5&lt;/code&gt;（逻辑右移或算术右移，视类型而定）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;常见用途&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;掩码操作：&lt;code&gt;flags = flags &amp;amp; (~MASK);&lt;/code&gt;（清除特定位）&lt;/li&gt;
+&lt;li&gt;快速计算：&lt;code&gt;x &amp;lt;&amp;lt; n&lt;/code&gt; 代替 &lt;code&gt;x * 2^n&lt;/code&gt;（性能优化）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;4-指针运算符&#34;&gt;4. &lt;strong&gt;指针运算符&lt;/strong&gt;&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;运算符&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;th&gt;示例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;amp;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;取变量地址&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int a; int *p = &amp;amp;a;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;解引用指针&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;*p = 10;&lt;/code&gt;（等价于 &lt;code&gt;a = 10&lt;/code&gt;）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;三-流程控制&#34;&gt;&lt;strong&gt;三、流程控制&lt;/strong&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;1-条件语句&#34;&gt;1. &lt;strong&gt;条件语句&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;if-else&lt;/code&gt;&lt;/strong&gt;（支持嵌套）：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;if (score &amp;gt;= 90) {
+    printf(&amp;quot;A&amp;quot;);
+} else if (score &amp;gt;= 60) {
+    printf(&amp;quot;Pass&amp;quot;);
+} else {
+    printf(&amp;quot;Fail&amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;switch-case&lt;/code&gt;&lt;/strong&gt;（仅支持整型或枚举类型）：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;switch (option) {
+    case 1: 
+        printf(&amp;quot;Start game&amp;quot;);
+        break;  // 必须加 break 防止贯穿
+    case 2:
+        printf(&amp;quot;Load game&amp;quot;);
+        break;
+    default:
+        printf(&amp;quot;Invalid&amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-循环语句&#34;&gt;2. &lt;strong&gt;循环语句&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;for&lt;/code&gt; 循环&lt;/strong&gt;（明确知道循环次数）：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;for (int i = 0; i &amp;lt; 10; i++) {
+    printf(&amp;quot;%d &amp;quot;, i);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;while&lt;/code&gt; 循环&lt;/strong&gt;（条件不满足时可能不执行）：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;while (x &amp;gt; 0) {
+    x--;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;do-while&lt;/code&gt; 循环&lt;/strong&gt;（至少执行一次）：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;do {
+    scanf(&amp;quot;%d&amp;quot;, &amp;amp;x);
+} while (x &amp;lt;= 0); // 确保输入为正数
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-控制关键字&#34;&gt;3. &lt;strong&gt;控制关键字&lt;/strong&gt;&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;关键字&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;th&gt;示例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;break&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;跳出循环或 &lt;code&gt;switch&lt;/code&gt; 语句&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;while(1) { break; }&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;continue&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;跳过当前循环的剩余代码，进入下一轮循环&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;for(;;) { if(x&amp;lt;0) continue; ... }&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;return&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;结束函数执行并返回值&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;return sum;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;关键学习建议&#34;&gt;&lt;strong&gt;关键学习建议&lt;/strong&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;动手练习&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;编写程序验证数据类型的取值范围（如 &lt;code&gt;limits.h&lt;/code&gt; 中的宏定义）。&lt;/li&gt;
+&lt;li&gt;测试运算符优先级（如 &lt;code&gt;a + b * c&lt;/code&gt; 与 &lt;code&gt;(a + b) * c&lt;/code&gt;）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;调试技巧&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在条件分支和循环体中插入 &lt;code&gt;printf&lt;/code&gt; 打印变量变化过程。&lt;/li&gt;
+&lt;li&gt;使用 GDB 单步调试观察控制流。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;典型错误避免&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;if (x = 0)&lt;/code&gt;（误用赋值 &lt;code&gt;=&lt;/code&gt; 而非比较 &lt;code&gt;==&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;循环条件错误导致死循环（如 &lt;code&gt;while (i &amp;lt;= 10)&lt;/code&gt; 但忘记 &lt;code&gt;i++&lt;/code&gt;）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;二-函数与模块化编程&#34;&gt;&lt;strong&gt;二、函数与模块化编程&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;1-函数定义与调用&#34;&gt;1. &lt;strong&gt;函数定义与调用&lt;/strong&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;基本语法&#34;&gt;基本语法：&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// 函数定义
+返回值类型 函数名(参数列表) {
+    // 函数体
+    return 返回值; // 若无返回值（void），可省略
+}
+
+// 示例：计算两数之和
+int add(int a, int b) {
+    return a + b;
+}
+
+// 调用函数
+int result = add(3, 5); // result = 8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;核心要点&#34;&gt;核心要点：&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;函数名&lt;/strong&gt;：需唯一且描述功能，如 &lt;code&gt;sortList()&lt;/code&gt;、&lt;code&gt;findMax()&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;参数列表&lt;/strong&gt;：可以为空（&lt;code&gt;void&lt;/code&gt;），或指定类型与数量（如 &lt;code&gt;int a, int *arr&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;返回值类型&lt;/strong&gt;：与函数定义的返回类型一致，不返回时用 &lt;code&gt;void&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2-函数声明与原型&#34;&gt;2. &lt;strong&gt;函数声明与原型&lt;/strong&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;声明的作用&#34;&gt;声明的作用：&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;避免编译错误&lt;/strong&gt;：告知编译器函数的存在（尤其在函数调用先于定义时）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;约定接口&lt;/strong&gt;：明确函数输入与输出的类型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;原型示例&#34;&gt;原型示例：&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// 函数原型声明（可放在头文件.h中）
+int add(int a, int b);
+
+int main() {
+    int sum = add(2, 3); // 直接调用
+    return 0;
+}
+
+// 函数实现（定义）
+int add(int a, int b) {
+    return a + b;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;3-参数传递&#34;&gt;3. &lt;strong&gt;参数传递&lt;/strong&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;1值传递pass-by-value&#34;&gt;（1）值传递（Pass by Value）&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;特点&lt;/strong&gt;：形参是实参的拷贝，函数内修改形参不影响实参。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void swap(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp; 
+    // 仅交换了函数内的拷贝，不影响外部的 x 和 y
+}
+
+int main() {
+    int x = 5, y = 10;
+    swap(x, y);
+    printf(&amp;quot;x=%d, y=%d&amp;quot;, x, y); // 输出 x=5, y=10
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2指针传递pass-by-pointer&#34;&gt;（2）指针传递（Pass by Pointer）&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;特点&lt;/strong&gt;：通过传递地址，函数内可修改实参的值。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应用场景&lt;/strong&gt;：需修改外部变量或传递大型数据结构（如数组）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x = 5, y = 10;
+    swap(&amp;amp;x, &amp;amp;y);
+    printf(&amp;quot;x=%d, y=%d&amp;quot;, x, y); // 输出 x=10, y=5
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;4-递归函数&#34;&gt;4. &lt;strong&gt;递归函数&lt;/strong&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;1递归基本原理&#34;&gt;（1）递归基本原理&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;：函数直接或间接调用自身。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;核心组成&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;基线条件（Base Case）&lt;/strong&gt;：递归终止的条件，防止无限递归。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;递归条件（Recursive Case）&lt;/strong&gt;：调用自身的逻辑。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2经典示例阶乘&#34;&gt;（2）经典示例：阶乘&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int factorial(int n) {
+    if (n &amp;lt;= 1) {       // 基线条件
+        return 1;
+    } else {            // 递归条件
+        return n * factorial(n - 1);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;3经典示例斐波那契数列&#34;&gt;（3）经典示例：斐波那契数列&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int fibonacci(int n) {
+    if (n &amp;lt;= 1) {       // 基线条件
+        return n;
+    } else {            // 递归条件
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;4栈机制与递归调用&#34;&gt;（4）栈机制与递归调用&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;调用栈（Call Stack）&lt;/strong&gt;：
+&lt;ol&gt;
+&lt;li&gt;每次递归调用会将当前函数状态（变量、返回地址）压入栈。&lt;/li&gt;
+&lt;li&gt;到达基线条件后，栈帧逐层弹出，返回值反向传递。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;栈溢出风险&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// 错误示例：缺少基线条件导致栈溢出
+void infiniteRecursion() {
+    infiniteRecursion(); // 无限递归，最终栈溢出（Stack Overflow）
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;5递归设计要点&#34;&gt;（5）递归设计要点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;清晰的基线条件&lt;/strong&gt;：必须覆盖所有可能的终止场景。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;规模递减&lt;/strong&gt;：每次递归应向基线条件靠近（如 &lt;code&gt;n-1&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;避免重复计算&lt;/strong&gt;：斐波那契数列的递归实现因重复计算效率极低，可通过缓存（Memoization）优化。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;5-模块化编程实践&#34;&gt;5. &lt;strong&gt;模块化编程实践&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;拆分功能&lt;/strong&gt;：将程序划分为独立的函数模块（如 &lt;code&gt;sort()&lt;/code&gt;、&lt;code&gt;search()&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;提高复用性&lt;/strong&gt;：常用功能封装为函数（如 &lt;code&gt;printArray()&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// 模块：打印数组
+void printArray(int *arr, int size) {
+    for (int i = 0; i &amp;lt; size; i++) {
+        printf(&amp;quot;%d &amp;quot;, arr[i]);
+    }
+    printf(&amp;quot;\n&amp;quot;);
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4};
+    printArray(arr, 4); // 调用模块
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;核心要点总结&#34;&gt;&lt;strong&gt;核心要点总结&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;值传递 vs 指针传递&lt;/strong&gt;：指针传递用于需要修改实参或传递大型数据时。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;递归设计关键&lt;/strong&gt;：基线条件不可少，确保递归最终终止。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;模块化核心思想&lt;/strong&gt;：函数是逻辑单元，需职责单一且接口清晰。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;三-核心重点指针&#34;&gt;&lt;strong&gt;三、核心重点：指针&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;指针是C语言的灵魂&lt;/strong&gt;，其灵活性与底层内存操作能力是数据结构（链表、树、图等）实现的核心工具。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;1-指针基础&#34;&gt;&lt;strong&gt;1. 指针基础&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;定义与初始化&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int a = 10;        // 定义一个整型变量
+int *p = &amp;amp;a;       // 定义指针p，指向a的地址
+printf(&amp;quot;%p&amp;quot;, p);   // 输出a的地址（如0x7ffc...）
+printf(&amp;quot;%d&amp;quot;, *p);  // 通过指针访问a的值（输出10）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;核心理解&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;*p&lt;/code&gt; 中的 &lt;code&gt;*&lt;/code&gt; 是解引用操作符，通过地址访问数据。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;amp;a&lt;/code&gt; 获取变量 &lt;code&gt;a&lt;/code&gt; 的地址。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;指针的算术运算&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int arr[5] = {1, 2, 3, 4, 5};
+int *p = arr;       // p指向数组首元素
+p++;                // p指向arr[1]（地址移动sizeof(int)字节）
+printf(&amp;quot;%d&amp;quot;, *p);   // 输出2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;核心规则&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;p + n&lt;/code&gt; 的实际地址为 &lt;code&gt;p + n * sizeof(type)&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;常用于遍历数组：&lt;code&gt;for(int *p=arr; p&amp;lt;arr+5; p++){ ... }&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;多级指针&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int a = 10;
+int *p = &amp;amp;a;
+int **pp = &amp;amp;p;       // 二级指针，指向指针p的地址
+printf(&amp;quot;%d&amp;quot;, **pp);  // 解引用两次，输出a的值10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;应用场景&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;动态二维数组（如&lt;code&gt;int **matrix&lt;/code&gt;）的实现&lt;/li&gt;
+&lt;li&gt;函数中需要修改指针指向时（如链表头指针的修改）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;2-指针与数组&#34;&gt;&lt;strong&gt;2. 指针与数组&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;数组名与指针的关系&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int arr[3] = {10, 20, 30};
+int *p = arr;        // arr等价于&amp;amp;arr[0]
+printf(&amp;quot;%d&amp;quot;, p[1]);  // 输出20（等价于*(p+1)）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;核心区别&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;数组名是常量指针（不可修改 &lt;code&gt;arr++&lt;/code&gt; ❌）&lt;/li&gt;
+&lt;li&gt;指针是变量（可修改 &lt;code&gt;p++&lt;/code&gt; ✅）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;指针遍历多维数组&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int matrix[2][3] = {{1,2,3}, {4,5,6}};
+int *p = &amp;amp;matrix[0][0];  // 按一维方式访问二维数组
+for(int i=0; i&amp;lt;6; i++) {
+    printf(&amp;quot;%d &amp;quot;, *(p + i));  // 输出1 2 3 4 5 6
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;高级用法&lt;/strong&gt;：将多维数组强制转换为一维指针：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int (*ptr)[3] = matrix;  // 指向含3个元素的一维数组的指针
+printf(&amp;quot;%d&amp;quot;, ptr[1][2]); // 输出6（等价于matrix[1][2]）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;3-函数指针&#34;&gt;&lt;strong&gt;3. 函数指针&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;定义与使用&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int add(int a, int b) { return a + b; }
+int sub(int a, int b) { return a - b; }
+
+int main() {
+    int (*func_ptr)(int, int);  // 定义函数指针
+    func_ptr = add;             // 指向add函数
+    printf(&amp;quot;%d&amp;quot;, func_ptr(3, 2)); // 输出5
+    func_ptr = sub;             // 切换指向sub函数
+    printf(&amp;quot;%d&amp;quot;, func_ptr(3, 2)); // 输出1
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;应用场景&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;回调函数（如排序算法中自定义比较函数）&lt;/li&gt;
+&lt;li&gt;实现类似面向对象的“多态”行为&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;典型用途：qsort函数的自定义比较&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;lt;stdlib.h&amp;gt;
+int compare(const void *a, const void *b) {
+    return (*(int*)a - *(int*)b);  // 升序排序
+}
+int main() {
+    int arr[] = {5, 2, 8, 1};
+    qsort(arr, 4, sizeof(int), compare);
+    // 输出排序后的数组：1 2 5 8
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;关键实验与理解&#34;&gt;&lt;strong&gt;关键实验与理解&lt;/strong&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;指针反转字符串&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void reverse(char *str) {
+    char *start = str;
+    char *end = str + strlen(str) - 1;
+    while (start &amp;lt; end) {
+        char temp = *start;
+        *start = *end;
+        *end = temp;
+        start++;
+        end--;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;&lt;strong&gt;动态二维数组的创建与释放&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int **create_matrix(int rows, int cols) {
+    int **matrix = (int**)malloc(rows * sizeof(int*));
+    for (int i=0; i&amp;lt;rows; i++) {
+        matrix[i] = (int*)malloc(cols * sizeof(int));
+    }
+    return matrix;
+}
+
+void free_matrix(int **matrix, int rows) {
+    for (int i=0; i&amp;lt;rows; i++) free(matrix[i]);
+    free(matrix);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;注意事项&#34;&gt;&lt;strong&gt;注意事项&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;野指针&lt;/strong&gt;：指针未初始化或释放后未置空（应养成 &lt;code&gt;free(p); p = NULL;&lt;/code&gt; 的习惯）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;指针类型匹配&lt;/strong&gt;：不同类型指针间的赋值可能导致未定义行为&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数组越界&lt;/strong&gt;：指针运算超出数组范围是常见错误（需确保 &lt;code&gt;p&lt;/code&gt; 的有效性）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;掌握指针的灵魂在于 &lt;strong&gt;理解内存地址的直接操作&lt;/strong&gt;，这是实现链表、树、图等动态结构的基石。建议通过实际代码调试观察指针和内存的变化，例如GDB的 &lt;code&gt;x/x p&lt;/code&gt; 命令查看指针指向的内存内容。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;四-复合数据类型结构体struct与联合体union&#34;&gt;&lt;strong&gt;四、复合数据类型：结构体（&lt;code&gt;struct&lt;/code&gt;）与联合体（&lt;code&gt;union&lt;/code&gt;）&lt;/strong&gt;&lt;/h2&gt;
+&lt;h4 id=&#34;1-结构体struct&#34;&gt;&lt;strong&gt;1. 结构体（&lt;code&gt;struct&lt;/code&gt;）&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;定义与初始化&lt;/strong&gt;&lt;br&gt;
+结构体用于将不同类型的数据组合成一个逻辑单元，适用于抽象复杂对象（如链表节点、学生信息等）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义结构体模板&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// 定义一个学生结构体（相当于创建新的数据类型）
+struct Student {
+    int id;
+    char name[20];
+    float gpa;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;声明结构体变量并初始化&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// 方法1：直接定义时初始化
+struct Student s1 = {101, &amp;quot;Alice&amp;quot;, 3.8}; 
+
+// 方法2：逐个赋值
+struct Student s2;
+s2.id = 102;
+strcpy(s2.name, &amp;quot;Bob&amp;quot;);  // 字符串需使用 strcpy
+s2.gpa = 3.5;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;结构体指针与成员访问&lt;/strong&gt;&lt;br&gt;
+结构体指针用于动态内存分配或函数参数传递，成员访问通过 &lt;code&gt;-&amp;gt;&lt;/code&gt; 运算符。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// 动态创建结构体实例
+struct Student *s3 = (struct Student*)malloc(sizeof(struct Student));
+if (s3 == NULL) {
+    // 处理内存分配失败
+}
+
+// 使用指针访问成员
+s3-&amp;gt;id = 103;            // 等价于 (*s3).id = 103
+strcpy(s3-&amp;gt;name, &amp;quot;Charlie&amp;quot;);
+s3-&amp;gt;gpa = 3.9;
+
+// 释放内存
+free(s3);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;在数据结构中的核心作用&lt;/strong&gt;&lt;br&gt;
+结构体是构建链表、树等数据结构的基础，每个节点都通过结构体表示，并通过指针链接。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;链表节点示例&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;struct ListNode {
+    int val;                // 节点存储的数据
+    struct ListNode *next;  // 指向下一个节点
+};
+
+// 创建链表节点
+struct ListNode* createNode(int val) {
+    struct ListNode* node = (struct ListNode*)malloc(sizeof(struct ListNode));
+    node-&amp;gt;val = val;
+    node-&amp;gt;next = NULL;
+    return node;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;二叉树节点示例&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;struct TreeNode {
+    int data;
+    struct TreeNode *left;   // 左子树
+    struct TreeNode *right;  // 右子树
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;2-联合体union&#34;&gt;&lt;strong&gt;2. 联合体（&lt;code&gt;union&lt;/code&gt;）&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;共享内存的特性&lt;/strong&gt;&lt;br&gt;
+联合体的所有成员共享同一块内存空间，存储空间大小由最大成员决定，适合需要&lt;strong&gt;节省内存&lt;/strong&gt;的场景。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;定义与使用&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;union Data {
+    int i;      // 4字节（假设int为4字节）
+    float f;    // 4字节
+    char str[5];// 5字节
+};
+
+int main() {
+    union Data data;
+    data.i = 10;        // 此时i有效
+    printf(&amp;quot;data.i = %d\n&amp;quot;, data.i);  // 输出: 10
+
+    data.f = 3.14;      // 覆盖i的值，此时f有效
+    printf(&amp;quot;data.f = %f\n&amp;quot;, data.f);  // 输出: 3.140000
+
+    strcpy(data.str, &amp;quot;test&amp;quot;);  // 覆盖f的前4字节
+    printf(&amp;quot;data.str = %s\n&amp;quot;, data.str); // 输出: &amp;quot;test&amp;quot;
+  
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;重要规则&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;联合体同一时间只能有一个成员有效。&lt;/li&gt;
+&lt;li&gt;分配的内存大小 = 最大成员的大小（如上述 &lt;code&gt;union Data&lt;/code&gt; 大小为5字节）。&lt;/li&gt;
+&lt;li&gt;常用于网络协议解析、硬件寄存器访问等场景。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;关键区别与场景对比&#34;&gt;&lt;strong&gt;关键区别与场景对比&lt;/strong&gt;&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;特性&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;结构体（struct）&lt;/strong&gt;&lt;/th&gt;
+&lt;th&gt;&lt;strong&gt;联合体（union）&lt;/strong&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;内存分配&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;各成员独立占用内存&lt;/td&gt;
+&lt;td&gt;共享同一内存空间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;总内存大小&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;成员内存大小之和（考虑对齐）&lt;/td&gt;
+&lt;td&gt;最大成员的内存大小&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;应用场景&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;数据需同时有效（如链表节点、学生信息）&lt;/td&gt;
+&lt;td&gt;数据只需存其一（如类型转换器）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;实践注意事项&#34;&gt;&lt;strong&gt;实践注意事项&lt;/strong&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;结构体对齐问题&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;struct Example {
+    char c;    // 1字节
+    int i;     // 4字节（可能要求对齐到4字节地址）
+};
+// 总大小可能为 8 字节（受编译器对齐规则影响）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可使用 &lt;code&gt;#pragma pack(1)&lt;/code&gt; 取消对齐优化（牺牲性能节省空间）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;联合体的数据覆盖风险&lt;/strong&gt;：&lt;br&gt;
+修改一个成员可能导致其他成员的值被覆盖，需确保当前访问的是有效成员。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;动态分配结构体的释放&lt;/strong&gt;：&lt;br&gt;
+如果结构体内部有指针成员指向堆内存，需先释放内部指针再释放结构体。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;掌握结构体与联合体的灵活使用，是构建复杂数据结构（如哈希表、图等）的必要基础。核心思维是&lt;strong&gt;数据抽象&lt;/strong&gt;与&lt;strong&gt;内存管理&lt;/strong&gt;的结合。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;五-动态内存管理详解&#34;&gt;&lt;strong&gt;五、动态内存管理详解&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;动态内存管理是C语言中实现灵活数据结构（如链表、树、动态数组）的核心技术。以下内容将深入解析堆内存的操作与关键细节。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;1-堆内存操作函数&#34;&gt;&lt;strong&gt;1. 堆内存操作函数&lt;/strong&gt;&lt;/h4&gt;
+&lt;h5 id=&#34;1-malloc&#34;&gt;&lt;strong&gt;(1) &lt;code&gt;malloc&lt;/code&gt;&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;作用&lt;/strong&gt;：在堆中动态分配指定字节数的内存块，&lt;strong&gt;不初始化内存内容&lt;/strong&gt;（内容随机）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语法&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int* arr = (int*)malloc(n * sizeof(int));  // 分配n个int大小的连续内存
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;特性&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;分配的内存是连续的，适用于数组或结构体的动态创建。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;必须手动释放&lt;/strong&gt;（&lt;code&gt;free&lt;/code&gt;），否则内存泄漏。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int* p = (int*)malloc(5 * sizeof(int));  // 分配5个int的空间
+if (p == NULL) {
+    // 分配失败处理（如内存不足）
+    exit(EXIT_FAILURE);
+}
+// 使用p指向的内存...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;2-calloc&#34;&gt;&lt;strong&gt;(2) &lt;code&gt;calloc&lt;/code&gt;&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;作用&lt;/strong&gt;：分配指定数量和大小的内存块，并&lt;strong&gt;初始化为0&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语法&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int* arr = (int*)calloc(n, sizeof(int)); // 分配n个int，内容全0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;与&lt;code&gt;malloc&lt;/code&gt;的区别&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;calloc&lt;/code&gt;会清空内存，适合需要初始化零值的场景（如稀疏矩阵）。&lt;/li&gt;
+&lt;li&gt;参数顺序不同：&lt;code&gt;calloc(n, size)&lt;/code&gt; vs &lt;code&gt;malloc(n * size)&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;3-realloc&#34;&gt;&lt;strong&gt;(3) &lt;code&gt;realloc&lt;/code&gt;&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;作用&lt;/strong&gt;：调整已分配内存块的大小（扩展或缩小）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语法&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int* new_ptr = (int*)realloc(old_ptr, new_size);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意事项&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;若原内存块后有足够空间，直接扩展；否则&lt;strong&gt;重新分配新内存块并复制旧内容&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;必须用返回的新指针代替旧指针&lt;/strong&gt;（可能地址已变更）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int* arr = (int*)malloc(5 * sizeof(int));
+// 扩展为10个int
+int* new_arr = (int*)realloc(arr, 10 * sizeof(int));
+if (new_arr != NULL) {
+    arr = new_arr;  // 更新指针
+} else {
+    // 处理分配失败（旧指针arr仍可用，但内存未扩展）
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;4-free&#34;&gt;&lt;strong&gt;(4) &lt;code&gt;free&lt;/code&gt;&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;作用&lt;/strong&gt;：释放之前分配的堆内存，&lt;strong&gt;防止内存泄漏&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语法&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;free(ptr);  // ptr必须是malloc/calloc/realloc返回的指针
+ptr = NULL; // 推荐释放后立即置空，避免野指针
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;关键规则&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;每个&lt;code&gt;malloc&lt;/code&gt;/&lt;code&gt;calloc&lt;/code&gt;必须对应一个&lt;code&gt;free&lt;/code&gt;，且只释放一次。&lt;/li&gt;
+&lt;li&gt;不可释放栈内存（如局部变量地址）或已释放的指针。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;2-内存分配失败检测&#34;&gt;&lt;strong&gt;2. 内存分配失败检测&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;原因&lt;/strong&gt;：堆内存耗尽（如申请过大空间）、系统资源不足。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;检查方法&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int* ptr = (int*)malloc(100 * sizeof(int));
+if (ptr == NULL) {
+    // 分配失败处理（输出日志、释放其他资源、优雅退出）
+    fprintf(stderr, &amp;quot;Memory allocation failed!\n&amp;quot;);
+    exit(EXIT_FAILURE); // 或尝试其他方案（如缩小请求大小）
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;未检测的后果&lt;/strong&gt;：解引用NULL指针会导致程序崩溃（Segmentation Fault）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;3-常见问题与解决方案&#34;&gt;&lt;strong&gt;3. 常见问题与解决方案&lt;/strong&gt;&lt;/h4&gt;
+&lt;h5 id=&#34;1-内存泄漏memory-leak&#34;&gt;&lt;strong&gt;(1) 内存泄漏（Memory Leak）&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;：已分配的堆内存未释放，程序失去对该内存的控制权。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;场景举例&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void func() {
+    int* p = (int*)malloc(100 * sizeof(int));
+    // 忘记写free(p);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;危害&lt;/strong&gt;：长期运行的程序内存占用持续增长，最终崩溃。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;避免方法&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;配对使用&lt;code&gt;malloc&lt;/code&gt;和&lt;code&gt;free&lt;/code&gt;，确保每条分支（如条件、循环）正确释放内存。&lt;/li&gt;
+&lt;li&gt;使用静态分析工具（如Valgrind、Cppcheck）检测泄漏。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;2-野指针dangling-pointer&#34;&gt;&lt;strong&gt;(2) 野指针（Dangling Pointer）&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;：指针指向已释放或无效的内存。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;场景举例&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int* p = (int*)malloc(sizeof(int));
+free(p);
+*p = 10; // p成为野指针，解引用行为未定义
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;防御措施&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;释放后置空&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;free(p);
+p = NULL; // 后续访问p会触发NULL解引用错误（易调试）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;避免返回局部变量指针&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int* bad_function() {
+    int x = 5;
+    return &amp;amp;x; // x的地址在函数返回后失效！
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;3-重复释放double-free&#34;&gt;&lt;strong&gt;(3) 重复释放（Double Free）&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;场景&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int* p = (int*)malloc(sizeof(int));
+free(p);
+free(p); // 重复释放同一块内存（崩溃风险）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解决方案&lt;/strong&gt;：释放后立刻置空指针。&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;free(p);
+p = NULL;  // 第二次free(NULL)是无害的（C标准允许）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;4-动态内存使用场景示例&#34;&gt;&lt;strong&gt;4. 动态内存使用场景示例&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;示例1：动态数组&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int size = 10;
+int* arr = (int*)malloc(size * sizeof(int));
+if (arr == NULL) { /* 处理失败 */ }
+
+// 扩容到20个元素
+int* new_arr = (int*)realloc(arr, 20 * sizeof(int));
+if (new_arr != NULL) {
+    arr = new_arr;
+    size = 20;
+} else {
+    // 原数组arr仍可用，但无法扩容
+}
+
+free(arr); // 使用完毕后释放
+arr = NULL;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;示例2：链表节点创建&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+Node* create_node(int value) {
+    Node* node = (Node*)malloc(sizeof(Node));
+    if (node == NULL) { /* 处理错误 */ }
+    node-&amp;gt;data = value;
+    node-&amp;gt;next = NULL;
+    return node;
+}
+
+// 使用后需手动释放链表所有节点
+void free_list(Node* head) {
+    while (head != NULL) {
+        Node* temp = head;
+        head = head-&amp;gt;next;
+        free(temp);
+        temp = NULL;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;5-调试建议&#34;&gt;&lt;strong&gt;5. 调试建议&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Valgrind工具&lt;/strong&gt;：用于检测内存泄漏、野指针等问题。&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;valgrind --leak-check=full ./your_program
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;打印内存地址&lt;/strong&gt;：在调试时输出指针地址和值，观察分配/释放过程：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;printf(&amp;quot;Allocated memory at: %p\n&amp;quot;, (void*)ptr);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;掌握动态内存管理是C语言高效实现数据结构的基石，务必通过实际代码加深理解并养成安全编程习惯。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;六-预处理器与常用库函数&#34;&gt;&lt;strong&gt;六、预处理器与常用库函数&lt;/strong&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;1-预处理器指令&#34;&gt;&lt;strong&gt;1. 预处理器指令&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;预处理器的操作发生在编译之前，用于代码替换、条件编译等，直接影响最终生成的代码结构。&lt;/p&gt;
+&lt;h5 id=&#34;1-宏定义define&#34;&gt;&lt;strong&gt;(1) 宏定义（&lt;code&gt;#define&lt;/code&gt;）&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;作用&lt;/strong&gt;：用标识符替换代码片段，常用于常量、函数式宏。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// 定义常量
+#define PI 3.14159
+// 函数式宏（注意括号避免优先级问题）
+#define MAX(a, b) ((a) &amp;gt; (b) ? (a) : (b))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优势与风险&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;无函数调用开销，但可能引发副作用（如 &lt;code&gt;MAX(a++, b)&lt;/code&gt; 会导致 &lt;code&gt;a++&lt;/code&gt; 多次执行）。&lt;/li&gt;
+&lt;li&gt;仅做文本替换，无类型检查。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;适用场景&lt;/strong&gt;：简单逻辑替换（如取最大值、数组长度计算）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;2-条件编译&#34;&gt;&lt;strong&gt;(2) 条件编译&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;作用&lt;/strong&gt;：根据条件选择性编译代码块，常用于跨平台兼容或调试。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;常用指令&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#ifdef DEBUG           // 如果定义了 DEBUG
+    printf(&amp;quot;Debug mode\n&amp;quot;);
+#endif
+
+#if SIZE == 64         // 条件判断
+    // 64位系统专用代码
+#elif SIZE == 32
+    // 32位系统专用代码
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实际应用&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;调试模式：使用 &lt;code&gt;-DDEBUG&lt;/code&gt; 编译参数启用调试日志。&lt;/li&gt;
+&lt;li&gt;头文件保护：防止重复包含头文件。&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#ifndef MY_HEADER_H
+#define MY_HEADER_H
+// 头文件内容
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;2-常用标准库&#34;&gt;&lt;strong&gt;2. 常用标准库&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;掌握这些标准库是实现算法和操作数据结构的必备工具。&lt;/p&gt;
+&lt;h5 id=&#34;1-stdioh输入输出&#34;&gt;&lt;strong&gt;(1) &lt;code&gt;&amp;lt;stdio.h&amp;gt;&lt;/code&gt;：输入输出&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;核心函数&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;printf()&lt;/code&gt;/&lt;code&gt;scanf()&lt;/code&gt;：格式化输出/输入。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fgets()&lt;/code&gt;/&lt;code&gt;fputs()&lt;/code&gt;：安全读取/写入字符串（避免缓冲区溢出）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应用场景&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;调试输出算法中间结果。&lt;/li&gt;
+&lt;li&gt;读取文件数据（如排序前的原始数据）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;2-stdlibh动态内存与系统工具&#34;&gt;&lt;strong&gt;(2) &lt;code&gt;&amp;lt;stdlib.h&amp;gt;&lt;/code&gt;：动态内存与系统工具&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;核心函数&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;动态内存管理&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int *arr = (int*)malloc(sizeof(int) * 10);  // 分配内存
+free(arr);                                   // 释放内存（避免泄漏）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;随机数生成&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;srand(time(NULL));                   // 初始化种子
+int rand_num = rand() % 100;         // 生成0-99的随机数（用于生成测试数据）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;快速排序函数&lt;/strong&gt;：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int compare(const void* a, const void* b) {
+    return (*(int*)a - *(int*)b);    // 函数指针给qsort用
+}
+qsort(arr, size, sizeof(int), compare);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应用场景&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;动态创建链表、树、图的节点。&lt;/li&gt;
+&lt;li&gt;排序算法验证（对比手写算法与&lt;code&gt;qsort&lt;/code&gt;的性能）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;3-stringh字符串与内存操作&#34;&gt;&lt;strong&gt;(3) &lt;code&gt;&amp;lt;string.h&amp;gt;&lt;/code&gt;：字符串与内存操作&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;核心函数&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;strcpy(dest, src)&lt;/code&gt;：复制字符串（需保证 &lt;code&gt;dest&lt;/code&gt; 空间足够）。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;strcmp(s1, s2)&lt;/code&gt;：比较字符串（返回0表示相等）。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;memcpy(dest, src, n)&lt;/code&gt;：复制任意内存块（如结构体、数组）。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;memset(ptr, value, n)&lt;/code&gt;：初始化内存（常用于清零）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意事项&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;strcpy&lt;/code&gt; 可能引发缓冲区溢出，推荐用 &lt;code&gt;strncpy&lt;/code&gt; 或自行检查长度。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;memcpy&lt;/code&gt; 效率优于手动逐字节拷贝（底层可能用SIMD优化）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;4-mathh数学计算&#34;&gt;&lt;strong&gt;(4) &lt;code&gt;&amp;lt;math.h&amp;gt;&lt;/code&gt;：数学计算&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;核心函数&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pow(x, y)&lt;/code&gt;：计算 &lt;code&gt;x^y&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sqrt(x)&lt;/code&gt;：平方根。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ceil(x)&lt;/code&gt;/&lt;code&gt;floor(x)&lt;/code&gt;：向上/向下取整。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应用场景&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;算法复杂度计算（如二分查找的步骤数）。&lt;/li&gt;
+&lt;li&gt;浮点数比较时处理误差（如 &lt;code&gt;fabs(a - b) &amp;lt; 1e-6&lt;/code&gt;）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;3-综合示例&#34;&gt;&lt;strong&gt;3. 综合示例&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;结合预处理器和标准库的典型场景：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+
+// 宏定义：计算数组长度
+#define ARRAY_LEN(arr) (sizeof(arr) / sizeof(arr[0]))
+
+// 条件编译：打开调试模式
+#ifdef DEBUG
+    #define LOG(msg) printf(&amp;quot;[DEBUG] %s\n&amp;quot;, msg)
+#else
+    #define LOG(msg)
+#endif
+
+int main() {
+    int arr[] = {5, 2, 8, 1};
+    int len = ARRAY_LEN(arr);
+  
+    LOG(&amp;quot;Before sorting&amp;quot;);
+    qsort(arr, len, sizeof(int), compare);
+    LOG(&amp;quot;After sorting&amp;quot;);
+  
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;运行&lt;/strong&gt;：&lt;code&gt;gcc -DDEBUG example.c -o example&lt;/code&gt; 启用调试日志。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;核心要点总结-2&#34;&gt;&lt;strong&gt;核心要点总结&lt;/strong&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;预处理器&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;宏定义节省代码量，但需警惕副作用。&lt;/li&gt;
+&lt;li&gt;条件编译提升代码可移植性和调试效率。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;常用库函数&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;动态内存操作是数据结构实现的基础。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;string.h&lt;/code&gt; 处理数据复制和比较，&lt;code&gt;math.h&lt;/code&gt; 完成算法中的数学逻辑。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全实践&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;检查 &lt;code&gt;malloc&lt;/code&gt; 返回的指针是否为 &lt;code&gt;NULL&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;memcpy&lt;/code&gt; 替代逐字节拷贝以提高效率。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;掌握这些内容后，可以更高效地实现如哈希表、动态数组等数据结构，并在算法中灵活操作内存与数学计算。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;七-调试与工具&#34;&gt;&lt;strong&gt;七、调试与工具&lt;/strong&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;1-使用-printf-调试关键变量&#34;&gt;&lt;strong&gt;1. 使用 &lt;code&gt;printf&lt;/code&gt; 调试关键变量&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;核心思想&lt;/strong&gt;&lt;br&gt;
+在代码中通过添加 &lt;code&gt;printf&lt;/code&gt; 语句打印关键变量、指针地址或函数调用路径，快速定位问题点。&lt;br&gt;
+&lt;strong&gt;示例&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int sum = 0;
+for (int i=0; i&amp;lt;10; i++) {
+    sum += i;
+    printf(&amp;quot;[Debug] i=%d, current sum=%d\n&amp;quot;, i, sum);  // 实时跟踪循环逻辑
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;适用场景&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;验证循环条件或变量的变化是否符合预期&lt;/li&gt;
+&lt;li&gt;检查指针是否指向正确地址（如 &lt;code&gt;printf(&amp;quot;ptr address: %p\n&amp;quot;, ptr);&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;追踪函数调用顺序（如进入函数时打印提示）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;优缺点&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;优点&lt;/strong&gt;：简单直接，无需复杂工具&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缺点&lt;/strong&gt;：代码侵入性强（调试完成后记得删除）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;2-gdb-调试器基础命令&#34;&gt;&lt;strong&gt;2. GDB 调试器基础命令&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;准备调试程序&lt;/strong&gt;&lt;br&gt;
+编译时添加 &lt;code&gt;-g&lt;/code&gt; 选项生成调试信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;gcc -g main.c -o program  # 生成可调试的可执行文件
+gdb ./program             # 启动 GDB
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;常用命令&lt;/strong&gt;（在 GDB 命令行中执行）&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;th&gt;示例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;break [位置]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;设置断点&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;break main.c:10&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;run&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;启动程序&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;next&lt;/code&gt; (或 &lt;code&gt;n&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;执行下一行（不进入函数）&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;step&lt;/code&gt; (或 &lt;code&gt;s&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;执行下一行（进入函数内部）&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;print [变量]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;打印变量或表达式值&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;print *ptr&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;backtrace&lt;/code&gt; (或 &lt;code&gt;bt&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;显示函数调用栈（定位崩溃点）&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;continue&lt;/code&gt; (或 &lt;code&gt;c&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;继续执行到下一个断点或程序结束&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;quit&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;退出 GDB&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;典型调试场景&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;段错误（Segmentation Fault）&lt;/strong&gt;&lt;br&gt;
+用 &lt;code&gt;bt&lt;/code&gt; 查看崩溃时的调用栈，结合 &lt;code&gt;print&lt;/code&gt; 检查指针是否非法访问。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;死循环&lt;/strong&gt;&lt;br&gt;
+使用 &lt;code&gt;break&lt;/code&gt; 在循环体内设置断点，通过 &lt;code&gt;step/next&lt;/code&gt; 逐行观察变量变化。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;代码规范&#34;&gt;&lt;strong&gt;代码规范&lt;/strong&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;1-合理的变量命名与注释&#34;&gt;&lt;strong&gt;1. 合理的变量命名与注释&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;变量/函数命名&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;原则&lt;/strong&gt;：见名知意，避免缩写歧义（如 &lt;code&gt;cnt&lt;/code&gt; vs. &lt;code&gt;count&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;命名风格&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;小写+下划线：&lt;code&gt;student_count&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;驼峰命名：&lt;code&gt;studentCount&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;避免无用命名&lt;/strong&gt;：&lt;code&gt;temp&lt;/code&gt;, &lt;code&gt;data&lt;/code&gt;, &lt;code&gt;value&lt;/code&gt;（除非作用明确）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;注释&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;函数注释&lt;/strong&gt;：说明功能、参数、返回值和关键逻辑。&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;/**
+ * 计算链表的长度
+ * @param head 链表头节点指针
+ * @return 链表的节点数量
+ */
+int list_length(Node *head) { ... }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;复杂逻辑注释&lt;/strong&gt;：解释算法或边界条件。&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// 快慢指针查找链表中间节点（需处理奇偶情况）
+Node *slow = head, *fast = head;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;2-模块化设计拆分头文件-h-和源文件-c&#34;&gt;&lt;strong&gt;2. 模块化设计（拆分头文件 &lt;code&gt;.h&lt;/code&gt; 和源文件 &lt;code&gt;.c&lt;/code&gt;）&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;头文件（&lt;code&gt;.h&lt;/code&gt;）的作用&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;声明函数、结构体和宏定义（提供接口文档的功能）。&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;#ifndef&lt;/code&gt; 防止重复包含：&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#ifndef MY_HEADER_H
+#define MY_HEADER_H
+
+// 函数声明、结构体定义等
+
+#endif
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;源文件（&lt;code&gt;.c&lt;/code&gt;）的作用&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;实现头文件中声明的函数和变量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;示例项目结构&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;project/
+├── include/
+│   └── linked_list.h   // 声明链表操作函数（如 create_node、insert_head）
+├── src/
+│   └── linked_list.c   // 实现具体函数
+└── main.c             // 主程序调用接口
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;编译多文件&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;gcc -g main.c src/linked_list.c -Iinclude -o program  # -I 指定头文件路径
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;调试与规范的实用建议&#34;&gt;&lt;strong&gt;调试与规范的实用建议&lt;/strong&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;先小规模验证，再逐步扩展&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;在实现复杂数据结构（如二叉树）时，先测试基础的增删函数，再逐步组合场景。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;善用断言 &lt;code&gt;assert&lt;/code&gt;&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;在关键位置插入 &lt;code&gt;assert(ptr != NULL);&lt;/code&gt; 防御性编程，快速捕捉非法状态。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工具辅助&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 Valgrind 检测内存泄漏：&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;valgrind --leak-check=full ./program
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;使用静态代码分析工具（如 &lt;code&gt;cppcheck&lt;/code&gt;）检查潜在问题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;掌握这些调试技巧和规范，不仅能提高代码质量，还能更高效地定位数据结构与算法实现中的逻辑或内存错误。实际开发中，调试时间可能占编程的 50% 以上，因此良好的习惯至关重要。&lt;/p&gt;
+&lt;h3 id=&#34;八-实践建议&#34;&gt;&lt;strong&gt;八、实践建议&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;必做练习&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;用指针实现字符串操作（反转、拼接）&lt;/li&gt;
+&lt;li&gt;使用结构体和动态内存模拟链表&lt;/li&gt;
+&lt;li&gt;手写排序算法（如冒泡、快速排序）&lt;/li&gt;
+&lt;li&gt;理解内存布局（栈、堆、全局变量区）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;常见错误预防&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化指针前避免解引用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;malloc&lt;/code&gt; 后检查是否分配成功&lt;/li&gt;
+&lt;li&gt;数组越界问题（如循环条件 &lt;code&gt;i &amp;lt; n&lt;/code&gt; 而非 &lt;code&gt;i &amp;lt;= n&lt;/code&gt;）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+">数据结构所需的c语言的基础知识速查</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://carlzzdr.fun/post/qian-ru-shi-ke-cheng-hui-bian-nei-rong-zong-jie/"" data-c="
+          &lt;h2 id=&#34;基本指令&#34;&gt;基本指令&lt;/h2&gt;
+&lt;h3 id=&#34;数据传输指令&#34;&gt;数据传输指令&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;MOV&lt;/code&gt;&lt;/strong&gt;: 将立即数或寄存器值移动到寄存器中。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;示例: &lt;code&gt;MOV R6, #0x80&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 将立即数 &lt;code&gt;0x80&lt;/code&gt; 加载到寄存器 &lt;code&gt;R6&lt;/code&gt; 中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;MRS&lt;/code&gt;&lt;/strong&gt;: 从特殊寄存器读取值到通用寄存器。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;示例: &lt;code&gt;MRS R5, APSR&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 读取特殊寄存器 &lt;code&gt;APSR&lt;/code&gt; 的值，并存入寄存器 &lt;code&gt;R5&lt;/code&gt; 中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;LDR&lt;/code&gt;&lt;/strong&gt;: 从内存加载值到寄存器。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;示例: &lt;code&gt;LDR R2, =0x12345678&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 将立即数 &lt;code&gt;0x12345678&lt;/code&gt; 加载到寄存器 &lt;code&gt;R2&lt;/code&gt; 中，通常是通过伪指令实现。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;STR&lt;/code&gt;&lt;/strong&gt;: 将寄存器值存储到内存地址。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;示例: &lt;code&gt;STR R0, [R1, R2, LSL #2]&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 将寄存器 &lt;code&gt;R0&lt;/code&gt; 的值存储到内存地址 &lt;code&gt;[R1 + (R2 &amp;lt;&amp;lt; 2)]&lt;/code&gt; 中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;浮点操作指令&#34;&gt;浮点操作指令&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;VMOV.F32&lt;/code&gt;&lt;/strong&gt;: 移动浮点数值到浮点寄存器。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;示例: &lt;code&gt;VMOV.F32 S2, #0.5&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 将浮点数值 &lt;code&gt;0.5&lt;/code&gt; 移动到浮点寄存器 &lt;code&gt;S2&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;VMRS&lt;/code&gt;&lt;/strong&gt;: 将浮点状态寄存器的标志位更新到APSR。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;示例: &lt;code&gt;VMRS APSR_nzcv, FPSCR&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 将浮点状态寄存器 &lt;code&gt;FPSCR&lt;/code&gt; 的标志位更新到 &lt;code&gt;APSR_nzcv&lt;/code&gt; 中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;存储器访问指令&#34;&gt;存储器访问指令&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;LDRSH&lt;/code&gt;&lt;/strong&gt;: 加载内存中的有符号半字到寄存器。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;示例: &lt;code&gt;LDRSH R2, [R2, #16]&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 从内存地址 &lt;code&gt;[R2 + 16]&lt;/code&gt; 读取一个有符号的半字数据，存入寄存器 &lt;code&gt;R2&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;LDRB&lt;/code&gt;&lt;/strong&gt;: 从内存加载1字节到寄存器。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;示例: &lt;code&gt;LDRB R5, [R6]&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 从内存地址 &lt;code&gt;[R6]&lt;/code&gt; 读取1字节数据，并存入寄存器 &lt;code&gt;R5&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;ADD&lt;/code&gt;&lt;/strong&gt;: 将两个操作数相加，结果存入寄存器。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;示例: &lt;code&gt;ADD R2, R2, #16&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 将寄存器 &lt;code&gt;R2&lt;/code&gt; 的值与立即数 &lt;code&gt;16&lt;/code&gt; 相加，并将结果存入寄存器 &lt;code&gt;R2&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;栈操作&#34;&gt;栈操作&lt;/h2&gt;
+&lt;h3 id=&#34;进栈操作&#34;&gt;进栈操作&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;STMFD&lt;/code&gt;&lt;/strong&gt;: 多寄存器存储到栈中，递减栈指针。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;示例: &lt;code&gt;STMFD SP!, {R2, R4, R5, R6, R8}&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 将寄存器 &lt;code&gt;R2&lt;/code&gt;, &lt;code&gt;R4&lt;/code&gt;, &lt;code&gt;R5&lt;/code&gt;, &lt;code&gt;R6&lt;/code&gt;, 和 &lt;code&gt;R8&lt;/code&gt; 的值存入栈中，并递减栈指针 &lt;code&gt;SP&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;PUSH&lt;/code&gt;&lt;/strong&gt;: 将指定寄存器的值进栈。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;示例: &lt;code&gt;PUSH {R2, R4, R5, R6, R8}&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 将寄存器 &lt;code&gt;R2&lt;/code&gt;, &lt;code&gt;R4&lt;/code&gt;, &lt;code&gt;R5&lt;/code&gt;, &lt;code&gt;R6&lt;/code&gt;, 和 &lt;code&gt;R8&lt;/code&gt; 的值存入栈中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;条件指令&#34;&gt;条件指令&lt;/h2&gt;
+&lt;h3 id=&#34;条件跳转&#34;&gt;条件跳转&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;根据比较结果进行跳转。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;it块&#34;&gt;IT块&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;用于条件执行多条指令。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;特殊操作&#34;&gt;特殊操作&lt;/h2&gt;
+&lt;h3 id=&#34;pc相关地址访问&#34;&gt;PC相关地址访问&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;从程序计数器（&lt;code&gt;PC&lt;/code&gt;）相关的地址加载值。
+&lt;ul&gt;
+&lt;li&gt;示例: &lt;code&gt;LDR R1, [PC, #6]&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;: 从当前程序计数器地址加上偏移量 &lt;code&gt;6&lt;/code&gt; 的内存位置读取一个字数据，并存入寄存器 &lt;code&gt;R1&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;非乘法实现乘法&#34;&gt;非乘法实现乘法&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;使用移位和加法实现乘法运算。&lt;/li&gt;
+&lt;li&gt;示例: 将 &lt;code&gt;R6 * 9&lt;/code&gt; 实现:&lt;pre&gt;&lt;code class=&#34;language-assembly&#34;&gt;MOV R7, R6      ; R7 = R6
+ADD R7, R7, R6  ; R7 = R6 * 2
+ADD R7, R7, R6  ; R7 = R6 * 3
+ADD R7, R7, R6  ; R7 = R6 * 9
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解释&lt;/strong&gt;&lt;br&gt;
+第一步: 将 R6 的值复制到 R7。&lt;br&gt;
+第二步: 将 R7 的值加上 R6，得到 R6 * 2。&lt;br&gt;
+第三步: 再次加上 R6，得到 R6 * 3。&lt;br&gt;
+第四步: 最后再加上 R6，得到 R6 * 9。&lt;/li&gt;
+&lt;/ul&gt;
+">嵌入式课程汇编内容总结</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://carlzzdr.fun/post/qian-ru-shi-qi-mo-di-san-zhang/"" data-c="
+          &lt;h1 id=&#34;arm处理器指令集&#34;&gt;ARM处理器指令集&lt;/h1&gt;
+&lt;h1 id=&#34;31指令简介&#34;&gt;3.1指令简介&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;指令&lt;br&gt;
+定义：能够指示处理器执行某种运算的命令(如加、减、乘、.......)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;程序是指令的有序集合。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;指令集&lt;br&gt;
+定义：处理器能识别指令的集合，称为指令集&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ARM指令在汇编程序中用助记符表示，格式为：&lt;br&gt;
+&lt;code&gt;&amp;lt;opcode&amp;gt;{&amp;lt;cond&amp;gt;} {S} &amp;lt;Rd&amp;gt;,&amp;lt;Rn&amp;gt; {,&amp;lt;operand2&amp;gt; }&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;说明：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;opcode&gt;指令操作码，如ADD表示算术加操作指令；&lt;/li&gt;
+&lt;li&gt;{&lt;cond&gt;}决定指令执行的条件码；&lt;/li&gt;
+&lt;li&gt;{S}是否更新CPSR中的标志位值，写时更新 ，否则不更新；&lt;/li&gt;
+&lt;li&gt;&lt;Rd&gt;目的寄存器编码；&lt;/li&gt;
+&lt;li&gt;&lt;Rn&gt;包含第一个操作数的寄存器编码；&lt;/li&gt;
+&lt;li&gt;&lt;operand2&gt;第二个操作数，有2种形式： #immed_8r；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;指令格式举例：&lt;br&gt;
+&lt;code&gt;LDR R0，[R1]&lt;/code&gt;&lt;br&gt;
+将存储器地址为R1的字数据读入寄存器 R0，执行条件AL （总是，可以省略）&lt;br&gt;
+&lt;code&gt;ADDS R1, R1, #1&lt;/code&gt;&lt;br&gt;
+加法指令， R1= R1+1, 带S，执行完指令，同时更新CPSR寄存器条件标志位&lt;br&gt;
+&lt;code&gt;SUBNES R1, R1, #0xF&lt;/code&gt;&lt;br&gt;
+条件执行减法运算（NE）， R1=R1-0XF, 带S则影响CPSR 寄存器&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;32arm寻址方式&#34;&gt;3.2ARM寻址方式&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;立即寻址、寄存器寻址、寄存器间接寻址、基址加偏址寻址、堆栈寻址、块拷贝寻址、相对寻址&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;立即寻址&lt;/strong&gt;&lt;br&gt;
+立即寻址也叫 &lt;strong&gt;立即数寻址&lt;/strong&gt;，操作数本身就在指令中给出，只要取出指令也就取到了操作数，这个操作数被称为 &lt;strong&gt;立即数&lt;/strong&gt;&lt;br&gt;
+例如以下指令：&lt;br&gt;
+&lt;code&gt;ADD R0，R0，＃1&lt;/code&gt; /&lt;em&gt;R0←R0＋1&lt;/em&gt;/&lt;br&gt;
+&lt;code&gt;ADD R0，R0，＃0x3f&lt;/code&gt;/&lt;em&gt;R0←R0＋0x3f&lt;/em&gt;/&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;立即数写法：第二个源操作数即为立即数，要求以“＃”为前缀，对于以十六进制表示的立即数，还要求在“＃”后加上“0x”或“&amp;amp;”；“0b”或“%”表示二进制；“0d”或缺省不写表示十进制。立即数一般为 &lt;strong&gt;8位&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;寄存器寻址&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;利用寄存器中的数值作为操作数，这种寻址方式是各类微处理器经常采用的一种方式，也是一种执行效率较高的寻址方式。以下指令：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ADD   R0，R1，R2&lt;/code&gt; /&lt;em&gt;R0←R1＋R2&lt;/em&gt;/&lt;/p&gt;
+&lt;p&gt;该指令的执行效果是将寄存器R1和R2的内容相加，其结果存放在寄存器R0中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;寄存器间接寻址&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;寄存器间接寻址：以寄存器中的值作为操作数的地址，而操作数本身存放在存储器中。例如以下指令：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;LDR R0，[R1]&lt;/code&gt; /&lt;em&gt;R0←[R1]&lt;/em&gt;/&lt;br&gt;
+&lt;code&gt;STR R0，[R1]&lt;/code&gt; /&lt;em&gt;[R1]←R0&lt;/em&gt;/&lt;/p&gt;
+&lt;p&gt;LDR（Load Register）：将以R1的值为地址的存储器中的数据加载到R0中；&lt;br&gt;
+STR(Store Register)：将R0的值传送到以R1的值为地址的存储器中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;基址加偏址寻址&lt;/strong&gt;&lt;br&gt;
+基址寄存器的地址偏移可以是一个立即数，也可以是另一个寄存器，并且在加到基址寄存器前还可以经过移位操作.如下所示：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;LDR r0，[r1，r2]；&lt;/code&gt;r0&amp;lt;—mem32[r1+r2]&lt;br&gt;
+&lt;code&gt;LDR  r0，[r1，r2，LSL #2]；&lt;/code&gt;r0&amp;lt;—[r1+r2*4]&lt;/p&gt;
+&lt;p&gt;但常用的是立即数偏移的形式，地址偏移为寄存器形式的指令很少使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;堆栈寻址&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;堆栈：一个按操作顺序进行存取的存储区（一种数据结构）；&lt;br&gt;
+操作顺序：先进后出（First In Last Out，FILO）；&lt;br&gt;
+使用一个称作堆栈指针的专用寄存器（SP）指示当前的操作位置，堆栈指针总指向堆栈存储单元的栈顶。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;四种类型的堆栈工作方式&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;满递增堆栈（FA）：堆栈指针指向最后压入的数据，且由低地址向高地址生成；&lt;/li&gt;
+&lt;li&gt;满递减堆栈 （FD）：堆栈指针指向最后压入的数据，且由高地址向低地址生成(默认寻址方式)；&lt;/li&gt;
+&lt;li&gt;空递增堆栈（EA）：堆栈指针指向下一个将要放入数据的空位置，且由低地址向高地址生成。&lt;/li&gt;
+&lt;li&gt;空递减堆栈（ED）：堆栈指针指向下一个将要放入数据的空位置，且由高地址向低地址生成。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;ARM无专门的堆栈操作指令&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;快拷贝寻址&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;相对寻址&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;33arm指令集详细介绍&#34;&gt;3.3ARM指令集详细介绍&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;ARM的数据处理指令主要完成寄存器中数据的 &lt;strong&gt;算术和逻辑运算操作&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;省略&#34;&gt;省略&lt;/h2&gt;
+&lt;h1 id=&#34;习题&#34;&gt;习题&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;简述 ARM处理器指令集的特点。&lt;br&gt;
+代码灵活度高；&lt;br&gt;
+简化了复杂度；&lt;br&gt;
+执行指令集时PC每次自增4&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ARM处理器指令集的寻址方式有哪些，数据的存储方式有那些?&lt;br&gt;
+立即寻址、寄存器寻址、寄存器间接寻址、基址加偏址寻址、堆栈寻址、块拷贝寻址、相对寻址&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;简述堆栈寻址方式的分类.&lt;br&gt;
+堆栈：一个按操作顺序进行存取的存储区（一种数据结构）；&lt;br&gt;
+操作顺序：先进后出（First In Last Out，FILO）；&lt;br&gt;
+使用一个称作堆栈指针的专用寄存器（SP）指示当前的操作位置，堆栈指针总指向堆栈存储单元的栈顶。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;四种类型的堆栈工作方式&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;满递增堆栈（FA）：堆栈指针指向最后压入的数据，且由低地址向高地址生成；&lt;/li&gt;
+&lt;li&gt;满递减堆栈 （FD）：堆栈指针指向最后压入的数据，且由高地址向低地址生成(默认寻址方式)；&lt;/li&gt;
+&lt;li&gt;空递增堆栈（EA）：堆栈指针指向下一个将要放入数据的空位置，且由低地址向高地址生成。&lt;/li&gt;
+&lt;li&gt;空递减堆栈（ED）：堆栈指针指向下一个将要放入数据的空位置，且由高地址向低地址生成。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写指令实现以下功能:&lt;br&gt;
+(1)将数值 0x80 存入R6;&lt;br&gt;
+&lt;code&gt;MOV R6, #0x80&lt;/code&gt;&lt;br&gt;
+(2)将寄存器 APSR 读取存入R5;&lt;br&gt;
+&lt;code&gt;MRS R5, APSR&lt;/code&gt;&lt;br&gt;
+(3)将数值 0.5存入R2，并更新标志位;&lt;br&gt;
+&lt;code&gt;VMOV.F32 S2, #0.5&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;VMRS APSR_nzcv, FPSCR&lt;/code&gt;&lt;br&gt;
+(4)将数值0x12345678存入R2。&lt;br&gt;
+&lt;code&gt;LDR R2, =0x12345678&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写存储器访问指令实现以下功能:&lt;br&gt;
+(1)从存储器地址[R2+16]中取有符号半字数送入R2，并将R2更新为R2+16;&lt;br&gt;
+&lt;code&gt;LDRSH R2, [R2, #16]&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;ADD R2, R2, #16&lt;/code&gt;&lt;br&gt;
+(2)将RO中的字数据存入地址为[R1+R2x4]的存储单元中;&lt;br&gt;
+&lt;code&gt;STR R0, [R1, R2, LSL #2]&lt;/code&gt;&lt;br&gt;
+(3)从存储器地址[R6]中取1字节数值，送入R5中，并将R6更新为R6+0x22;&lt;br&gt;
+&lt;code&gt;LDRB R5, [R6]&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;ADD R6, R6, #0x22&lt;/code&gt;&lt;br&gt;
+(4)将PC+6指向的存储器的字数据送入R1中。&lt;br&gt;
+&lt;code&gt;LDR R1, [PC, #6]&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;采用两种指令编写实现将寄存器R2、R4、R5、R6、R8内容进栈保存。&lt;br&gt;
+使用STMFD指令将寄存器R2、R4、R5、R6、R8内容进栈保存&lt;br&gt;
+&lt;code&gt;STMFD SP!, {R2, R4, R5, R6, R8}&lt;/code&gt;&lt;br&gt;
+使用PUSH指令将寄存器R2、R4、R5、R6、R8内容进栈保存&lt;br&gt;
+&lt;code&gt;PUSH {R2, R4, R5, R6, R8}&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;分别使用条件跳转指令和IT指令编写程序段实现以下功能:比较寄存器 RO与R1，相等时，RO逻辑右移2位，R1循环右移2位;不等时，R0算术右移2位，R1带进位循环右移 2位。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编写程序段不使用乘法指令实现将寄存器R6的内容乘以9，并将其结果存入寄存器 R7内&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+">嵌入式期末 第三章</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://carlzzdr.fun/post/qian-ru-shi-qi-mo-di-er-zhang/"" data-c="
+          &lt;h1 id=&#34;第二章-arm-cortex体系架构&#34;&gt;第二章 ARM Cortex体系架构&lt;/h1&gt;
+&lt;h1 id=&#34;21arm-cortex体系概述&#34;&gt;2.1ARM Cortex体系概述&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ARM（Advanced RISC Machine）公司在经典处理器ARM11以后的产品都改用Cortex命名，主要分成A、R和M三类，旨在为各种不同的市场提供服务，A 系列处理器面向尖端的基于虚拟内存的操作系统和用户应用；R系列处理器针对实时系统；M系列处理器针对微控制器。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CISC和RISC：&lt;br&gt;
+指令集可分为复杂指令集(Complex Instruction Set Computing，CISC)和精简指令集（Reduced Instruction Set Computing ,RISC）两部分。&lt;/p&gt;
+&lt;h1 id=&#34;22-cortex-m4内核基础&#34;&gt;2.2 Cortex-M4内核基础&lt;/h1&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基本技术:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;32-bit微控制器： &lt;strong&gt;32&lt;/strong&gt;-bit 寄存器组、存储器接口。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;哈佛架构&lt;/strong&gt;：独立的指令总线和数据总线。&lt;/li&gt;
+&lt;li&gt;存储空间：4GB。&lt;/li&gt;
+&lt;li&gt;寄存器：寄存器 (R0 到 R15) 和 特殊功能寄存器。&lt;/li&gt;
+&lt;li&gt;运行模式：线程模式和处理模式;特权级和用户级。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;中断和异常&lt;/strong&gt;：内置嵌套向量中断控制器；支持11 种系统异常外加240种外部 IRQ。&lt;/li&gt;
+&lt;li&gt;总线接口：若干总线接口允许 Cortex-M4  。&lt;/li&gt;
+&lt;li&gt;MPU：一个可选的存储器保护单元允许对特权访问和用户程序访问制定访问规则。&lt;/li&gt;
+&lt;li&gt;指令集：&lt;strong&gt;Thumb-2指令集&lt;/strong&gt;；允许 32位指令和16位指令被同时使用。&lt;/li&gt;
+&lt;li&gt;内部调试组件：提供在线调试功能，例如：断点、单步、变量查看&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;处理器工作模式：用户、系统、快中断、中断、管理、中止、未定义模式，共七种处理器模式&lt;br&gt;
+其中，除用户模式外，其它模式均为 &lt;strong&gt;特权模式&lt;/strong&gt;&lt;br&gt;
+其中，快中断、中断、管理、中止、未定义五种为&lt;strong&gt;异常模式&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;寄存器&lt;/strong&gt; 的功能是CPU内部用来存放 &lt;strong&gt;二进制代码的一些小型存储区域&lt;/strong&gt;，用来 &lt;strong&gt;暂时存放&lt;/strong&gt; 参与运算的数据和运算结果。它是由具有存储功能的 &lt;strong&gt;触发器&lt;/strong&gt; 组合起来构成的。一个触发器可以存储1位二进制代码，故存放n位二进制代码的寄存器，需用n个触发器来构成。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;寄存器也不尽相同。寄存器最起码具备以下几种功能。&lt;br&gt;
+&lt;strong&gt;清除数码&lt;/strong&gt;：将寄存器里的原有数码清除。&lt;br&gt;
+&lt;strong&gt;接收数码&lt;/strong&gt;：在接收脉冲作用下，将外输入数码存入寄存器中。&lt;br&gt;
+&lt;strong&gt;存储数码&lt;/strong&gt;：在没有新的写入脉冲来之前，寄存器能保存原有数码不变。&lt;br&gt;
+&lt;strong&gt;输出数码&lt;/strong&gt;：在输出脉冲作用下，才通过电路输出数码。&lt;br&gt;
+仅具有以上功能的寄存器称为数码寄存器；有的寄存器还具有 &lt;strong&gt;移位功能&lt;/strong&gt;，称为移位寄存器。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;寄存器组：r0～r12 ,为13个通用目的寄存器&lt;br&gt;
+&lt;strong&gt;低组寄存器&lt;/strong&gt; , r0-r7可以被指定通用寄存器的所有指令访问&lt;br&gt;
+&lt;strong&gt;高组寄存器&lt;/strong&gt; , r8-r12可以被指定通用寄存器的所有32位指令访问 ，16位Thumb指令不能访问它们，32位的Thumb－2指令则不受限制。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;R13，两个堆栈指针 &lt;strong&gt;主堆栈和进程堆栈&lt;/strong&gt; ：&lt;br&gt;
+Cortex-M4内核有两个堆栈指针：&lt;strong&gt;MSP和PSP&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;结束复位后，所有代码都使用主堆栈&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;程序计数器R15（PC）&lt;/strong&gt; 存储当前执行的指令地址。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不同工作模式和处理器状态下，程序员访问的寄存器也不尽相同。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CPSR（Current Program Status Register）是当前程序状态寄存器，用于存储处理器的当前状态信息。在处理异常时，处理器会切换到异常模式，并且每种异常模式都有一个专用的SPSR（Saved Program Status Register），即程序状态保存寄存器&lt;br&gt;
+每种异常都有自己的SPSR，在进入异常时它保存CPSR的当前值，异常退出时可通过它恢复CPSR。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;控制寄存器：用来定义&lt;strong&gt;特权级和堆栈指针&lt;/strong&gt;的选择。&lt;br&gt;
+这个寄存器有两位。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;操作模式：&lt;strong&gt;两种模式和两种特权等级&lt;/strong&gt;。操作模式决定控制器运行正常程序或运行异常处理程序。&lt;br&gt;
+软件在&lt;strong&gt;特权访问级别&lt;/strong&gt;可以使程序转换到用户访问级别。&lt;br&gt;
+&lt;strong&gt;用户程序不能够通过写控制寄存器直接变回特权状态&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;工作模式和特权级别：&lt;br&gt;
+&lt;strong&gt;工作模式&lt;/strong&gt; 用于区别普通 &lt;strong&gt;应用程序的代码和异常服务&lt;/strong&gt; 例程的代码(包括中断服务例程的代码)&lt;br&gt;
+&lt;strong&gt;特权级别&lt;/strong&gt; 可以提供一种存储器访问的 &lt;strong&gt;保护机制&lt;/strong&gt;，使得普通的用户程序代码不能意外地，甚至是恶意地执行涉及到要害的操作。&lt;br&gt;
+特权访问和用户访问(&lt;strong&gt;非特权访问&lt;/strong&gt;)的区别&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;线程模式和处理器模式&lt;/strong&gt;：&lt;br&gt;
+线程模式：&lt;br&gt;
+在复位时控制器进入线程模式&lt;br&gt;
+异常返回时控制器进入线程模式&lt;br&gt;
+特权和用户（非特权）代码能够在线程模式下运行&lt;br&gt;
+处理器模式：&lt;br&gt;
+出现异常时控制器进入处理器模式&lt;br&gt;
+在处理器模式中，所有代码都是特权访问的&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;23存储器系统&#34;&gt;2.3存储器系统&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;存储器(Memory)是系统中的记忆设备，用来 &lt;strong&gt;存放程序和数据&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;存储器的分类&lt;/strong&gt;&lt;br&gt;
+按作用分：主存储器、辅助存储器、缓冲存储器;&lt;/p&gt;
+&lt;p&gt;按存取方式分：随机存储器（RAM）、只读存储器（ROM）、顺序存储器（SAM）和直接存取存储（DAM）器四类;&lt;/p&gt;
+&lt;p&gt;按存储介质分: 半导体存储器、磁表面存储器和光盘存储器;&lt;/p&gt;
+&lt;p&gt;按存取原理分：单体单字存储器、单体多字存储器 、多体单字交叉存取存储器、多体多字交叉存取存储器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;TM（存储周期）&lt;/strong&gt;：连续启动一个存储体所需要的时间间隔。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;存储器频宽&lt;/strong&gt;：是指存储器可以提供的数据传送率，一般用每秒钟所传送的信息位数来衡量&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;单体&lt;/strong&gt; 指只有一套地址寄存器和地址译码器，CPU每次访问可同时读出多个存储字。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cortex-M4内核的存储器系统的主要特性:&lt;br&gt;
+可寻址 &lt;strong&gt;4GB&lt;/strong&gt;（2^32）线性地址物理空间。&lt;br&gt;
+支持 &lt;strong&gt;小端和大端的存储器系统&lt;/strong&gt;。Cortex-M4处理器可以选择使用小端或者大端的存储器系统。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;存储器介质：&lt;br&gt;
+RAM:  SRAM和DRAM&lt;br&gt;
+ROM:  ROM、PROM、EPROM、EEPROM&lt;br&gt;
+FLASH:  NOR FLASH、NAND FLASH&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;大端存储&lt;/strong&gt;：字数据的高字节存储在低地址中，而字数据的低字节则存放在高地址中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;小端存储&lt;/strong&gt;：与大端存储格式相反，即低地址中存放字数据的低字节，高地址存放字数据的高字节。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;小端格式存储是Cortex-M4内核 &lt;strong&gt;默认的存储器格式&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;高速缓冲存储器（Cache）：&lt;br&gt;
+&lt;strong&gt;作用&lt;/strong&gt;：存放当前使用得最多的程序代码和数据（即主存中部分内容的副本）；&lt;br&gt;
+嵌入式系统中Cache全部都集成在嵌入式微处理器内；&lt;br&gt;
+&lt;strong&gt;种类&lt;/strong&gt;：数据Cache、指令Cache或混合Cache；&lt;br&gt;
+不同的处理器其Cache的大小不一样；一般32位的嵌入式微处理器都内置Cache。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Cache命中&lt;/strong&gt;：CPU每次读取主存时，Cache控制器都要检查CPU送出的地址，判断CPU要读取的数据是否在Cache中，如果在就称为命中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Cache未命中&lt;/strong&gt;：读取的数据不在Cache中，则对主存储器进行操作，并将有关内容置入Cache。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;写入方法：&lt;br&gt;
+&lt;strong&gt;通写&lt;/strong&gt;：写Cache时，Cache与对应内存内容同步更新。&lt;br&gt;
+&lt;strong&gt;回写&lt;/strong&gt;：写Cache时，只有写入Cache内容移出时才更新对应内存内容。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;高速缓存（Cache）的分类&lt;/strong&gt;：&lt;strong&gt;统一Cache&lt;/strong&gt;、&lt;strong&gt;独立的数据/程序Cache&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;存储器映射&lt;/strong&gt;：给存储器地址命名的过程，就叫存储器映射&lt;br&gt;
+例：各款M4微控制器的NVIC 和MPU 都在相同的位置布设寄存器，使得它们变得通用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;存储空间4GB被 &lt;strong&gt;划分为多个存储区域&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;24-异常和中断&#34;&gt;2.4 异常和中断&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;中断处理的 &lt;strong&gt;执行硬件&lt;/strong&gt;：Cortex-M4处理器都会提供一个 **嵌套向量中断控制器（NVIC）**完成中断处理。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cortex-M4微处理器的 NVIC支持中断源：&lt;br&gt;
+多达240个 &lt;strong&gt;IRQ（中断请求）&lt;/strong&gt;，由外设产生，如定时器产生、I/O端口和通信接口（例如，UARTI2C）；&lt;br&gt;
+&lt;strong&gt;非屏蔽中断（NMI）&lt;/strong&gt;，由外设产生，如看门狗定时器；&lt;br&gt;
+&lt;strong&gt;SysTick定时器中断（System Tick）&lt;/strong&gt;，来自处理器内核；&lt;br&gt;
+&lt;strong&gt;系统异常&lt;/strong&gt;。来自处理器内核或软件生成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Nested vectored interrupt controlled, 嵌入向量中断控制器，属于内核（M3/4/7）一个外设；&lt;br&gt;
+作用：&lt;strong&gt;控制着芯片的中断相关功能&lt;/strong&gt;；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;中断向量表&lt;/strong&gt;：定义一块固定的内存，以4字节对齐，存放各个中断服务函数程序的首地址；编号1-15是系统异常，编号16以上为中断输入，大多数异常，包括所有的中断，有可编程的优先级，少部分的系统异常有固定优先级。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;中断向量表 &lt;strong&gt;入口&lt;/strong&gt; 定义在 &lt;strong&gt;启动文件&lt;/strong&gt;，当发生中断，CPU会自动执行对应的中断服务函数&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;STM32中断优先级基本概念&lt;br&gt;
+&lt;strong&gt;抢占优先级&lt;/strong&gt;（pre）：高抢占优先级可以打断正在执行的低抢占优先级中断；&lt;br&gt;
+&lt;strong&gt;相应优先级&lt;/strong&gt;（sub）：当抢占优先级可相同时，相应优&lt;br&gt;
+先级高的先执行，但是不能相互打断；&lt;br&gt;
+当抢占和响应优先级相同时，自然优先级越高的，先执行；&lt;br&gt;
+&lt;strong&gt;自然优先级&lt;/strong&gt;：中断向量表的优先级；&lt;br&gt;
+数值越小，表示的优先级越高；&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;习题&#34;&gt;习题&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;列举出三家公司生产的Cortex-M3和Cortex-M4内核控制器。&lt;/p&gt;
+&lt;p&gt;M3 STM32F1系列&lt;br&gt;
+M4 STM32F4系列&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;列举Cortex-M3/M4处理器使用的寄存器组，并说明R13、R14、R15的功能&lt;br&gt;
+Cortex-M3/M4处理器使用的寄存器组包括以下内容：&lt;br&gt;
+通用寄存器（R0-R12）&lt;br&gt;
+特殊功能寄存器（R13-R15）&lt;br&gt;
+状态寄存器（xPSR）&lt;/p&gt;
+&lt;p&gt;其中，R13、R14、R15的功能如下：&lt;/p&gt;
+&lt;p&gt;R13（SP，堆栈指针）：用于指向当前堆栈的顶部。Cortex-M处理器有两个堆栈指针：主堆栈指针（MSP）和进程堆栈指针（PSP），R13可以指向其中一个。&lt;/p&gt;
+&lt;p&gt;R14（LR，链接寄存器）：用于存储函数调用返回地址。当执行函数调用时，返回地址会被存储在R14中，以便函数执行完毕后能够返回调用点。&lt;/p&gt;
+&lt;p&gt;R15（PC，程序计数器）：用于存储当前正在执行的指令地址。程序计数器会自动递增，以指向下一条要执行的指令地址。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;试说明Cortex-M3/M4处理器两种模式和两种特权的使用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;两种模式&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;线程模式（Thread Mode）：&lt;br&gt;
+这是处理器在复位后默认的运行模式。&lt;br&gt;
+主要用于执行应用程序代码。&lt;br&gt;
+可以在特权级别和非特权级别下运行。&lt;br&gt;
+处理模式（Handler Mode）：&lt;br&gt;
+主要用于处理异常和中断。&lt;br&gt;
+总是在特权级别下运行。&lt;br&gt;
+两种特权级别&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;特权级（Privileged）：&lt;br&gt;
+可以访问所有的系统资源，包括特殊功能寄存器和所有内存区域。&lt;br&gt;
+可以切换堆栈指针（SP）和模式。&lt;br&gt;
+线程模式和处理模式都可以在特权级下运行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;非特权级（Unprivileged）：&lt;br&gt;
+只能访问有限的系统资源，不能访问某些特殊功能寄存器和受保护的内存区域。&lt;br&gt;
+不能切换堆栈指针（SP）和模式。&lt;br&gt;
+仅线程模式可以在非特权级下运行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;什么是大端格式和小端格式?&lt;/p&gt;
+&lt;p&gt;大端格式&lt;br&gt;
+定义：高字节存储在低地址，低字节存储在高地址&lt;br&gt;
+小端格式&lt;br&gt;
+低字节存储在低地址，高字节存储在高地址&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;试说明存储器分类及其用途。&lt;/p&gt;
+&lt;p&gt;按作用分：主存储器、辅助存储器、缓冲存储器;&lt;/p&gt;
+&lt;p&gt;按存取方式分：随机存储器（RAM）、只读存储器（ROM）、顺序存储器（SAM）和直接存取存（DAM）器四类;&lt;/p&gt;
+&lt;p&gt;按存储介质分: 半导体存储器、磁表面存储器和光盘存储器;&lt;/p&gt;
+&lt;p&gt;按存取原理分：单体单字存储器、单体多字存储器 、多体单字交叉存取存储器、多体多字交叉存取存储器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;试说明异常响应过程。&lt;/p&gt;
+&lt;p&gt;异常检测、处理器判断异常优先级、按照异常向量表查找入口地址、处理器保存上下文、跳转到异常处理程序、执行异常处理程序、异常返回恢复向前保存的上下文程序、恢复正常执行&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cortex-M3/M4处理器中断向量处存放的是对应中断的什么信息?&lt;/p&gt;
+&lt;p&gt;中断向量表存放的是对应中断处理程序的入口地址。中断向量表是一个存储在固定地址的表格，每个表项对应一个中断或异常，表项中存放的是该中断或异常的处理程序的起始地址。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cortex-M3/M4处理器复位后执行的第一项操作是什么?第二项操作是什么?&lt;/p&gt;
+&lt;p&gt;第一项操作：加载初始堆栈指针值&lt;br&gt;
+第二项操作：跳转到复位处理程序&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+">嵌入式期末 第二章</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://carlzzdr.fun/post/qian-ru-shi-qi-mo-zong-jie/"" data-c="
+          &lt;h1 id=&#34;考试题型&#34;&gt;考试题型&lt;/h1&gt;
+&lt;p&gt;四类题目：选择、十五个填空、六个简答、两个程序解答&lt;br&gt;
+内容主要来自：&lt;strong&gt;PPT&lt;/strong&gt;、&lt;strong&gt;课后习题&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;第一章嵌入式系统&#34;&gt;第一章嵌入式系统&lt;/h1&gt;
+&lt;h2 id=&#34;11嵌入式系统概述&#34;&gt;1.1嵌入式系统概述&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;IEEE（国际电气和电子工程师协会）对嵌入式系统的定义是：&lt;br&gt;
+“用于&lt;strong&gt;控制&lt;/strong&gt;、&lt;strong&gt;监视&lt;/strong&gt;或者&lt;strong&gt;辅助操作机器和设备&lt;/strong&gt;的装置”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;国内普遍认同定义：&lt;br&gt;
+嵌入式系统就是一个具有特定功能或用途的&lt;strong&gt;计算机软硬件集合体&lt;/strong&gt;。&lt;br&gt;
+即以应用为中心、以计算机技术为基础、软件硬件可裁剪、适应应用系统对&lt;strong&gt;功能、可靠性、成本、体积、功耗&lt;/strong&gt;严格要求的专用计算机系统 。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;嵌入式系统特点：&lt;br&gt;
+&lt;strong&gt;专用性&lt;/strong&gt;：嵌入式系统通常是面向特定应用的&lt;br&gt;
+&lt;strong&gt;小体积、低功耗、低成本、高集成度&lt;/strong&gt;：如指纹锁要求半年换一次电池&lt;br&gt;
+&lt;strong&gt;实时性&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;技术密集&lt;/strong&gt;：嵌入式系统是将先进的计算机技术、半导体技术和电子技术与各个行业的具体应用相结合后的产物。&lt;br&gt;
+&lt;strong&gt;生命周期长&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;不可垄断性&lt;/strong&gt;：相对与PC机intel和windows 而言，嵌入式系统是以应用为中心，应用场景多样化决定了难以垄断&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;12嵌入式系统体系&#34;&gt;1.2嵌入式系统体系&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;嵌入式系统基本构成：一般可分为&lt;strong&gt;硬件&lt;/strong&gt;和&lt;strong&gt;软件&lt;/strong&gt;两部分。&lt;br&gt;
+硬件：&lt;strong&gt;嵌入式处理器、外围硬件设备、电源、I/O接口电路等&lt;/strong&gt;；&lt;br&gt;
+软件：&lt;strong&gt;嵌入式操作系统（可选）、应用程序和驱动程序。&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;硬件架构：&lt;br&gt;
+嵌入式系统的硬件架构以嵌入式处理器为核心，由存储器、外围设备、通信模块、电源及复位等必要的辅助接口组成。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;软件层次：&lt;br&gt;
+嵌入式系统软件结构一般包含3个层面：&lt;strong&gt;设备驱动层、OS层、应用层&lt;/strong&gt;（包括硬件抽象层、应用程序）。&lt;/p&gt;
+&lt;p&gt;设备驱动层：&lt;br&gt;
+由&lt;strong&gt;板级支持包&lt;/strong&gt;（Board Support Package，BSP）和&lt;strong&gt;驱动程序&lt;/strong&gt;组成;&lt;br&gt;
+作用:为上层程序提供外围设备的操作接口，并实现设备的驱动程序。&lt;/p&gt;
+&lt;p&gt;板级支持包：&lt;br&gt;
+作用：&lt;br&gt;
+系统上电的硬件初始化；&lt;br&gt;
+为嵌入式操作系统访问硬件驱动程序提供支持；&lt;br&gt;
+集成硬件相关和硬件无关的嵌入式操作系统所需的软件模块。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;13嵌入式硬件系统&#34;&gt;1.3嵌入式硬件系统&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;嵌入式系统硬件系统是以&lt;strong&gt;嵌入式处理器&lt;/strong&gt;为核心，配备必要的外围设备、传感及执行等构成一个典型应用系统。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;选型设计原则&lt;/strong&gt;：在满足应用要求的前提下，一般选择&lt;strong&gt;集成度高&lt;/strong&gt;的嵌入式处理器SoC/SOPC芯片，以尽可能少的硬件构件进行设计。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;嵌入式微控制器&lt;strong&gt;MCU&lt;/strong&gt;&lt;br&gt;
+嵌入式微控制器的典型代表是单片机，嵌入式微控制器目前的品种和数量最多，比较有代表性 通用系列包括8051、AVR、PIC、&lt;strong&gt;ARM Cortex-M&lt;/strong&gt; 等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数字信号处理器&lt;strong&gt;DSP&lt;/strong&gt;&lt;br&gt;
+主要专门用于&lt;strong&gt;信号处理&lt;/strong&gt;方面，其在系统结构方面进行了特殊设计，在数字滤波、FFT、频谱分析等密集数学运算领域有大规模的应用，一般用在&lt;strong&gt;算法快速执行&lt;/strong&gt;，做控制比较困难。&lt;/p&gt;
+&lt;p&gt;-嵌入式SoC：&lt;br&gt;
+用可编程逻辑技术把整个系统放到一块硅片上，称作&lt;strong&gt;SOPC&lt;/strong&gt;。可编程片上系统（SOPC）是一种特殊的嵌入式系统。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ARM处理器是英国ARM（Advanced RISC Machines）有限公司（以下简称“ARM公司”）设计的&lt;strong&gt;RISC&lt;/strong&gt;处理器&lt;br&gt;
+ARM处理器分为&lt;strong&gt;经典处理器和Cortex处理器&lt;/strong&gt;两大类。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;存储系统：&lt;br&gt;
+存储器主要功能:&lt;strong&gt;存储程序和各种数据&lt;/strong&gt;，并能在计算机运行过程中高速、自动地完成程序或数据的存取。&lt;/p&gt;
+&lt;p&gt;随机存取存储器 &lt;strong&gt;RAM&lt;/strong&gt;：&lt;br&gt;
+随机存取是指存储单元的内容可按需&lt;strong&gt;随意取出或存入&lt;/strong&gt;，读写速度很快，且速度与存储单元的位置无关。RAM在断电时将丢失其存储内容，RAM主要用于存储短时间使用的程序。是属于&lt;strong&gt;易失性存储器&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;只读存储器 &lt;strong&gt;ROM&lt;/strong&gt;：&lt;br&gt;
+只读存储器中的数据可以在掉电后不丢失，ROM主要用于存储程序和一些数据（常量、系数等），存储在其中的数据只能读不能改，需要使用特定的方法擦除和烧录数据。是属于 &lt;strong&gt;非易失性存储器&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;嵌入式系统中的1/O接口是指用于将各种集成电路与其他外围设备交互连接的通信通路或总线，负责处理器和外围设备之间的信息交换。目前嵌入式系统中常用的通用设备接口有 &lt;strong&gt;GPIO&lt;/strong&gt; 接口（通用可编程接口）、&lt;strong&gt;UART&lt;/strong&gt; 接口（通用串行通信接口）、&lt;strong&gt;Ethernet接口&lt;/strong&gt;（以太网接口）、&lt;strong&gt;USB接口&lt;/strong&gt;（通用串行总线接口）、I2C接口（现场总线接口）、&lt;strong&gt;I2S接口&lt;/strong&gt;、&lt;strong&gt;SPI接口&lt;/strong&gt;（串行外围设备接口）、&lt;strong&gt;CAN总线接口&lt;/strong&gt;、&lt;strong&gt;Bluetooth接口&lt;/strong&gt;（蓝牙接口）、&lt;strong&gt;Camera Link&lt;/strong&gt;接口、&lt;strong&gt;SD卡接口等&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;14-嵌入式操作系统&#34;&gt;1.4 嵌入式操作系统&lt;/h2&gt;
+&lt;p&gt;嵌入式操作系统通常包括与硬件相关的底层 &lt;strong&gt;驱动&lt;/strong&gt; 软件、系统 &lt;strong&gt;内核&lt;/strong&gt;、设备驱动接口、&lt;strong&gt;通信协议&lt;/strong&gt;、&lt;strong&gt;图形界面&lt;/strong&gt;、标准化 &lt;strong&gt;浏览器&lt;/strong&gt;等。嵌入式操作系统负责嵌入式系统的全部软件、硬件资源的分配、任务 &lt;strong&gt;调度&lt;/strong&gt;，&lt;strong&gt;控制&lt;/strong&gt;、协调并发活动。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;嵌入式操作系统的发展：&lt;br&gt;
+&lt;strong&gt;第一阶段：嵌入式系统的出现阶段&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;第二阶段：以嵌入式CPU为基础&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;第三阶段：通用的嵌入式实时操作系统阶段&lt;/strong&gt;：代表就是Linux、VxWorks等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;按照对任务响应的 &lt;strong&gt;实时性&lt;/strong&gt; 来分类，嵌入式操作系统分为嵌入式非实时操作系统和嵌入式实时操作系统（RTOS）&lt;/p&gt;
+&lt;p&gt;嵌入式非实时操作系统：嵌入式非实时操作系统主要 &lt;strong&gt;面向消费类产品&lt;/strong&gt; 应用领域。大部分都支持多用户和多进程，负责管理众多的进程并为它们分配系统资源，属于 &lt;strong&gt;不可抢占式操作系统&lt;/strong&gt;。&lt;br&gt;
+典型的非实时操作系统是Linux、iOS等。&lt;/p&gt;
+&lt;p&gt;嵌入式实时操作系统：嵌入式实时操作系统主要 &lt;strong&gt;面向控制&lt;/strong&gt;、&lt;strong&gt;通信等&lt;/strong&gt; 领域。实时操作系统除了要满足应用的功能需求，还要满足应用提出的实时性要求，属于抢占式操作系统。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;嵌入式实时操作系统的功能&lt;/p&gt;
+&lt;p&gt;任务管理：任务管理通常包含 &lt;strong&gt;优先级&lt;/strong&gt; 设置、多任务调度机制和时间确定性等部分。&lt;br&gt;
+任务同步与通信机制：如&lt;strong&gt;消息邮箱、消息队列、管道和共享内存。&lt;/strong&gt;&lt;br&gt;
+内存管理&lt;br&gt;
+中断处理：&lt;strong&gt;中断处理&lt;/strong&gt; 是整个运行系统中优先级最高的代码，它可以抢占任何任务级代码运行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;常用的嵌入式操作系统——&lt;strong&gt;Linux&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;第一章课后习题&#34;&gt;第一章课后习题&lt;/h2&gt;
+&lt;h3 id=&#34;1-嵌入式系统定义是什么它由哪几部分组成&#34;&gt;1. 嵌入式系统定义是什么?它由哪几部分组成?&lt;/h3&gt;
+&lt;p&gt;国内普遍认同定义：&lt;br&gt;
+嵌入式系统就是一个具有特定功能或用途的&lt;strong&gt;计算机软硬件集合体&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;嵌入式系统基本构成：&lt;br&gt;
+一般可分为&lt;strong&gt;硬件&lt;/strong&gt;和&lt;strong&gt;软件&lt;/strong&gt;两部分。&lt;/p&gt;
+&lt;p&gt;硬件：&lt;strong&gt;嵌入式处理器、外围硬件设备、电源、I/O接口电路等&lt;/strong&gt;；&lt;br&gt;
+软件：&lt;strong&gt;嵌入式操作系统（可选）、应用程序和驱动程序。&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2-试说明冯诺依曼计算机与现代计算机的结构组成&#34;&gt;2. 试说明冯·诺依曼计算机与现代计算机的结构组成。&lt;/h3&gt;
+&lt;p&gt;冯·诺依曼计算机结构由五大部分组成：运算器、控制器、存储器、输入设备和输出设备。现代计算机在此基础上进行了扩展和优化，增加了多级缓存、并行处理、多核处理器等技术，以提高计算效率和处理能力。此外，现代计算机还引入了图形处理单元（GPU）、专用集成电路（ASIC）等专用硬件来处理特定任务。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3-什么是地址码-操作数&#34;&gt;3. 什么是地址码、操作数?&lt;/h2&gt;
+&lt;p&gt;地址码是指在指令中用于指定操作数存储位置的部分，它告诉计算机从哪里获取或存储数据。操作数是指令中实际进行运算或操作的数据，可以是立即数、寄存器中的数据或存储器中的数据&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;4-什么是cisc-risc指令系统二者有什么区别&#34;&gt;4. 什么是CISC、RISC指令系统?二者有什么区别?&lt;/h2&gt;
+&lt;p&gt;CISC（复杂指令集计算机）指令系统具有复杂的指令集，每条指令可以执行多个低级操作，旨在减少程序的指令数量，提高编程效率；RISC（精简指令集计算机）指令系统具有精简的指令集，每条指令执行一个简单的操作，通常在一个时钟周期内完成，旨在简化硬件设计，提高指令执行速度。CISC和RISC的主要区别在于指令集复杂度、指令执行速度、硬件设计和编程效率。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;5-嵌入式系统处理器有哪几种如何选择&#34;&gt;5. 嵌入式系统处理器有哪几种?如何选择?&lt;/h2&gt;
+&lt;p&gt;嵌入式微处理器 MPU&lt;br&gt;
+嵌入式微控制器 MCU&lt;br&gt;
+嵌入式数字信号处理器 EDSP&lt;br&gt;
+嵌入式片上系统 SoC&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;选型设计原则&lt;/strong&gt;：在满足应用要求的前提下，一般选择&lt;strong&gt;集成度高&lt;/strong&gt;的嵌入式处理器SoC/SOPC芯片，以尽可能少的硬件构件进行设计。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;6-嵌入式系统存储器从功能上分为哪两类一般采用何种类型存储器件&#34;&gt;6. 嵌入式系统存储器从功能上分为哪两类?一般采用何种类型存储器件?&lt;/h2&gt;
+&lt;p&gt;嵌入式系统存储器从功能上分为两类：程序存储器和数据存储器。程序存储器通常采用闪存（Flash）或只读存储器（ROM），用于存储固件和程序代码；数据存储器通常采用随机存取存储器（RAM），用于存储运行时的数据和变量。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;7-io与cpu信息传送控制方式是什么&#34;&gt;7. IO与CPU信息传送控制方式是什么?&lt;/h2&gt;
+&lt;p&gt;IO与CPU信息传送控制方式主要有三种：程序控制方式、中断控制方式和DMA（直接存储器访问）控制方式。程序控制方式由CPU通过执行程序指令直接控制IO设备；中断控制方式通过IO设备向CPU发送中断请求，CPU响应中断后进行数据传输；DMA控制方式由DMA控制器直接在内存和IO设备之间传输数据，减少CPU的参与，提高传输效率。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;8-嵌入式实时操作系统定义是什么典型的嵌入式实时操作系统有哪几种&#34;&gt;8. 嵌入式实时操作系统定义是什么?典型的嵌入式实时操作系统有哪几种?&lt;/h2&gt;
+&lt;p&gt;嵌入式实时操作系统（RTOS）是一种专门为嵌入式系统设计的操作系统，能够在严格的时间限制内处理任务，确保系统的实时性和可靠性。典型的嵌入式实时操作系统有FreeRTOS、VxWorks、RTEMS、μC/OS-II和QNX等。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;9-试说明嵌入式系统调试过程并说明嵌入式系统有哪几种调试技术&#34;&gt;9.  试说明嵌入式系统调试过程，并说明嵌入式系统有哪几种调试技术。&lt;/h2&gt;
+&lt;p&gt;嵌入式系统调试过程通常包括以下步骤：代码编写、编译、下载到目标硬件、运行和测试、发现问题、调试和修复。调试过程中需要反复进行这些步骤，直到系统稳定运行。&lt;br&gt;
+串口调试、仿真器调试、JTAG或SWD在线调试等&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;10-嵌入式系统与计算机系统有什么区别&#34;&gt;10. 嵌入式系统与计算机系统有什么区别?&lt;/h2&gt;
+">嵌入式期末 第一章</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://carlzzdr.fun/post/markdown-zhu-yao-ge-shi-yong-fa/"" data-c="
+          &lt;h2 id=&#34;标题&#34;&gt;标题&lt;/h2&gt;
+&lt;p&gt;使用 &lt;code&gt;#&lt;/code&gt; 表示标题，&lt;code&gt;#&lt;/code&gt; 的数量表示标题的级别。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;# 一级标题
+## 二级标题
+### 三级标题
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;列表&#34;&gt;列表&lt;/h2&gt;
+&lt;h3 id=&#34;无序列表&#34;&gt;无序列表&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;-&lt;/code&gt;、&lt;code&gt;*&lt;/code&gt; 或 &lt;code&gt;+&lt;/code&gt; 表示无序列表。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;- 项目 1
+- 项目 2
+    - 子项目 2.1
+    - 子项目 2.2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;有序列表&#34;&gt;有序列表&lt;/h3&gt;
+&lt;p&gt;使用数字和点表示有序列表。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;1. 项目 1
+2. 项目 2
+     1. 子项目 2.1
+     2. 子项目 2.2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;引用&#34;&gt;引用&lt;/h2&gt;
+&lt;p&gt;使用 &lt;code&gt;&amp;gt;&lt;/code&gt; 表示引用。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;&amp;gt; 这是一个引用。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;代码块&#34;&gt;代码块&lt;/h2&gt;
+&lt;p&gt;使用反引号  &lt;code&gt;`&lt;/code&gt; 表示行内代码，使用三个反引号表示代码块。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;`行内代码`
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;代码块&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;链接&#34;&gt;链接&lt;/h2&gt;
+&lt;p&gt;使用 &lt;code&gt;[描述](链接)&lt;/code&gt; 表示链接。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;[GitHub](https://github.com)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;图片&#34;&gt;图片&lt;/h2&gt;
+&lt;p&gt;使用 &lt;code&gt;![描述](图片链接)&lt;/code&gt; 表示图片。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;![示例图片](https://example.com/image.jpg)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;粗体和斜体&#34;&gt;粗体和斜体&lt;/h2&gt;
+&lt;p&gt;使用 &lt;code&gt;**&lt;/code&gt; 表示粗体，使用 &lt;code&gt;*&lt;/code&gt; 表示斜体。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;**粗体文本**
+
+*斜体文本*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;表格&#34;&gt;表格&lt;/h2&gt;
+&lt;p&gt;使用 &lt;code&gt;|&lt;/code&gt; 和 &lt;code&gt;-&lt;/code&gt; 表示表格。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;| 头1 | 头2 |
+| --- | --- |
+| 内容1 | 内容2 |
+| 内容3 | 内容4 |
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;分隔线&#34;&gt;分隔线&lt;/h2&gt;
+&lt;p&gt;使用三个或更多的 &lt;code&gt;-&lt;/code&gt;、&lt;code&gt;*&lt;/code&gt; 或 &lt;code&gt;_&lt;/code&gt; 表示分隔线。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;---
+&lt;/code&gt;&lt;/pre&gt;
+">Markdown 主要格式用法</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://carlzzdr.fun/post/wsl-de-xin-kai-shi/"" data-c="
+          &lt;p&gt;把双系统删了，现在用WSL&lt;br&gt;
+这个windows突然出bug卡住可以把人急死&lt;br&gt;
+就算是印度人写的也受不了这么蠢的bug吧&lt;/p&gt;
+">WSL的新开始</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://carlzzdr.fun/post/yi-xie-zhao-pian/"" data-c="
+          &lt;p&gt;测试图片排版&lt;br&gt;
+&lt;img src=&#34;https://carlzzdr.fun/post-images/1731814466391.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+这样&lt;br&gt;
+&lt;img src=&#34;https://carlzzdr.fun/post-images/1731814594189.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+">一些照片</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://carlzzdr.fun/post/about/"" data-c="
+          &lt;center&gt;我是 Carl&lt;/center&gt;
+&lt;center&gt;.&lt;/center&gt;
+&lt;center&gt;来自湖南&lt;/center&gt;
+&lt;center&gt;.&lt;/center&gt;
+&lt;center&gt;在重庆上大学&lt;/center&gt;
+&lt;center&gt;.&lt;/center&gt;
+&lt;center&gt;这个网站基于Gridea在ChatGPT指导下创建&lt;/center&gt;">关于</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://carlzzdr.fun/post/zhan-zai-ju-ren-de-jian-bang-shang/"" data-c="
+          &lt;p&gt;在很多地方看到过这样的一句话&lt;br&gt;
+“计算机的所有东西都是人做出来的”&lt;br&gt;
+确实是这样&lt;br&gt;
+今天我学习的所有东西都是前人做的&lt;/p&gt;
+&lt;p&gt;除了技术本身&lt;br&gt;
+学习技术的过程也多是公开的&lt;br&gt;
+计算机专业的一大优势就在于此&lt;br&gt;
+不论是最基础的还是最尖端的技术&lt;br&gt;
+都有大量的公开的代码、资源、文档、教程&lt;br&gt;
+就算是普通的网上讨论&lt;br&gt;
+计算机专业也可以说是声量最大的&lt;br&gt;
+因为网络就是计算机的主场&lt;br&gt;
+而许多本专业大学生做的第一件事&lt;br&gt;
+就是搞一个网站&lt;br&gt;
+做一个课程设计项目&lt;br&gt;
+建一个作业代码仓库&lt;br&gt;
+不仅自己连了手&lt;br&gt;
+也进一步为别人的学习铺路&lt;/p&gt;
+&lt;p&gt;有人说计算机学得多&lt;br&gt;
+确实是这样的&lt;br&gt;
+计算机有非常多且复杂的内容&lt;br&gt;
+但其实任何专业需要学的都多&lt;br&gt;
+只是计算机的路径最清晰罢了&lt;br&gt;
+尤其是本科阶段&lt;br&gt;
+对于机械，某些课程如果缺少设备、实验室就开不了&lt;br&gt;
+所以名校具有显著资源优势&lt;br&gt;
+但计算机相关专业的本科阶段几乎没有这种问题&lt;br&gt;
+借助互联网、ai就可以弥补教学资源差距&lt;br&gt;
+轻易地得到几乎所有中外名校课程和基础指导&lt;br&gt;
+再借助各家云、colab、gihub就可以弥补软硬件差距&lt;br&gt;
+完全满足绝大部分需要的硬件和前沿的开源技术&lt;br&gt;
+其他专业学习普遍有缺乏资料、路径图的情况&lt;br&gt;
+比如学校选用了某个小众教材&lt;br&gt;
+就会找不到参考书也找不到网络资料&lt;br&gt;
+但对于计算机几乎不存在这种问题&lt;br&gt;
+本科阶段的内容&lt;br&gt;
+即使是最小的方面也会有大量的网络讨论&lt;br&gt;
+所以计算机专业的学习内容虽看起来多&lt;br&gt;
+但外部阻力很小&lt;br&gt;
+所以计算机是最好学的本科专业之一&lt;/p&gt;
+&lt;p&gt;而不管是学的技术还是做网站&lt;br&gt;
+前人的也经验让我们一开始就能站得更高&lt;br&gt;
+因为懒得备案+云服务器有点贵&lt;br&gt;
+在短暂的阿里云服务器尝试以后&lt;br&gt;
+还是回到了github page&lt;br&gt;
+虽然没有什么有用得内容&lt;br&gt;
+但所有的网站代码都是我手写的&lt;br&gt;
+今后还会继续“纯手工”制作网站&lt;br&gt;
+不过博客就算了&lt;br&gt;
+因为它的目的在于记录的&lt;br&gt;
+所以今后用gridea来便捷的编写内容👍&lt;/p&gt;
+">站在巨人的肩膀上</a>
+      </div>
+      
+    </div>
+    <div class="page">
+      <div id="page_ul"></div>
+    </div>
+  </div>
+</div>
+<script>
+  !function () {
+    let searchMask = document.querySelector('#search_mask');
+    let result = document.querySelector('#result');
+    let items = document.querySelectorAll('.item');
+    let searchBox = document.querySelector('#search');
+    let statCount = document.querySelector('#stat_count');
+    let statTimes = document.querySelector('#stat_times');
+    let pageUl = document.querySelector('#page_ul');
+    let close = document.querySelector('#close');
+    
+    close.addEventListener('click', function() {
+      searchMask.style = 'display: none;'
+    })
+
+    let finds = [];
+    let contents = [];
+    let pageSize = 10;
+    items.forEach(item => {
+      let a = item.querySelector('a');
+      contents.push({
+        title: a.innerText,
+        details: a.dataset.c,
+        link: a.href
+      })
+      item.remove();
+    })
+
+    function insertStr(soure, start, count) {
+      let newStr = soure.substr(start, count);
+      return soure.slice(0, start) + '<em>' + newStr + '</em>' + soure.slice(start + count);
+    }
+
+    pageUl.addEventListener('click', function(event) {
+      let target = event.target;
+      if (target.__proto__ === HTMLSpanElement.prototype) {
+        appendResults(parseInt(target.dataset.i));
+      }
+    })
+
+    function appendResults(index) {
+      let htmlResult = '';
+      let start = index || 0;
+      let end = Math.min(start + pageSize, finds.length);
+      for (let i = start; i < end; i++) {
+        const current = finds[i];
+        let html = current.title;
+        let sum = 0;
+        let positions = current.positions;
+        positions.forEach(position => {
+          html = insertStr(html, position.start + sum, position.count);
+          sum += 9;
+        })
+        htmlResult += `<div class="item"><a class="result-title" href="${current.link}">${html}</a></div>`;
+      }
+      result.innerHTML = htmlResult;
+      pageUl.innerHTML = '';
+      let count = finds.length / pageSize;
+      let lis = '';
+      if (start !== 0) {
+        lis += `<span class="fa fa-angle-left" data-i='${start - 1}'></span>`;
+      }
+      for (let i = 0; i < count; i++) {
+        lis += `<span class='${i === start?'current':''}' data-i='${i}'>${i+1}</span>`;     
+      }
+      if (start+1 < count) {
+        lis += `<span class="fa fa-angle-right" data-i='${start+1}'></span>`;  
+      }
+      pageUl.innerHTML = lis;
+    }
+
+    function search(delay) {
+      let timer = null
+      return function () {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          let start = Date.now();
+          let segments = searchBox.value.split(' ').filter(c => c != '');
+          if (segments.length <= 0) {
+            return;
+          }
+          finds = [];
+          let htmlResult = '';
+          contents.forEach(content => {
+            let title = content.title;
+            let positions = [];
+            let find = false;
+            segments.forEach((segment) => {
+              if (content.title.includes(segment)) {
+                find = true;
+                positions.push({
+                  start: content.title.indexOf(segment),
+                  count: segment.length
+                })
+              } else if (content.details.includes(segment)) {
+                find = true;
+              }
+            });
+            if (find) {
+              finds.push({
+                title: content.title,
+                link: content.link,
+                positions
+              });
+            }
+          })
+          appendResults(0);
+          statCount.textContent = finds.length;
+          statTimes.textContent = Date.now() - start;
+        }, delay)
+      }
+    }
+    searchBox.addEventListener('input', search(200));
+  }()
+</script>
+
+<input hidden id="copy" />
+<script>
+  !function () {
+    let times = document.querySelectorAll('.publish-time');
+    for (let i = 0; i < times.length; i++) {
+      let date = times[i].dataset.t;
+      let time = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
+      if (time < 60) {
+        str = time + '秒之前';
+      } else if (time < 3600) {
+        str = Math.floor(time / 60) + '分钟之前';
+      } else if (time >= 3600 && time < 86400) {
+        str = Math.floor(time / 3600) + '小时之前';
+      } else if (time >= 86400 && time < 259200) {
+        str = Math.floor(time / 86400) + '天之前';
+      } else {
+        str = times[i].textContent;
+      }
+      times[i].textContent = str;
+    }
+  }();
+</script>
+
+<script>
+  let language = '';
+  if (language !== '') {
+    let map = new Map();
+    if (language === 'en') {
+      map.set('search', 'Search');
+      map.set('category', 'Categories');
+      map.set('article', 'Articles');
+      map.set('tag', 'Tags');
+      map.set('top', 'Top');
+      map.set('publish', 'published');
+      map.set('minute', ' minutes');
+      map.set('read-more', 'Read More');
+      map.set('view', 'View');
+      map.set('words', ' words');
+      map.set('category-in', 'category in');
+      map.set('preview', 'Meta');
+      map.set('index', 'Toc');
+      map.set('no-archives', "You haven't created yet");
+      map.set('archives', " articles in total");
+      map.set('cloud-tags', " tags in total");
+      map.set('copyright', "Copyright: ");
+      map.set('author', "Author: ");
+      map.set('link', "Link: ");
+      map.set('leave-message', "Leave a message");
+      map.set('format', "Links Format");
+      map.set('site-name', "Name: ");
+      map.set('site-link', "Link: ");
+      map.set('site-desc', "Desc: ");
+      map.set('stat', " related results, taking ");
+      map.set('stat-time', " ms");
+      map.set('site-img', "Image: ");
+    }
+
+    if (map.size > 0) {
+      let lanElems = document.querySelectorAll('.language');
+      lanElems.forEach(elem => {
+        let lan = elem.dataset.lan, text = map.get(lan);
+        if (elem.__proto__ === HTMLInputElement.prototype) {
+          elem.placeholder = text
+        } else {
+          if (elem.dataset.count) {
+            text = elem.dataset.count + text;
+          }
+          elem.textContent = text;
+        }
+      })
+    }
+  }
+
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+
+</script>
+<script src="/media/js/motion.js"></script>
+
+
+  <script
+    src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+  <script>
+    var scroll = new SmoothScroll('a[href*="#"]', {
+      speed: 200
+    });
+  </script>
+
+
+
+
+
+
+</html>
